@@ -1,0 +1,42 @@
+:root {
+  --woob-green: green;
+  --link-color: fuchsia;
+  --hover-transition: 0.5s;
+}
+
+* {
+  user-select: none;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: var(--hover-transition);
+}
+
+a:hover {
+  text-shadow: 1px 1px 8px var(--woob-green);
+  transition: var(--hover-transition);
+}
+
+body {
+  background-color: #222222;
+  background: repeating-linear-gradient(45deg, #263413 0%, #263413 10%, #1f290f 0%, #1f290f 50%) 0/15px 15px;
+}
+
+#copyright {
+  text-align: center;
+  color: var(--woob-green);
+}
+
+.chinese {
+  font-family: "ZCool Kuaile";
+}
+
+.english {
+  font-family: "Luckiest Guy", cursive;
+}
+
+.russian {
+  font-family: "Neucha";
+}

@@ -1,0 +1,22 @@
+:root {
+  --paboma: 5px;
+}
+
+.modal {
+  border: var(--paboma);
+  margin: var(--paboma);
+  padding: var(--paboma);
+  text-align: center;
+}
+
+.modal-header {
+  color: var(--woob-green);
+  margin-bottom: calc(2 * var(--paboma));
+  text-align: center;
+}
+
+@media only screen and (min-width: 840px) {
+  .modal {
+    font-size: 20px;
+  }
+}
