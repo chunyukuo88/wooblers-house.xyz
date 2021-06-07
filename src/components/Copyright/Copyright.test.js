@@ -1,4 +1,4 @@
-import Copyright from './Copyright.jsx';
+import Copyright from './Copyright.js';
 
 describe('Copyright.jsx', ()=>{
     describe('Copyright.jsx', ()=>{
