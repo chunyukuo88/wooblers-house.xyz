@@ -1,0 +1,56 @@
+:root {
+  --animation-rules: neon 1.5s ease-in-out infinite alternate;
+  --title-transition-interval: all 0.5s;
+}
+
+.chinese-title, .english-title, .russian-title {
+  color: #fff;
+  font-size: 2rem;
+  text-decoration: none;
+  transition: var(--title-transition-interval);
+
+  -webkit-transition: var(--title-transition-interval);
+  -moz-transition: var(--title-transition-interval);
+  -webkit-animation: var(--animation-rules);
+  -moz-animation: var(--animation-rules);
+  animation: var(--animation-rules);
+}
+
+.chinese-title { font-family: "ZCool Kuaile"; }
+.english-title { font-family: "Monoton", cursive; }
+.russian-title { font-family: "Rubik Mono One", sans-serif; }
+
+#title-display-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.title-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 15px;
+
+  -webkit-animation: var(--animation-rules);
+  -moz-animation: var(--animation-rules);
+  animation: var(--animation-rules);
+}
+
+/*glow*/
+@keyframes neon {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #45ff11, 0 0 70px #45ff11, 0 0 80px #45ff11, 0 0 100px #45ff11, 0 0 150px #45ff11;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #45ff11, 0 0 35px #45ff11, 0 0 40px #45ff11, 0 0 50px #45ff11, 0 0 75px #45ff11;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .chinese-title,
+  .english-title,
+  .russian-title {
+    font-size: 2rem;
+  }
+}
