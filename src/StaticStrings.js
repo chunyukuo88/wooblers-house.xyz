@@ -5,9 +5,9 @@ const staticStrings = {
     chinese: "代碼"
   },
   copyright: {
-    english: "Copyright Alex Gochenour 2021",
-    russian: "Авторские права Алекс Гохинауэр 2021",
-    chinese: "© 2021年 Alex Gochenour集团"
+    english: "Copyright Alex Gochenour ",
+    russian: "Авторские права Алекс Гохинауэр ",
+    chinese: "©Alex Gochenour集团 "
   },
   languageLabel: {
     english: "English",
