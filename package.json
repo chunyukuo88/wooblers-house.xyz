@@ -38,16 +38,7 @@
       "<rootDir>/src"
     ],
     "collectCoverageFrom": [
-      "!**/tests/**",
-      "!./src/*.js",
-      "./src/**/*.js",
-      "./src/pages/resetPassword/ResetPassword.jsx",
-      "./src/pages/termsOfService/termsOfService.jsx",
-      "./src/pages/support/support.jsx",
-      "./src/pages/contract/details/contractDetails.jsx",
-      "./src/ErrorBoundary.jsx",
-      "./src/routeHandler.jsx",
-      "./src/pages/page.jsx"
+      "./src/components/**/*.js"
     ],
     "setupFiles": [
       "react-app-polyfill/jsdom",

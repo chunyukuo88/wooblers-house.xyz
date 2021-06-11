@@ -1,4 +1,4 @@
-import Copyright from './Copyright.jsx';
+import Copyright from './Copyright.js';
 import { render, screen } from '@testing-library/react';
 import Root from '../../Root';
 
@@ -6,7 +6,7 @@ const initialState = {
     language: 'english',
 };
 
-describe('Copyright.jsx', ()=>{
+describe('Copyright.js', ()=>{
     it('The component loads without crashing.', ()=>{
       const { container } = render(
           <Root initialState={initialState}>
