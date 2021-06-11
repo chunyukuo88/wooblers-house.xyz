@@ -13,7 +13,11 @@ const repo = urls.githubRepo;
 
 const CodeString = ({language}) => {
   return (
-    <a href={repo} target='_blank' data-test='code' rel='noopener noreferrer' id='repo'>
+    <a href={repo}
+       target='_blank'
+       data-test='code'
+       rel='noopener noreferrer'
+       id='repo'>
       <div className={language}>
         {staticStrings.code[language]}
       </div>

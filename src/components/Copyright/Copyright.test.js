@@ -1,4 +1,4 @@
-import Copyright from './Copyright.js';
+import Copyright from './Copyright.jsx';
 import { render, screen } from '@testing-library/react';
 import Root from '../../Root';
 

@@ -26,5 +26,5 @@ export default function Root ({ children, initialState = theInitialState }) {
     <Provider store={store}>
       {children}
     </Provider>
-  )
+  );
 }
