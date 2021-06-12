@@ -7,20 +7,29 @@ import buildStringProps from './utils';
 
 const AboutModal = () => {
   const language = useSelector((state) => state.language);
-    return (
-      <div className='modal'>
-        <div className='modal-header'>
-          <StaticString {...buildStringProps(language, 'modalHeading')}/>
-        </div>
-        <div className='content'>
-          <StaticString {...buildStringProps(language, 'modalSummary')}/>
-          <StaticString {...buildStringProps(language, 'modalDescription')}/>
-          <StaticString {...buildStringProps(language, 'modalCoverage')}/>
-          <Code/>
-        </div>
+  const headerProps = buildStringProps(language, 'modalHeading');
+  const contentProps = {
+    language,
+    stringArray: ['modalSummary', 'modalDescription', 'modalCoverage'],
+  }
+  return (
+    <div className='modal'>
+      <div className='modal-header'>
+        <StaticString {...headerProps}/>
       </div>
-    );
+
+      <div className='content'>
+        <Content {...contentProps}/>
+        <Code/>
+      </div>
+    </div>
+  );
 };
 
+const Content = ({ language, stringArray }) => {
+  return stringArray.map(string => {
+    return <StaticString {...buildStringProps(language, string)}/>
+  });
+};
 
 export default AboutModal;

@@ -34,18 +34,8 @@
     ]
   },
   "jest": {
-    "roots": [
-      "<rootDir>/src"
-    ],
     "collectCoverageFrom": [
       "./src/components/**/*.js"
-    ],
-    "setupFiles": [
-      "react-app-polyfill/jsdom",
-      "jest-localstorage-mock"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.js"
     ],
     "testMatch": [
       "<rootDir>/src/*.test.{js,jsx,ts,tsx}",
@@ -58,22 +48,10 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
       "^.+\\.module\\.(css|sass|scss)$"
     ],
-    "modulePaths": [],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
     },
-    "moduleFileExtensions": [
-      "js",
-      "ts",
-      "json",
-      "jsx",
-      "node"
-    ],
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ],
     "coverageThreshold": {
       "global": {
         "branches": 100,
@@ -82,5 +60,17 @@
         "statements": 100
       }
     }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
