@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import AboutModal from './AboutModal';
+import { render } from '@testing-library/react';
+import AboutModal from './AboutModal.js';
 import Root from '../../Root';
 
 const initialState = {

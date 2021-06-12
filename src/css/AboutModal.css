@@ -3,9 +3,11 @@
 }
 
 .modal {
+  background-color: white;
   border: var(--paboma);
+  border-radius: 5px;
   margin: var(--paboma);
-  padding: var(--paboma);
+  padding: calc(var(--paboma) * 2);
   text-align: center;
 }
 

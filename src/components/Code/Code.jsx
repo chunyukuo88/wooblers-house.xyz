@@ -5,25 +5,20 @@ import urls from '../../urls';
 
 const Code = () => {
   const selectedLang = useSelector((state) => state.language);
-  const prop = { language: selectedLang };
-  return <CodeString {...prop} />;
-}
+  return <CodeString {...{ language: selectedLang }} />;
+};
 
-const repo = urls.githubRepo;
-
-const CodeString = ({language}) => {
-  return (
-    <a href={repo}
-       target='_blank'
-       data-test='code'
-       rel='noopener noreferrer'
-       id='repo'>
-      <div className={language}>
-        {staticStrings.code[language]}
-      </div>
-    </a>
-  );
-}
+const CodeString = ({ language }) => (
+  <a href={urls.githubRepo}
+     target='_blank'
+     data-test='code'
+     rel='noopener noreferrer'
+     id='repo'>
+    <div className={language}>
+      {staticStrings.code[language]}
+    </div>
+  </a>
+);
 
 
 export default Code;
