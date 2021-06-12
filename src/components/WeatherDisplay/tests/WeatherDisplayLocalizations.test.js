@@ -11,15 +11,17 @@ const initialState = {
 };
 
 const props = {
-  temp: 100,
+  degreesKelvin: 273.15,
   humidity: 50,
+  isCelsius: false,
 };
 
 describe('WeatherDisplayLocalizations.js', ()=>{
   describe('EnglishWeatherDisplay.js', ()=>{
     describe('GIVEN: Temperature and humidity values,', ()=>{
       it('THEN: It returns the language-appropriate string.', ()=>{
-        const expectedTextContent = '100°F and 50% humidity';
+        const expectedTextContent = '32°F and 50% humidity';
+        props.language = 'english';
 
         const component = render(<EnglishWeatherDisplay {...props}/>);
         const content = component.getByTestId('content-wrapper');

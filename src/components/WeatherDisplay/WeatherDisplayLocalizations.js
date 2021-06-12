@@ -1,44 +1,16 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { getDegreesC, getDegreesF } from './utils';
 
-export class EnglishWeatherDisplay extends PureComponent {
-  degrees = this.props.temp;
-  humidity = this.props.humidity;
-  render() {
-    return(
-      <div data-testid='content-wrapper' className='english'>
-        <span>{Math.round(this.degrees)}°F </span>
-        and {this.humidity}% humidity
+export const EnglishWeatherDisplay = (props) => {
+  const { language, degreesKelvin, humidity, isCelsius } = props;
+  return (
+      <div className={language} data-testid='content-wrapper' >
+        <span>{getDegrees(isCelsius, degreesKelvin)}°F </span>and {humidity}% humidity
       </div>
-    );
-  }
-}
+  );
+};
 
-export class ChineseWeatherDisplay extends PureComponent {
-  degrees = this.props.temp;
-  humidity = this.props.humidity;
-  render() {
-    return(
-      <div className='chinese'>
-        這裏有<span>{Math.round(this.degrees)}°C</span>，濕度為{this.humidity}%
-      </div>
-    );
-  }
-}
+const getDegrees = (isCelsius, degreesKelvin) => isCelsius
+  ? getDegreesC(degreesKelvin)
+  : getDegreesF(degreesKelvin);
 
-export class RussianWeatherDisplay extends PureComponent {
-  degrees = this.props.temp;
-  humidity = this.props.humidity;
-  render() {
-    return(
-      <div className='russian'>
-        Здесь <span>{Math.round(this.degrees)}°C </span>и влажность {this.humidity}%
-      </div>
-    );
-  }
-}
-
-export const WeatherStartingLabels = {
-  'russian': 'местная погода',
-  'chinese': '本地天氣',
-  'english': 'Westerville Weather',
-}

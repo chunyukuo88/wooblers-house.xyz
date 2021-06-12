@@ -5,7 +5,7 @@ describe('utils.js', ()=>{
         describe('GIVEN: A number in degreesKelvin,', ()=>{
            it('THEN: It returns the degrees in Celsius.', ()=>{
                const degreesKelvin = 301;
-               const expectedResult = 27.850000000000023;
+               const expectedResult = 28;
 
                const result = getDegreesC(degreesKelvin);
 
@@ -16,7 +16,7 @@ describe('utils.js', ()=>{
         describe('GIVEN: A number in degreesKelvin,', ()=>{
                it('THEN: It returns the degrees in Fahrenheit.', ()=>{
                     const degreesKelvin = 270;
-                    const expectedResult = 26.6;
+                    const expectedResult = 27;
 
                     const result = getDegreesF(degreesKelvin);
 

@@ -10,7 +10,7 @@ import { ChineseWeatherDisplay,
 
 
 export default function WeatherDisplay () {
-  const [ degreesK, setDegreesK] = useState(275); // degreesKelvin
+  const [ degreesK, setDegreesK] = useState(275);
   const [ humidity, setHumidity ] = useState(50);
   const [ showWeather, setShowWeather ] = useState(false);
   const selectedLang = useSelector((state) => state.language);
