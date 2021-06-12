@@ -1,4 +1,4 @@
-import { getDegreesF, getDegreesC } from './utils';
+import { getDegreesF, getDegreesC } from '../utils';
 
 describe('utils.js', ()=>{
     describe('getDegreesC()', ()=>{

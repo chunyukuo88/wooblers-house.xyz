@@ -1,11 +1,11 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 
 export class EnglishWeatherDisplay extends PureComponent {
   degrees = this.props.temp;
   humidity = this.props.humidity;
   render() {
     return(
-      <div className='english'>
+      <div data-testid='content-wrapper' className='english'>
         <span>{Math.round(this.degrees)}°F </span>
         and {this.humidity}% humidity
       </div>
