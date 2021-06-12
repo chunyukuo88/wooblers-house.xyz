@@ -4,7 +4,7 @@ import {
     RussianWeatherDisplay,
 } from '../WeatherDisplayLocalizations';
 import { render } from '@testing-library/react';
-// import Root from '../../Root';
+import Root from '../../../Root';
 
 const initialState = {
     language: 'english',
@@ -20,6 +20,7 @@ describe('WeatherDisplayLocalizations.js', ()=>{
   describe('EnglishWeatherDisplay.js', ()=>{
     describe('GIVEN: Temperature and humidity values,', ()=>{
       it('THEN: It returns the language-appropriate string.', ()=>{
+        // TODO: Since language, humidity, and temp are global, refactor the component so it only requires an isCelsius boolean.
         const expectedTextContent = '32°F and 50% humidity';
         props.language = 'english';
 
