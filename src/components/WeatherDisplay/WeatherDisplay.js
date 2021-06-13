@@ -4,6 +4,8 @@ import urls from '../../urls';
 import { getDegreesF, getDegreesC } from './utils';
 import { LocalizedWeatherDisplay } from './LocalizedWeatherDisplay';
 
+// TODO: Redo all of this, starting with tests.
+
 export default function WeatherDisplay () {
   const [ degreesK, setDegreesK] = useState(275);
   const [ humidity, setHumidity ] = useState(50);
@@ -18,16 +20,14 @@ export default function WeatherDisplay () {
 
   return (
     <div onClick={toggleDisplay} className='weather'>
-      {_buildDisplay(showWeather, selectedLang, degreesK, humidity)}
+      <Display {...{ showWeather, selectedLang, degreesK, humidity }} />
     </div>
-    );
+  );
 }
 
-const _buildDisplay = (showWeather, selectedLang, degreesK, humidity) => {
-  return showWeather
-          ? _buildWeatherDisplay(selectedLang, degreesK, humidity)
-          : _getWeatherTitle(WeatherStartingLabels, selectedLang);
-}
+const Display = ({ showWeather, selectedLang, degreesK, humidity }) => showWeather
+  ? _buildWeatherDisplay(selectedLang, degreesK, humidity)
+  : _getWeatherTitle(WeatherStartingLabels, selectedLang);
 
 const _buildWeatherDisplay = (language, degreesK, humidity) => {
   const celsiusProps = _buildCelsiusProps(degreesK, humidity);
