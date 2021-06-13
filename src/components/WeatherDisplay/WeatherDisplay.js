@@ -10,7 +10,6 @@ export default function WeatherDisplay () {
   const [ degreesK, setDegreesK] = useState(275);
   const [ humidity, setHumidity ] = useState(50);
   const [ showWeather, setShowWeather ] = useState(false);
-  const language = useSelector((state) => state.language);
 
   useEffect(() => {
     _buildWeatherData(setDegreesK, setHumidity);
@@ -19,21 +18,24 @@ export default function WeatherDisplay () {
   const toggleDisplay = () => setShowWeather(!showWeather);
 
   return (
-    <div onClick={toggleDisplay} className='weather'>
-      <Display {...{ showWeather, language, degreesK, humidity }} />
+    <div onClick={toggleDisplay} className='weather' data-testid='weather'>
+      <Display {...{ showWeather, degreesK, humidity }} />
     </div>
   );
 }
 
-const Display = ({ showWeather, language, degreesK, humidity }) => showWeather
-  ? <LocalizedWeatherDisplay {...{degreesK, humidity}}/>
-  : <WeatherTitle language={language}/>;
+const Display = ({ showWeather, degreesK, humidity }) => showWeather
+  ? <LocalizedWeatherDisplay degreesK={degreesK} humidity={humidity}/>
+  : <WeatherTitle/>;
 
-const WeatherTitle = (language) => (
-  <div data-testid='weather-title' className={language.language}>
-    {staticStrings.weatherLabels[language.language]}
-  </div>
-);
+const WeatherTitle = () => {
+  const language = useSelector((state) => state.language);
+  return (
+    <div data-testid='weather-title' className={language}>
+      {staticStrings.weatherLabels[language]}
+    </div>
+  );
+}
 
 const _buildWeatherData = async (degreesSetter, humiditySetter) => {
   const fetchedWeatherData = await fetch(urls.openWeatherUrl).then(res => res.json());
