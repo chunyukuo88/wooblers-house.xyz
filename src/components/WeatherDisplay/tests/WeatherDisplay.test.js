@@ -14,4 +14,17 @@ describe('WeatherDisplay.js', ()=>{
 
     expect(container).toBeDefined();
   });
+  describe('WHEN: The page loads, ', ()=>{
+    it('THEN: The weather title loads.', ()=>{
+      const expectedTextContent = 'Westerville Weather';
+      const container = render(
+        <Root initialState={initialState}>
+          <WeatherDisplay />
+        </Root>
+      );
+      const weatherTitle = container.getByTestId('weather-title');
+
+      expect(weatherTitle).toHaveTextContent(expectedTextContent);
+    });
+  });
 });
