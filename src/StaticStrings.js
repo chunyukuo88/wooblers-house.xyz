@@ -39,6 +39,16 @@ const staticStrings = {
     russian: "пожаловать",
     chinese: "簡介"
   },
+  weatherHumidity: {
+    english: "Humidity: ",
+    russian: "Влажность: ",
+    chinese: "濕度："
+  },
+  weatherTemp: {
+    english: "Temperature: ",
+    russian: "Температура: ",
+    chinese: "溫度："
+  },
 }
 
 export default staticStrings;

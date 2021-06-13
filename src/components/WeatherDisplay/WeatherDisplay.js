@@ -2,12 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import urls from '../../urls';
 import { getDegreesF, getDegreesC } from './utils';
-import { ChineseWeatherDisplay,
-         EnglishWeatherDisplay,
-         RussianWeatherDisplay,
-         WeatherStartingLabels } from './WeatherDisplayLocalizations';
-
-
+import { LocalizedWeatherDisplay } from './LocalizedWeatherDisplay';
 
 export default function WeatherDisplay () {
   const [ degreesK, setDegreesK] = useState(275);
@@ -40,7 +35,7 @@ const _buildWeatherDisplay = (language, degreesK, humidity) => {
   switch(language){
     case 'russian': return <RussianWeatherDisplay {...celsiusProps}/>
     case 'chinese': return <ChineseWeatherDisplay {...celsiusProps}/>
-    default: return <EnglishWeatherDisplay {...fahrenheitProps}/>
+    default: return <LocalizedWeatherDisplay {...fahrenheitProps}/>
   }
 };
 
