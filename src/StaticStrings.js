@@ -34,20 +34,25 @@ const staticStrings = {
     russian: "Это проект React/Redux.",
     chinese: "製作本站，我用了REACT與REDUX。"
   },
-  welcome: {
-    english: "Welcome",
-    russian: "пожаловать",
-    chinese: "簡介"
-  },
   weatherHumidity: {
     english: "Humidity: ",
     russian: "Влажность: ",
     chinese: "濕度："
   },
+  weatherLabels: {
+    english: "Westerville Weather",
+    russian: "Вестервиль Погода",
+    chinese: "韋斯特維爾天氣"
+  },
   weatherTemp: {
     english: "Temperature: ",
     russian: "Температура: ",
     chinese: "溫度："
+  },
+  welcome: {
+    english: "Welcome",
+    russian: "пожаловать",
+    chinese: "簡介"
   },
 }
 
