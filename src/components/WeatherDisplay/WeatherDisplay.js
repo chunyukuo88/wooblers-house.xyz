@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import urls from '../../urls';
-import { getDegreesF, getDegreesC } from './utils';
-import { ChineseWeatherDisplay,
-         EnglishWeatherDisplay,
-         RussianWeatherDisplay,
-         WeatherStartingLabels } from './WeatherDisplayLocalizations';
+import { LocalizedWeatherDisplay } from './LocalizedWeatherDisplay';
+import staticStrings from '../../StaticStrings';
 
-
+// TODO: Redo all of this, starting with tests.
 
 export default function WeatherDisplay () {
-  const [ degreesK, setDegreesK] = useState(275); // degreesKelvin
+  const [ degreesK, setDegreesK] = useState(275);
   const [ humidity, setHumidity ] = useState(50);
   const [ showWeather, setShowWeather ] = useState(false);
-  const selectedLang = useSelector((state) => state.language);
 
   useEffect(() => {
     _buildWeatherData(setDegreesK, setHumidity);
@@ -22,52 +18,27 @@ export default function WeatherDisplay () {
   const toggleDisplay = () => setShowWeather(!showWeather);
 
   return (
-    <div onClick={toggleDisplay} className='weather'>
-      {_buildDisplay(showWeather, selectedLang, degreesK, humidity)}
+    <div onClick={toggleDisplay} className='weather' data-testid='weather'>
+      <Display {...{ showWeather, degreesK, humidity }} />
     </div>
-    );
+  );
 }
 
-const _buildDisplay = (showWeather, selectedLang, degreesK, humidity) => {
-  return showWeather
-          ? _buildWeatherDisplay(selectedLang, degreesK, humidity)
-          : _getWeatherTitle(WeatherStartingLabels, selectedLang);
+const Display = ({ showWeather, degreesK, humidity }) => showWeather
+  ? <LocalizedWeatherDisplay degreesK={degreesK} humidity={humidity}/>
+  : <WeatherTitle/>;
+
+const WeatherTitle = () => {
+  const language = useSelector((state) => state.language);
+  return (
+    <div data-testid='weather-title' className={language}>
+      {staticStrings.weatherLabels[language]}
+    </div>
+  );
 }
-
-const _buildWeatherDisplay = (language, degreesK, humidity) => {
-  const celsiusProps = _buildCelsiusProps(degreesK, humidity);
-  const fahrenheitProps = _buildFahhrenheitProps(degreesK, humidity);
-  switch(language){
-    case 'russian': return <RussianWeatherDisplay {...celsiusProps}/>
-    case 'chinese': return <ChineseWeatherDisplay {...celsiusProps}/>
-    default: return <EnglishWeatherDisplay {...fahrenheitProps}/>
-  }
-};
-
-const _buildCelsiusProps = (degreesK, humidity) => {
-  return {
-    temp: getDegreesC(degreesK),
-    humidity: humidity,
-  };
-};
-
-const _buildFahhrenheitProps = (degreesK, humidity) => {
-  return {
-    temp: getDegreesF(degreesK),
-    humidity: humidity,
-  };
-};
 
 const _buildWeatherData = async (degreesSetter, humiditySetter) => {
   const fetchedWeatherData = await fetch(urls.openWeatherUrl).then(res => res.json());
   degreesSetter(fetchedWeatherData.main.temp);
   humiditySetter(fetchedWeatherData.main.humidity);
 }
-
-const _getWeatherTitle = (WeatherStartingLabels, language) => {
-  return (
-    <div className={language}>
-      {WeatherStartingLabels[language]}
-    </div>
-  );
-};
