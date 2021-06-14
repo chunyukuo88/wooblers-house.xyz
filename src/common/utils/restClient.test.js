@@ -1,8 +1,8 @@
 import { fetchJsonData } from '../restClient';
 
-describe('restClient.js', ()=>{
-  describe('fetchJsonData()', ()=>{
-    it('When given an endpoint, it fetches the JSON data.', async ()=>{
+describe('restClient.js / fetchJsonData()', ()=>{
+  describe('WHEN: given an endpoint, ', ()=>{
+    it('THEN: fetches the JSON data.', async ()=>{
       const endpoint = 'some.fake.endpoint';
       const mockSuccessResponse = {};
       const mockJsonPromise = Promise.resolve(mockSuccessResponse);
@@ -15,6 +15,23 @@ describe('restClient.js', ()=>{
       await fetchJsonData(endpoint);
 
       expect(global.fetch).toHaveBeenCalled();
+    });
+  });
+  describe('WHEN: an error occurs, ', ()=>{
+    it('THEN: the error is logged to the console.', async ()=>{
+      const mockSuccessResponse = {};
+      const mockJsonPromise = Promise.resolve(mockSuccessResponse);
+      const mockFetchPromise = Promise.resolve({
+        json: () => mockJsonPromise,
+        headers: { get: () => [] },
+      });
+      const mockError = new Error('==== ERROR ====');
+      jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+      jest.spyOn(global.console, 'log').mockImplementation(console.log(mockError));
+
+      await fetchJsonData();
+
+      expect(console.log).toBeCalledWith(mockError);
     });
   });
 });
