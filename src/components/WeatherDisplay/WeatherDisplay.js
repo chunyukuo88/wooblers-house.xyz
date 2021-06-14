@@ -4,8 +4,6 @@ import urls from '../../urls';
 import { LocalizedWeatherDisplay } from './LocalizedWeatherDisplay';
 import staticStrings from '../../StaticStrings';
 
-// TODO: Redo all of this, starting with tests.
-
 export default function WeatherDisplay () {
   const [ degreesK, setDegreesK] = useState(275);
   const [ humidity, setHumidity ] = useState(50);
