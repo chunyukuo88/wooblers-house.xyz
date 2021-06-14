@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import urls from '../../urls';
+import { fetchJsonData } from '../../common/restClient';
 import { LocalizedWeatherDisplay } from './LocalizedWeatherDisplay';
 import staticStrings from '../../StaticStrings';
 
 export default function WeatherDisplay () {
-  const [ degreesK, setDegreesK] = useState(275);
-  const [ humidity, setHumidity ] = useState(50);
+  const [ degreesK, setDegreesK] = useState(null);
+  const [ humidity, setHumidity ] = useState(null);
   const [ showWeather, setShowWeather ] = useState(false);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const WeatherTitle = () => {
 }
 
 const _buildWeatherData = async (degreesSetter, humiditySetter) => {
-  const fetchedWeatherData = await fetch(urls.openWeatherUrl).then(res => res.json());
+  const fetchedWeatherData = await fetchJsonData(urls.openWeatherUrl);
   degreesSetter(fetchedWeatherData.main.temp);
   humiditySetter(fetchedWeatherData.main.humidity);
 }
