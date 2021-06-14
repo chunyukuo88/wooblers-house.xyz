@@ -95,7 +95,8 @@
       "<rootDir>/src"
     ],
     "collectCoverageFrom": [
-      "./src/components/**/*.js"
+      "./src/components/**/*.js",
+      "./src/common/**/*.js"
     ],
     "setupFiles": [
       "react-app-polyfill/jsdom"

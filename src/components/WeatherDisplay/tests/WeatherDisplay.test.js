@@ -1,23 +1,20 @@
 import WeatherDisplay, { WeatherTitle } from '../WeatherDisplay';
-import { render, fireEvent } from '@testing-library/react';
+import { fetchJsonData } from '../../../common/restClient';
+import { render, act, fireEvent } from '@testing-library/react';
 import Root from '../../../Root';
+
+jest.mock('../../../common/restClient');
 
 const initialState = { language: 'english' };
 
 describe('WeatherDisplay.js', ()=>{
-  it('should load without crashing', ()=>{
-    const { container } = render(
-      <Root initialState={initialState}>
-        <WeatherDisplay />
-      </Root>
-    );
-
-    expect(container).toBeDefined();
+  afterEach(()=>{
+    fetchJsonData.mockClear();
   });
-  describe('WHEN: The page loads, ', ()=>{
-    it('THEN: The weather title loads.', ()=>{
+  describe('WHEN: The page loads, ',  ()=>{
+    it('THEN: The weather title loads.', async ()=>{
       const expectedTextContent = 'Westerville Weather';
-      const container = render(
+      const container = await render(
         <Root initialState={initialState}>
           <WeatherDisplay />
         </Root>
@@ -28,19 +25,25 @@ describe('WeatherDisplay.js', ()=>{
     });
   });
   describe('WHEN: The user clicks the weather title, ', ()=>{
-    it('THEN: The weather string loads.', ()=>{
-      const expectedTextContent = 'Temperature: 36°F Humidity: 50%';
-
-      const container = render(
+    it('THEN: The fetched weather data is set in the component.', async ()=>{
+      const expectedTextContent = 'Temperature: 54°F Humidity: 37%';
+      fetchJsonData.mockImplementation(()=> {
+        return {
+          main: {
+            temp: 285,   // 285°K = 54°F
+            humidity: 37,
+          },
+        };
+      });
+      const container = await render(
         <Root initialState={initialState}>
           <WeatherDisplay />
         </Root>
       );
       const weatherTitle = container.getByTestId('weather');
       fireEvent.click(weatherTitle);
-      const weatherTitleAgain = container.getByTestId('weather'); // This has to be re-queried after the click.
-
-      expect(weatherTitleAgain).toHaveTextContent(expectedTextContent);
+      const weatherAfterUserClicks = container.getByTestId('weather');
+      expect(weatherAfterUserClicks).toHaveTextContent(expectedTextContent);
     });
   });
 });
