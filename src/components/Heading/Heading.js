@@ -4,7 +4,7 @@ import { switchToRussian, switchToEnglish, switchToChinese } from '../../actions
 import staticStrings from '../../StaticStrings';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import Title from '../Title/Title';
-import Welcome from '../Welcome/Welcome';
+import { Welcome } from '../Welcome/Welcome';
 import * as GA from '../../googleAnalytics/events';
 import '../../css/Heading.css';
 
