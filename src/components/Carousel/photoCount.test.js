@@ -1,4 +1,4 @@
-import { getFotoCount } from './photoCount';
+import { getFotos } from './photoCount';
 
 describe('photoCount.js', ()=>{
   describe('getFotoCount()', ()=>{
