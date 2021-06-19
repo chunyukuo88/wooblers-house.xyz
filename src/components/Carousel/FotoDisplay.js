@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import '../../css/carousel.css';
 import urls, { getFotoSource } from '../../urls';
 import { Carousel as CarouselDisplay } from 'react-responsive-carousel';
+import { getFotoCount } from './photoCount';
 
 /**
  * Dynamically populating the contents of <CarouselDisplay> is not possible with the react-responsive-carousel
  * library. Doing so results in browser console errors and the images show up but the captions bunch up.
  * */
+
+getFotoCount();
 
 export default function FotoDisplay(){
   const [ captions, setCaptions ] = useState([]);
