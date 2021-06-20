@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { getPhotos } from './photoCount';
+import staticStrings from '../../StaticStrings';
+import { useSelector } from 'react-redux';
 
 export default function PhotoDisplay(){
   const [ photosObject, setPhotos ] = useState();
 
-  useEffect(async ()=>{
-    const photos = await getPhotos();
-    setPhotos(photos);
+  useEffect(()=>{
+    async function runGetPhotos() {
+      const photos = await getPhotos();
+      setPhotos(photos);
+    }
+    runGetPhotos();
   }, []);
 
   return <Display {...{ photosObject }}/>;
@@ -24,11 +29,14 @@ const Display = ({ photosObject }) => {
   });
 }
 
-const ErrorMessage = () => (
-  <div data-testid='error-message'>
-    There was an error loading the photos. Please contact the webmaster.
-  </div>
-);
+const ErrorMessage = () => {
+  const language = useSelector((state) => state.language);
+  return (
+    <div className={language} data-testid='error-message'>
+      {staticStrings.errorLoadingPhotos[language]}
+    </div>
+  );
+};
 //
 // const _fetchCaptions = async (captionsSetter) => {
 //   const result = await fetch(urls.captions).then(res => res.text());
