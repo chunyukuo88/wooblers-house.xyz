@@ -16,6 +16,9 @@ const bucketParams = {
 export function getPhotos() {
   const result = s3.listObjectsV2(bucketParams)
     .promise()
-    .then(data => data);
+    .then(data => {
+      console.log('s3 data: ', data.Contents)
+      return data;
+    });
   return result;
 }

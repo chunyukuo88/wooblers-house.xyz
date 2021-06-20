@@ -1,12 +1,12 @@
-import PhotoDisplay from './PhotoDisplay';
+import AllPhotos from './AllPhotos';
 import { render, screen, act } from '@testing-library/react';
 import ReactDOM, { unmountComponentAtNode } from 'react-dom';
 
-import { getPhotos } from './photoCount';
+import { getPhotos } from './utils';
 import Root from '../../Root';
 import staticStrings from '../../StaticStrings';
 
-jest.mock('./photoCount');
+jest.mock('./utils');
 const mockPhotosObject = {
   Contents: [
     { Key: '1 (Custom).JPG' },
@@ -21,13 +21,13 @@ const initialState = { language: 'english', };
 it('SANITY TEST: Component loads without crashing', ()=>{
   const { container } = render(
       <Root initialState={initialState}>
-        <PhotoDisplay />
+        <AllPhotos />
       </Root>
     );
   expect(container).toBeDefined();
 });
 
-describe('PhotoDisplay()', ()=>{
+describe('AllPhotos()', ()=>{
   describe('GIVEN: The page has loaded,', ()=>{
     let generatedContainer;
     beforeEach(() => {
@@ -47,7 +47,7 @@ describe('PhotoDisplay()', ()=>{
         act(()=>{
           ReactDOM.render(
             <Root initialState={initialState}>
-              <PhotoDisplay />
+              <AllPhotos />
             </Root>, generatedContainer);
         })
         const images = document.querySelector('.photo');
@@ -75,7 +75,7 @@ describe('PhotoDisplay()', ()=>{
       it('THEN: An error message displays instead of the photos.', ()=>{
         render(
           <Root initialState={initialState}>
-            <PhotoDisplay />
+            <AllPhotos />
           </Root>
         );
         const errorMessage = screen.getByTestId('error-message');
@@ -86,7 +86,7 @@ describe('PhotoDisplay()', ()=>{
         initialState.language = 'chinese';
         render(
           <Root initialState={initialState}>
-            <PhotoDisplay />
+            <AllPhotos />
           </Root>
           );
         const errorMessage = screen.getByTestId('error-message');

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getPhotos } from './photoCount';
+import { getPhotos } from './utils';
 import staticStrings from '../../StaticStrings';
 import { useSelector } from 'react-redux';
 
-export default function PhotoDisplay(){
+export default function AllPhotos(){
   const [ photosObject, setPhotos ] = useState();
 
   useEffect(()=>{
@@ -19,7 +19,7 @@ export default function PhotoDisplay(){
 
 const Display = ({ photosObject }) => {
   if (!photosObject) return <ErrorMessage />;
-  return photosObject?.Contents.map((obj, key) => {
+  return photosObject?.Contents?.map((obj, key) => {
     const numberedSrc = `${process.env.REACT_APP_FOTO_SOURCE}/${key + 1} (Custom).JPG`;
     return (
       <div className='photo' data-testid='photo' key={key} >
