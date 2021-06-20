@@ -13,8 +13,8 @@ const bucketParams = {
   Bucket: albumBucketName
 };
 
-export async function getPhotos() {
-  const result = await s3.listObjectsV2(bucketParams)
+export function getPhotos() {
+  const result = s3.listObjectsV2(bucketParams)
     .promise()
     .then(data => data);
   return result;
