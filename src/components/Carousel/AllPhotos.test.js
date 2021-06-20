@@ -1,10 +1,9 @@
 import AllPhotos from './AllPhotos';
-import { render, screen, act } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import ReactDOM, { unmountComponentAtNode } from 'react-dom';
 
 import { getPhotos } from './utils';
 import Root from '../../Root';
-import staticStrings from '../../StaticStrings';
 
 jest.mock('./utils');
 const mockPhotosObject = {
@@ -14,9 +13,8 @@ const mockPhotosObject = {
     { Key: '3 (Custom).JPG' },
   ],
 };
-const { errorLoadingPhotos } = staticStrings;
-const initialState = { language: 'english', };
 
+const initialState = { language: 'english', };
 
 it('SANITY TEST: Component loads without crashing', ()=>{
   const { container } = render(
@@ -68,30 +66,5 @@ describe('AllPhotos()', ()=>{
       });
     });
   });
-  describe('GIVEN: The page has loaded,', ()=>{
-    describe('AND: An error prevents the photos from loading,', ()=>{
-      getPhotos.mockImplementation(() => 'foo');
 
-      it('THEN: An error message displays instead of the photos.', ()=>{
-        render(
-          <Root initialState={initialState}>
-            <AllPhotos />
-          </Root>
-        );
-        const errorMessage = screen.getByTestId('error-message');
-        expect(errorMessage).toBeDefined();
-        expect(errorMessage).toHaveTextContent(errorLoadingPhotos.english);
-      });
-      it('THEN: Localized error messages display properly.', ()=>{
-        initialState.language = 'chinese';
-        render(
-          <Root initialState={initialState}>
-            <AllPhotos />
-          </Root>
-          );
-        const errorMessage = screen.getByTestId('error-message');
-        expect(errorMessage).toHaveTextContent(errorLoadingPhotos.chinese);
-      });
-    });
-  });
 });
