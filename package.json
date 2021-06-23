@@ -59,6 +59,7 @@
     "react-dev-utils": "^11.0.3",
     "react-dom": "^17.0.2",
     "react-ga": "^3.3.0",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
     "react-refresh": "^0.8.3",
     "reactjs-popup": "^2.0.4",
@@ -99,7 +100,8 @@
       "./src/common/**/*.js"
     ],
     "setupFiles": [
-      "react-app-polyfill/jsdom"
+      "react-app-polyfill/jsdom",
+      "<rootDir>/jest/setEnvVars.js"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.js"
