@@ -3,29 +3,18 @@ import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 export const Display = ({ photosObject }) => {
   const [currentPhoto, setCurrent] = React.useState(0);
-  const photoArray = photosObject?.Contents;
-
-  const nextSlide = () => {
-    setCurrent(
-      currentPhoto === photoArray.length - 1
-        ? 0
-        : currentPhoto + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrent(
-      currentPhoto === 0
-        ? photoArray.length - 1
-        : currentPhoto - 1
-    );
-  };
 
   return (
     <div>
-      <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide} />
+      <FaArrowAltCircleLeft
+        className='left-arrow'
+        data-testid='left-arrow'
+        onClick={()=>prevPhoto(currentPhoto, setCurrent, photosObject)} />
       <DisplayedPhoto photo={currentPhoto}/>
-      <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide} />
+      <FaArrowAltCircleRight
+        className='right-arrow'
+        data-testid='right-arrow'
+        onClick={()=>nextPhoto(currentPhoto, setCurrent, photosObject)} />
     </div>
   )
 };
@@ -33,9 +22,25 @@ export const Display = ({ photosObject }) => {
 const DisplayedPhoto = (photoObject) => {
   const photoUrl = getPhotoUrl(photoObject.photo);
   return (
-    <img className={photoUrl} data-testid='photo' key={photoObject} src={photoUrl} alt='test'/>
+    <img className={photoUrl}
+         data-testid='photo'
+         key={photoObject}
+         src={photoUrl}
+         alt='test'/>
   );
 };
+
+const prevPhoto = (currentPhoto, setCurrent, photosObject) => {
+  if (currentPhoto === 0) setCurrent(numberOfPhotos(photosObject) - 1);
+  else setCurrent(currentPhoto - 1);
+};
+
+const numberOfPhotos = (photosObject) => photosObject?.Contents.length || 0;
+
+const nextPhoto = (currentPhoto, setCurrent, photosObject) => {
+  if (currentPhoto === numberOfPhotos(photosObject) - 1) setCurrent(0);
+  else setCurrent(currentPhoto + 1);
+}
 
 const getPhotoUrl = (key) => `${process.env.REACT_APP_FOTO_SOURCE}/${key + 1} (Custom).JPG`;
 
