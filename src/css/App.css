@@ -1,12 +1,11 @@
-/*#foto-display {*/
-/*    height: 80vh;*/
-/*    position: relative;*/
-/*}*/
+#heading-wrapper {
+    height: 10vh;
+}
 
-/*#heading {*/
-/*    height: 20vh;*/
-/*}*/
+#display-wrapper {
+    height: 85vh;
+}
 
-/*img {*/
-/*    height: 10px;*/
-/*}*/
+#copyright-wrapper {
+    height: 5vh;
+}

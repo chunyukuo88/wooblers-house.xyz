@@ -6,12 +6,10 @@
 #display-wrapper {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
+    height: 100%;
+    width: auto;
 }
 
 .photo-wrapper {
-    object-fit: contain;
-}
-
-img {
-    object-fit: contain;
+    height: 100%;
 }
