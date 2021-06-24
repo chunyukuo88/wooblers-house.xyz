@@ -1,0 +1,17 @@
+.arrow-wrapper {
+    color: green;
+    margin: auto auto auto auto;
+}
+
+#display-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+}
+
+.photo-wrapper {
+    object-fit: contain;
+}
+
+img {
+    object-fit: contain;
+}

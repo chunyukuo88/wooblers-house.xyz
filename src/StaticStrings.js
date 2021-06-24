@@ -9,6 +9,11 @@ const staticStrings = {
     russian: "Авторские права Алекс Гохинауэр ",
     chinese: "©Alex Gochenour集团 "
   },
+  errorLoadingPhotos: {
+    english: "There was an error loading the photos. Please contact the webmaster.",
+    russian: "При загрузке фотографий произошла ошибка. Обратитесь к веб-мастеру.",
+    chinese: "下載圖片失敗，請聯繫郭磊"
+  },
   languageLabel: {
     english: "English",
     russian: "русский",

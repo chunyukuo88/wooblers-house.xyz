@@ -13,10 +13,12 @@ const bucketParams = {
   Bucket: albumBucketName
 };
 
-export async function getFotoCount() {
-  const result = await s3.listObjectsV2(bucketParams)
+export function getPhotos() {
+  const result = s3.listObjectsV2(bucketParams)
     .promise()
-    .then(data => data.Contents.length);
-  console.log('getFotoCount(): ', result);
+    .then(data => {
+      console.log('s3 data: ', data.Contents)
+      return data;
+    });
   return result;
 }
