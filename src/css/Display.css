@@ -4,8 +4,14 @@
 }
 
 #display-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+}
+
+.photo-wrapper {
+    object-fit: contain;
+}
+
+img {
     object-fit: contain;
 }

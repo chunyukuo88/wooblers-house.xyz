@@ -13,7 +13,9 @@ export const Display = ({ photosObject }) => {
           size='1x'
           />
       </div>
-      <DisplayedPhoto photo={currentPhoto}/>
+      <div className='photo-wrapper'>
+        <DisplayedPhoto photo={currentPhoto}/>
+      </div>
       <div className='arrow-wrapper'>
         <FaArrowAltCircleRight
           data-testid='right-arrow'
