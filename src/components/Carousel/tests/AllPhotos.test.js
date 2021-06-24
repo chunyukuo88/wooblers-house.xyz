@@ -1,9 +1,9 @@
-import AllPhotos from './AllPhotos';
+import AllPhotos from '../AllPhotos';
 import { render, act } from '@testing-library/react';
 import ReactDOM, { unmountComponentAtNode } from 'react-dom';
 
-import { getPhotos } from './utils';
-import Root from '../../Root';
+import { getPhotos } from '../utils';
+import Root from '../../../Root';
 
 jest.mock('./utils');
 const mockPhotosObject = {

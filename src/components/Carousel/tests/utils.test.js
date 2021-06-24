@@ -1,4 +1,4 @@
-import { getPhotos } from './utils';
+import { getPhotos } from '../utils';
 import AWS from 'aws-sdk';
 
 jest.mock('aws-sdk');

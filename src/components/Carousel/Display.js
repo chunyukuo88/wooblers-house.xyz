@@ -1,22 +1,27 @@
 import React from 'react';
+import '../../css/Display.css'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 export const Display = ({ photosObject }) => {
   const [currentPhoto, setCurrent] = React.useState(0);
 
   return (
-    <div>
-      <FaArrowAltCircleLeft
-        className='left-arrow'
-        data-testid='left-arrow'
-        onClick={()=>prevPhoto(currentPhoto, setCurrent, photosObject)} />
+    <div id='display-wrapper'>
+      <div className='arrow-wrapper' onClick={()=>prevPhoto(currentPhoto, setCurrent, photosObject)}>
+        <FaArrowAltCircleLeft
+          data-testid='left-arrow'
+          size='1x'
+          />
+      </div>
       <DisplayedPhoto photo={currentPhoto}/>
-      <FaArrowAltCircleRight
-        className='right-arrow'
-        data-testid='right-arrow'
-        onClick={()=>nextPhoto(currentPhoto, setCurrent, photosObject)} />
+      <div className='arrow-wrapper'>
+        <FaArrowAltCircleRight
+          data-testid='right-arrow'
+          size='1x'
+          onClick={()=>nextPhoto(currentPhoto, setCurrent, photosObject)} />
+      </div>
     </div>
-  )
+  );
 };
 
 const DisplayedPhoto = (photoObject) => {

@@ -1,4 +1,4 @@
-import { Display } from './Display';
+import { Display } from '../Display';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 const props = {

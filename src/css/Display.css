@@ -1,0 +1,11 @@
+.arrow-wrapper {
+    color: green;
+    margin: auto auto auto auto;
+}
+
+#display-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    object-fit: contain;
+}
