@@ -10,7 +10,6 @@ export const Display = ({ photosObject }) => {
       <div className='arrow-wrapper' onClick={()=>prevPhoto(currentPhoto, setCurrent, photosObject)}>
         <FaArrowAltCircleLeft
           data-testid='left-arrow'
-          size='1x'
           />
       </div>
       <div className='photo-wrapper'>
@@ -19,7 +18,6 @@ export const Display = ({ photosObject }) => {
       <div className='arrow-wrapper'>
         <FaArrowAltCircleRight
           data-testid='right-arrow'
-          size='1x'
           onClick={()=>nextPhoto(currentPhoto, setCurrent, photosObject)} />
       </div>
     </div>
