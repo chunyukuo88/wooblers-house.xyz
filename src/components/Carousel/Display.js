@@ -50,12 +50,3 @@ const nextPhoto = (currentPhoto, setCurrent, photosObject) => {
 }
 
 const getPhotoUrl = (key) => `${process.env.REACT_APP_FOTO_SOURCE}/${key + 1} (Custom).JPG`;
-
-// const ErrorMessage = () => {
-//   const language = useSelector((state) => state.language);
-//   return (
-//     <div className={language} data-testid='error-message'>
-//       {staticStrings.errorLoadingPhotos[language]}
-//     </div>
-//   );
-// };
