@@ -15,7 +15,7 @@ export default function App() {
     ReactGa.initialize(`${process.env.REACT_APP_GA}`);
     ReactGa.pageview(window.location.pathname + window.location.search);
     dispatchTempAndHumidity(dispatch);
-  });
+  }, []);
   const dispatch = useDispatch();
   return (
     <div id='app' data-test="component-app">
