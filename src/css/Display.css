@@ -3,15 +3,20 @@
     margin: auto auto auto auto;
 }
 
+img {
+    max-height: 80vh;
+}
+
 #display-wrapper {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
+    height: 100%;
+    width: auto;
 }
 
 .photo-wrapper {
-    object-fit: contain;
+    height: auto;
+    display: flex;
+    justify-content: center;
 }
 
-img {
-    object-fit: contain;
-}
