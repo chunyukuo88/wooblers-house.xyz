@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import AboutModal from './AboutModal.js';
-import Root from '../../Root';
+import AboutModal from '../AboutModal.js';
+import Root from '../../../Root';
 
 const initialState = {
   language: 'english',

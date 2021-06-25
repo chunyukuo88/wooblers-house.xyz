@@ -1,4 +1,4 @@
-import buildStringProps from './utils';
+import buildStringProps from '../utils';
 
 describe('utils.js', ()=>{
     describe('buildStringProps()', ()=>{

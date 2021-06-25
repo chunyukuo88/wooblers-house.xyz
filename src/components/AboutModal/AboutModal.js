@@ -10,7 +10,7 @@ const AboutModal = () => {
   const headerProps = buildStringProps(language, 'modalHeading');
   const contentProps = {
     language,
-    stringArray: ['modalSummary', 'modalDescription', 'modalCoverage'],
+    stringArray: ['modalSummary', 'modalCoverage'],
   }
   return (
     <div className='modal'>

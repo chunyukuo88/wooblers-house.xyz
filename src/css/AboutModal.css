@@ -1,14 +1,16 @@
 :root {
-  --paboma: 5px;
+  --paboma: 10px;
 }
+
+
 
 .modal {
   background-color: white;
-  border: var(--paboma);
+  border: var(--paboma) solid var(--woob-green);
   border-radius: 5px;
   margin: var(--paboma);
+  max-width: 60vw;
   padding: calc(var(--paboma) * 2);
-  text-align: center;
 }
 
 .modal-header {
