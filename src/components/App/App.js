@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Heading from '../Heading/Heading';
-import FotoDisplay from '../Carousel/AllPhotos';
+import PhotoDisplay from '../Carousel/AllPhotos';
 import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
 import { getGlobalHumidity, getGlobalTemp } from '../../actions/actions';
@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div id='app' data-test='component-app'>
       <Heading />
-      <FotoDisplay />
+      <PhotoDisplay />
       <Copyright />
     </div>
   );
