@@ -30,7 +30,10 @@ function Heading(){
                     <div id='nav-items__weather' data-test='weather-display'>
                         <WeatherDisplay/>
                     </div>
-                    <div id='nav-items__language' className={language + ' nav-item'} onClick={locButtonHandler} >
+                    <div id='nav-items__language'
+                         className={language + ' nav-item'}
+                         data-testid='language'
+                         onClick={locButtonHandler} >
                         {staticStrings.languageLabel[language]}
                     </div>
               </nav>

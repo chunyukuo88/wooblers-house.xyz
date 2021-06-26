@@ -4,8 +4,15 @@ import PhotoDisplay from '../Carousel/AllPhotos';
 import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
 import { getGlobalHumidity, getGlobalTemp } from '../../actions/actions';
+import {
+  BrowserRouter as Router,
+  Switch,
+  useHistory,
+} from 'react-router-dom';
 import ReactGa from 'react-ga';
 import '../../css/common.css';
+
+const FAQs = () => <FAQs />;
 
 export default function App() {
   const dispatch = useDispatch();
@@ -19,7 +26,14 @@ export default function App() {
   return (
     <div id='app' data-test='component-app'>
       <Heading />
-      <PhotoDisplay />
+      <Router>
+        <Switch>
+          <PhotoDisplay exact path='/'/>
+        </Switch>
+        <Switch>
+          <FAQs exact path='/faqs' data-testid='faqs-link'/>
+        </Switch>
+      </Router>
       <Copyright />
     </div>
   );
