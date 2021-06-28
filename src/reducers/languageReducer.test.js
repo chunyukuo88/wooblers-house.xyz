@@ -1,5 +1,5 @@
 import languageReducer from './languageReducer';
-import { CHINESE, RUSSIAN, ENGLISH } from '../actions/types';
+import { CHINESE, RUSSIAN, ENGLISH } from '../actionCreators/types';
 
 describe('languageReducer.js reducer:', ()=>{
   describe('When invoked with a valid action type such as CHINESE, ', ()=>{

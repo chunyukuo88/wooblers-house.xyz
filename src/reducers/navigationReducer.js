@@ -1,4 +1,4 @@
-import { GO_TO_PAGE } from '../actions/types';
+import { GO_TO_PAGE } from '../actionCreators/types';
 import { routes } from '../routes';
 
 const defaultState = {

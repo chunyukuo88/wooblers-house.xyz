@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { switchToRussian, switchToEnglish, switchToChinese, goToPage } from '../../actions/actionCreators';
+import { switchToRussian, switchToEnglish, switchToChinese } from '../../actionCreators/languageActionCreators';
 import staticStrings from '../../StaticStrings';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import Title from '../Title/Title';
@@ -9,6 +9,7 @@ import * as GA from '../../googleAnalytics/events';
 import '../../css/Heading.css';
 import { routes } from '../../routes';
 import { useHistory } from 'react-router-dom';
+import {goToPage} from "../../actionCreators/navActionCreators";
 
 export default function Heading(){
   const dispatch = useDispatch();

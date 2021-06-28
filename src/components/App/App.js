@@ -3,7 +3,7 @@ import Heading from '../Heading/Heading';
 import PhotoDisplay from '../Carousel/AllPhotos';
 import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
-import { getGlobalHumidity, getGlobalTemp } from '../../actions/actionCreators';
+import { getGlobalHumidity, getGlobalTemp } from '../../actionCreators/weatherActionCreators';
 import {
   BrowserRouter as Router,
   Route,

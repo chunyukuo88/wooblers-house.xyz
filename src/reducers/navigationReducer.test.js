@@ -1,5 +1,5 @@
 import navigationReducer from './navigationReducer';
-import * as actions from '../actions/actionCreators';
+import * as actions from '../actionCreators/languageActionCreators';
 import { routes } from '../routes';
 
 describe('navigationReducer', ()=>{

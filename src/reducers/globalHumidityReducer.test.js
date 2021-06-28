@@ -1,5 +1,5 @@
 import globalHumidityReducer from './globalHumidityReducer';
-import { FETCH_HUMIDITY } from '../actions/types';
+import { FETCH_HUMIDITY } from '../actionCreators/types';
 
 describe('globalHumidityReducer.js', ()=>{
   describe('When invoked with the valid action type FETCH_HUMIDITY', ()=>{
