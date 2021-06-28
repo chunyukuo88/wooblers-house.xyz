@@ -1,5 +1,5 @@
 import globalTempReducer from './globalTempReducer';
-import { FETCH_TEMP } from '../actions/types';
+import { FETCH_TEMP } from '../actionCreators/types';
 
 describe('globalTempReducer.js:', ()=>{
   describe('When invoked with the valid action type GLOBAL_TEMP', ()=>{

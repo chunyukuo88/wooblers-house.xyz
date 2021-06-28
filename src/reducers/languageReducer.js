@@ -1,4 +1,4 @@
-import { CHINESE, ENGLISH, RUSSIAN } from '../actions/types';
+import { CHINESE, ENGLISH, RUSSIAN } from '../actionCreators/types';
 
 export default function languageReducer (state = ENGLISH, action){
     switch (action.type){
