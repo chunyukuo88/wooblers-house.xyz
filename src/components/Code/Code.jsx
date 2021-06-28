@@ -13,14 +13,14 @@ const CodeString = ({ language }) => (
   <a href={urls.githubRepo}
      target='_blank'
      className='code-string'
-     data-test='code'
      rel='noopener noreferrer'
      id='repo'>
-    <div className={language}>
+    <div className={language}
+         data-testid='code'
+    >
       {staticStrings.code[language]}
     </div>
   </a>
 );
-
 
 export default Code;
