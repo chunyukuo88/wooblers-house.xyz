@@ -1,5 +1,6 @@
 import navigationReducer from './navigationReducer';
 import * as actions from '../actions/actionCreators';
+import { routes } from '../routes';
 
 describe('navigationReducer', ()=>{
   describe('GIVEN: An action and a state', ()=>{
@@ -8,13 +9,12 @@ describe('navigationReducer', ()=>{
       const history = [];
       const action = actions.goToPage(page, history);
       const state = {
-        globalNavLocation: '/',
+        globalNavLocation: routes.index,
       };
 
       const result = navigationReducer(state, action);
-      const expectedResult = {
-        globalNavLocation: page,
-      };
+      const expectedResult = page;
+
       expect(result).toEqual(expectedResult);
     });
   });
@@ -24,7 +24,7 @@ describe('navigationReducer', ()=>{
 
       const result = navigationReducer(undefined, action);
       const expectedResult = {
-        globalNavLocation: '/',
+        globalNavLocation: routes.index,
       };
       expect(result).toEqual(expectedResult);
     });

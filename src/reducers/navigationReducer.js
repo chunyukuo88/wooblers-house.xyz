@@ -1,7 +1,8 @@
 import { GO_TO_PAGE } from '../actions/types';
+import { routes } from '../routes';
 
 const defaultState = {
-  globalNavLocation: '/',
+  globalNavLocation: routes.index,
 };
 
 export default function navigationReducer (state = defaultState, action) {
