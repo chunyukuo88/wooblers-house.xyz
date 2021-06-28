@@ -8,10 +8,10 @@ describe('globalTempReducer.js:', ()=>{
       const action = {
         type: FETCH_TEMP,
         payload: {
-          temp: dispatchedTemp
+          globalTemp: dispatchedTemp
         }
       };
-      const expectedPayload = {temp: dispatchedTemp}
+      const expectedPayload = { globalTemp: dispatchedTemp };
       const newState = globalTempReducer(undefined, action);
       expect(newState).toEqual(expectedPayload);
     });
@@ -19,11 +19,10 @@ describe('globalTempReducer.js:', ()=>{
   describe('When invoked with an invalid action type', ()=>{
     test('It handles the action and returns the default state', ()=>{
       const action = {
-        type: 'CRAP',
-        payload: 'crap'
+        invalid: 'this is an invalid action',
       };
       const newState = globalTempReducer(undefined, action);
-      const expectedPayload = {"temp": 45};
+      const expectedPayload = {'globalTemp': 45};
       expect(newState).toEqual(expectedPayload);
     });
   });
