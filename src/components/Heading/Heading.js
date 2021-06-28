@@ -23,20 +23,22 @@ export default function Heading(){
       </div>
       <nav id='heading__nav-items'>
         <div id='nav-items__welcome'
+             className={`${language} welcome`}
              onClick={GA.welcomeTextGA}>
           <Welcome/>
         </div>
-        <div id='nav-items__weather'
+        <div className={`${language} weather`}
+             id='nav-items__weather'
              data-test='weather-display'>
           <WeatherDisplay/>
         </div>
-                                                <div className={`${language} faqs`}
-                                                     id='nav-items__faq'
-                                                     onClick={()=>faqButtonHandler(dispatch, history)}>
-                                                  <FAQDisplay language={language}/>
-                                                </div>
+        <div className={`${language} faq`}
+             id='nav-items__faq'
+             onClick={()=>faqButtonHandler(dispatch, history)}>
+          <FAQDisplay language={language}/>
+        </div>
         <div id='nav-items__language'
-           className={`${language} nav-item`}
+           className={`${language} nav-item localization`}
            data-testid='language'
            onClick={() => locButtonHandler(language, dispatch)} >
           <LanguageDisplay language={language}/>

@@ -17,15 +17,16 @@ const theInitialState = {
   globalNavLocation: '/',
 };
 
-const composeEnhancers = process.env.NODE_ENV === 'development'
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  : null || compose;
+// TODO: Wrap this to the applyMiddleware function call to use Redux DevTools.
+// const composeEnhancers = process.env.NODE_ENV === 'development'
+//   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//   : null || compose;
 
 export default function Root ({ children, initialState = theInitialState }) {
   const store = createStore(
     reducer,
     initialState,
-    composeEnhancers(applyMiddleware(reduxPromise))
+    applyMiddleware(reduxPromise)
   );
   return (
     <Provider store={store}>

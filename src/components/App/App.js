@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 import ReactGa from 'react-ga';
 import '../../css/common.css';
+import '../../css/App.css';
 
 const FAQs = () => <div>FAQS</div>;
 
@@ -28,9 +29,15 @@ export default function App() {
       <Router>
         <Switch>
           <Route exact path='/'>
-            <Heading />
-            <PhotoDisplay/>
-            <Copyright />
+            <div id='heading-wrapper'>
+              <Heading />
+            </div>
+            <div id='photodisplay-wrapper'>
+              <PhotoDisplay/>
+            </div>
+            <div id='copyright-wrapper'>
+              <Copyright />
+            </div>
           </Route>
           <Route exact path='/faq'>
             <FAQs exact path='/faq' data-testid='faqs-link'/>

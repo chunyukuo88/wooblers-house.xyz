@@ -17,7 +17,7 @@ export default function WeatherDisplay () {
   const toggleDisplay = () => setShowWeather(!showWeather);
 
   return (
-    <div onClick={toggleDisplay} className='weather' data-testid='weather'>
+    <div onClick={toggleDisplay} data-testid='weather'>
       <Display {...{ showWeather, degreesK, humidity }} />
     </div>
   );

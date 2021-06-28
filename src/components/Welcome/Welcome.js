@@ -14,7 +14,7 @@ export function Welcome() {
 }
 
 const welcomeString = (language) => (
-  <div data-testid='welcome-string' className={`welcome ${language}`}>
+  <div data-testid='welcome-string'>
     {staticStrings.welcome[language]}
   </div>
 );

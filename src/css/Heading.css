@@ -11,7 +11,7 @@
 #heading__nav-items {
   display: grid;
   grid-row: 2 / 2;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   height: 30px;
 }
 
@@ -115,27 +115,19 @@
 }
 
 #nav-items__faq {
-  cursor: pointer;
+  grid-column: 3 / 4;
 }
 
 #nav-items__language {
-  cursor: pointer;
-  display: flex;
-  grid-column: 3 / 3;
-  justify-self: end;
-  margin: auto 5px auto auto;
+  grid-column: 4 / 4;
 }
 
 #nav-items__weather {
-  cursor: pointer;
   grid-column: 2 / 2;
-  margin: auto auto;
 }
 
 #nav-items__welcome {
-  cursor: pointer;
   grid-column: 1 / 1;
-  margin: auto auto auto 5px;
 }
 
 .title-array {
@@ -144,12 +136,22 @@
   padding: 8px;
 }
 
-.welcome, .weather, .localization {
+.welcome,
+.weather,
+.localization,
+.faq {
+  cursor: pointer;
   color: white;
   padding: 4px;
   transition: 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.welcome:hover, .weather:hover, .localization:hover {
+.welcome:hover,
+.weather:hover,
+.localization:hover,
+.faq:hover {
   color: #ccff99;
   transform: skew(-0.01turn, -1deg);
   transition: 1s;

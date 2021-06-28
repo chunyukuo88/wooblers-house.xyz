@@ -3,11 +3,6 @@
     margin: auto auto auto auto;
 }
 
-img {
-    max-height: 83vh;
-    max-width: 70vw;
-}
-
 #display-wrapper {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
@@ -16,9 +11,8 @@ img {
 }
 
 .photo-wrapper {
-    height: auto;
+    object-fit: scale-down;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 

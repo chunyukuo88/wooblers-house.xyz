@@ -19,15 +19,6 @@ a:hover {
   transition: var(--hover-transition);
 }
 
-body {
-  background-color: #222222;
-  background: repeating-linear-gradient(45deg, #263413 0%, #263413 10%, #1f290f 0%, #1f290f 50%) 0/15px 15px;
-}
-
-#copyright {
-  text-align: center;
-  color: var(--woob-green);
-}
 
 .chinese {
   font-family: "ZCool Kuaile";
