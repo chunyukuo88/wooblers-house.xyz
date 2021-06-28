@@ -8,18 +8,24 @@ describe('globalHumidityReducer.js', ()=>{
       const action = {
         type: FETCH_HUMIDITY,
         payload: {
-          humidity: dispatchedHumidity
+          globalHumidity: dispatchedHumidity
         }
       };
-      const expectedPayload = {temp: dispatchedHumidity}
-      const newState = globalHumidityReducer(undefined, action);
-      expect(newState).toEqual(expectedPayload);
+      const expectedPayload = {
+        globalHumidity: dispatchedHumidity
+      }
+
+      const updatedState = globalHumidityReducer(undefined, action);
+
+      expect(updatedState).toEqual(expectedPayload);
     });
   });
   describe('When invoked with an invalid action type', ()=>{
     const action = { invalid: 'this is an invalid action'};
-    const newState = globalHumidityReducer(undefined, action);
     const expectedPayload = { globalHumidity: 50 };
-    expect(newState).toEqual(expectedPayload);
+
+    const updatedState = globalHumidityReducer(undefined, action);
+
+    expect(updatedState).toEqual(expectedPayload);
   });
 });
