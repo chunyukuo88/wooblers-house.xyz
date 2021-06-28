@@ -29,12 +29,9 @@ describe('languageReducer.js reducer:', ()=>{
     });
     describe('When invoked with an invalid type, ', ()=>{
       test('it handles the action and returns the default state.', ()=>{
-        const action = {
-          type: 'CRAP',
-          payload: 'crap'
-        };
+        const action = { invalid: 'this is an invalid action.' };
         const newState = languageReducer(undefined, action);
-        expect(newState).toEqual('english');
+        expect(newState).toEqual('ENGLISH');
       });
     });
   });
