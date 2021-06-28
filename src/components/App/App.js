@@ -3,16 +3,16 @@ import Heading from '../Heading/Heading';
 import PhotoDisplay from '../Carousel/AllPhotos';
 import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
-import { getGlobalHumidity, getGlobalTemp } from '../../actions/actions';
+import { getGlobalHumidity, getGlobalTemp } from '../../actions/actionCreators';
 import {
   BrowserRouter as Router,
+  Route,
   Switch,
-  useHistory,
 } from 'react-router-dom';
 import ReactGa from 'react-ga';
 import '../../css/common.css';
 
-const FAQs = () => <FAQs />;
+const FAQs = () => <div>FAQS</div>;
 
 export default function App() {
   const dispatch = useDispatch();
@@ -25,16 +25,18 @@ export default function App() {
 
   return (
     <div id='app' data-test='component-app'>
-      <Heading />
       <Router>
         <Switch>
-          <PhotoDisplay exact path='/'/>
-        </Switch>
-        <Switch>
-          <FAQs exact path='/faqs' data-testid='faqs-link'/>
+          <Route exact path='/'>
+            <Heading />
+            <PhotoDisplay/>
+            <Copyright />
+          </Route>
+          <Route exact path='/faq'>
+            <FAQs exact path='/faq' data-testid='faqs-link'/>
+          </Route>
         </Switch>
       </Router>
-      <Copyright />
     </div>
   );
 };

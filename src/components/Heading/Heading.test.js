@@ -9,13 +9,17 @@ const initialState = {
 };
 
 describe('Heading.js', ()=>{
-  describe('Heading()', ()=>{
-    it('The component loads properly.', ()=>{
+  describe('WHEN: The user clicks the FAQs button, ', ()=>{
+    it('THEN: The global state is updated accordingly.', ()=>{
       const { container } = render(
         <Root initialState={initialState}>
           <Heading />
         </Root>
       );
+      const faqs = screen.getByTestId('faqs');
+
+      fireEvent.click(faqs);
+
       expect(container).toBeDefined();
     });
   });

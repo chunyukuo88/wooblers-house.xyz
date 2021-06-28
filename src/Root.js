@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
 import reduxPromise from 'redux-promise';
 import reducer from '../src/reducers'
 
@@ -13,14 +13,19 @@ import reducer from '../src/reducers'
 const theInitialState = {
   language: 'english',
   globalTemp: 45,
-  globalHumidity: 50
+  globalHumidity: 50,
+  globalNavLocation: '/',
 };
+
+const composeEnhancers = process.env.NODE_ENV === 'development'
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  : null || compose;
 
 export default function Root ({ children, initialState = theInitialState }) {
   const store = createStore(
     reducer,
     initialState,
-    applyMiddleware(reduxPromise)
+    composeEnhancers(applyMiddleware(reduxPromise))
   );
   return (
     <Provider store={store}>

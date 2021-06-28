@@ -14,6 +14,11 @@ const staticStrings = {
     russian: "При загрузке фотографий произошла ошибка. Обратитесь к веб-мастеру.",
     chinese: "下載圖片失敗，請聯繫郭磊"
   },
+  faqButton: {
+    english: 'FAQ',
+    russian: 'ЧАВО',
+    chinese: '常見問題',
+  },
   languageLabel: {
     english: "English",
     russian: "русский",
