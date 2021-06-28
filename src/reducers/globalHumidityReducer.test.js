@@ -2,7 +2,7 @@ import globalHumidityReducer from './globalHumidityReducer';
 import { FETCH_HUMIDITY } from '../actions/types';
 
 describe('globalHumidityReducer.js', ()=>{
-  describe('When invoked with the valid action type GLOBAL_HUMIDITY', ()=>{
+  describe('When invoked with the valid action type FETCH_HUMIDITY', ()=>{
     test('It sets the global humidity state.', ()=>{
       const dispatchedHumidity = 75;
       const action = {
@@ -17,12 +17,9 @@ describe('globalHumidityReducer.js', ()=>{
     });
   });
   describe('When invoked with an invalid action type', ()=>{
-    const action = {
-      type: 'CRAP',
-      payload: 'crap'
-    };
+    const action = { invalid: 'this is an invalid action'};
     const newState = globalHumidityReducer(undefined, action);
-    const expectedPayload = { humidity: 50 };
+    const expectedPayload = { globalHumidity: 50 };
     expect(newState).toEqual(expectedPayload);
   });
 });
