@@ -38,9 +38,9 @@ export default function Heading(){
           <FAQDisplay language={language}/>
         </div>
         <div id='nav-items__language'
-           className={`${language} nav-item localization`}
-           data-testid='language'
-           onClick={() => locButtonHandler(language, dispatch)} >
+             className={`${language} localization`}
+             data-testid='language'
+             onClick={() => locButtonHandler(language, dispatch)}>
           <LanguageDisplay language={language}/>
         </div>
       </nav>

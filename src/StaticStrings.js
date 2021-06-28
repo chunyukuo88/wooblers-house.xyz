@@ -45,7 +45,7 @@ const staticStrings = {
     chinese: "濕度："
   },
   weatherLabels: {
-    english: "Westerville Weather",
+    english: "W'ville Weather",
     russian: "Вестервиль Погода",
     chinese: "韋斯特維爾天氣"
   },
