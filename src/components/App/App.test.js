@@ -30,22 +30,4 @@ describe('App.js', ()=>{
       expect(ReactGa.pageview).toHaveBeenCalledTimes(1);
     });
   });
-  describe('WHEN: The user clicks the link to FAQs', ()=>{
-    it('THEN: They get routed to the FAQs page.', ()=>{
-      render(
-        <Root initialState={initialState}>
-          <App/>
-        </Root>
-      );
-      const faqsLink = screen.getByTestId('faqs-link');
-      let photoDisplay = screen.getByTestId('photo-display');
-
-      expect(photoDisplay).toBeDefined();
-
-      fireEvent.click(faqsLink);
-      photoDisplay = screen.getByTestId('photo-display');
-
-      expect(photoDisplay).toBeUndefined();
-    });
-  });
 });

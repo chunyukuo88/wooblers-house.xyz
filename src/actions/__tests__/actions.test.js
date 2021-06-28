@@ -1,5 +1,6 @@
-import * as actions from '../actions';
+import * as actions from '../actionCreators';
 import urls from '../../urls';
+import * as types from "../types";
 
 global.fetch = jest.fn(() =>
   setTimeout( ()=>{
@@ -10,7 +11,7 @@ global.fetch = jest.fn(() =>
 );
 
 
-describe('actions.js: ', ()=>{
+describe('actionCreators.js: ', ()=>{
   describe('The switchToRussian action creator', ()=>{
     const action = actions.switchToRussian();
     test('has the RUSSIAN type,', ()=>{
@@ -75,6 +76,39 @@ describe('actions.js: ', ()=>{
       fetch.mockImplementationOnce(() => Promise.reject('Api failure'));
       const result = await actions.fetchWeather('temp');
       expect(result).not.toBeDefined();
+    });
+  });
+
+  describe('The goToPage action creator', ()=>{
+    describe('GIVEN: A page and history array', async () => {
+      it('THEN: It returns the GO_TO_PAGE type.', ()=>{
+        const history = [];
+        const page = '/some-page';
+
+        const result = actions.goToPage(page, history);
+
+        expect(result.type).toEqual(types.GO_TO_PAGE);
+      });
+      it('AND: It returns a payload with the given page.', ()=>{
+        const history = [];
+        const page = '/some-page';
+
+        const action = actions.goToPage(page, history);
+
+        const expectedResult = {
+          globalNavLocation: '/some-page',
+        };
+
+        expect(action.payload).toEqual(expectedResult);
+      });
+      it('AND: It returns a payload with the given page.', ()=>{
+        const history = [];
+        const page = '/some-page';
+
+        actions.goToPage(page, history);
+
+        expect(history[0]).toEqual(page);
+      });
     });
   });
 });

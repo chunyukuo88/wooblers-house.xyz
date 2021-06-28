@@ -1,47 +1,76 @@
 import React from 'react';
-import Enzyme, { mount } from 'enzyme';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Heading from './Heading';
 import Root from '../../Root';
 
-Enzyme.configure({ adapter: new EnzymeAdapter()});
 
-let wrapper;
-
-beforeEach(()=>{
-  const initialState = {
-    language: 'english',
-  };
-  wrapper = mount(
-    <Root initialState={initialState}>
-      <Heading />
-    </Root>
-  );
-});
-
-afterEach(()=>{
-  wrapper.unmount();
-});
-
+const initialState = {
+  language: 'english',
+};
 
 describe('Heading.js', ()=>{
-   describe('On load,', ()=>{
-       test('the Heading component renders without crashing.', ()=>{
-           const heading = wrapper.find("[data-test='heading']");
-           expect(heading.length).toBe(1);
-       });
-   });
-   describe('WHEN: The user clicks the localization icon, ', ()=>{
-      test('THEN: It switches to the next language', ()=>{
-            const locButton = wrapper.find("[data-test='locbutton']");
-            expect(locButton.text()).toEqual('English');
-            locButton.simulate('click');
-            expect(locButton.text()).toEqual('正體中文');
-            locButton.simulate('click');
-            expect(locButton.text()).toEqual('русский');
-            locButton.simulate('click');
-            expect(locButton.text()).toEqual('English');
-      });
-   });
-});
+  describe('WHEN: The user clicks the FAQs button, ', ()=>{
+    it('THEN: The global state is updated accordingly.', ()=>{
+      const { container } = render(
+        <Root initialState={initialState}>
+          <Heading />
+        </Root>
+      );
+      const faqs = screen.getByTestId('faqs');
 
+      fireEvent.click(faqs);
+
+      expect(container).toBeDefined();
+    });
+  });
+  describe('WHEN: The user clicks the localization button once, ', ()=>{
+    it('THEN: The language switches to Chinese.', ()=>{
+      render(
+        <Root initialState={initialState}>
+          <Heading />
+        </Root>
+      );
+      let language = screen.getByTestId('language');
+
+      expect(language).toHaveTextContent('English');
+
+      fireEvent.click(language);
+      language = screen.getByTestId('language');
+
+      expect(language).toHaveTextContent('正體中文');
+    });
+  });
+  describe('WHEN: The user clicks the localization button twice, ', ()=>{
+    it('THEN: The language switches to Russian.', ()=>{
+      render(
+        <Root initialState={initialState}>
+          <Heading />
+        </Root>
+      );
+      let language = screen.getByTestId('language');
+
+      fireEvent.click(language);
+      fireEvent.click(language);
+      language = screen.getByTestId('language');
+
+      expect(language).toHaveTextContent('русский');
+    });
+  });
+  describe('WHEN: The user clicks the localization button thrice, ', ()=>{
+    it('THEN: The language switches back to English again.', ()=>{
+      render(
+        <Root initialState={initialState}>
+          <Heading />
+        </Root>
+      );
+      let language = screen.getByTestId('language');
+
+      fireEvent.click(language);
+      fireEvent.click(language);
+      fireEvent.click(language);
+      language = screen.getByTestId('language');
+
+      expect(language).toHaveTextContent('English');
+    });
+  });
+});

@@ -114,6 +114,10 @@
   }
 }
 
+#nav-items__faq {
+  cursor: pointer;
+}
+
 #nav-items__language {
   cursor: pointer;
   display: flex;
