@@ -97,6 +97,7 @@
     ],
     "collectCoverageFrom": [
       "./src/components/**/*.js",
+      "./src/components/**/*.jsx",
       "./src/common/**/*.js",
       "./src/reducers/*.js"
     ],
