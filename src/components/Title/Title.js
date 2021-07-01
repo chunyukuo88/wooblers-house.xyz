@@ -1,32 +1,33 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { titleStrings, LocalizedTitle } from './LocalizedTitle';
+import { LocalizedTitle } from './LocalizedTitle';
+import staticStrings from '../../StaticStrings';
 import { mouseOverTitle } from '../../googleAnalytics/events';
-import _ from 'lodash';
 import '../../css/Title.css';
 
 const Title = () => {
   const selectedLang = useSelector((state) => state.language);
   const props = { language: selectedLang };
-  document.title = titleStrings[selectedLang];
+  document.title = staticStrings.titleStrings[selectedLang];
 
   return (
-    <div  id='title-display-container' onMouseEnter={mouseOverTitle} data-test='title-container'>
+    <div  id='title-display-container'
+          onMouseEnter={mouseOverTitle}
+          data-testid='title'>
       <TitleBasedOnLanguage id='title' {...props} />
     </div>
   );
 };
 
-const _buildProps = (language) => {
-  const clonedStrings = _.cloneDeep(titleStrings);
+const _buildPropsForLocalizedTitle = (language) => {
   return {
     language: language,
-    localizedString: clonedStrings[language]
+    localizedString: staticStrings.titleStrings[language]
   };
 };
 
 const TitleBasedOnLanguage = ({ language }) => {
-  const props = _buildProps(language);
+  const props = _buildPropsForLocalizedTitle(language);
   return <LocalizedTitle {...props}/>;
 };
 
