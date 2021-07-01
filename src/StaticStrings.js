@@ -39,6 +39,11 @@ const staticStrings = {
     russian: 'Это проект React/Redux. Попробуйте!',
     chinese: '製作本站，我用了REACT與REDUX。'
   },
+  titleStrings: {
+    english: 'Woobler\'s House',
+    russian: 'Берлога Пуха',
+    chinese: '小巫之屋',
+  },
   weatherHumidity: {
     english: 'Humidity: ',
     russian: 'Влажность: ',
