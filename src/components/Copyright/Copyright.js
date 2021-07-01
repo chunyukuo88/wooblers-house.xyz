@@ -7,7 +7,7 @@ export default function Copyright(){
   const language = useSelector((state) => state.language);
   const copyrightString = staticStrings.copyright[language];
   const currentYear = new Date().getFullYear();
-  const 年 = language === 'chinese' && '年';
+  const 年 = language === 'chinese' && '年'; //Chinese grammar requires this after a numerically expressed year.
   return (
     <div id='copyright'
          className={`${language} copyright`}
