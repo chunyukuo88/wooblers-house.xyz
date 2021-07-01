@@ -1,5 +1,5 @@
 import navigationReducer from './navigationReducer';
-import * as actions from '../actionCreators/languageActionCreators';
+import { goToPage } from '../actionCreators/navActionCreators';
 import { routes } from '../routes';
 
 describe('navigationReducer', ()=>{
@@ -7,7 +7,7 @@ describe('navigationReducer', ()=>{
     it('THEN: It invokes the function that takes the user to the page given in the state object.', ()=>{
       const page = '/some-page';
       const history = [];
-      const action = actions.goToPage(page, history);
+      const action = goToPage(page, history);
       const state = {
         globalNavLocation: routes.index,
       };
