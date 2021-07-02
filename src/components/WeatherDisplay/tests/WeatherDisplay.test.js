@@ -1,6 +1,6 @@
 import WeatherDisplay, { WeatherTitle } from '../WeatherDisplay';
 import { fetchJsonData } from '../../../common/restClient';
-import { render, act, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Root from '../../../Root';
 
 jest.mock('../../../common/restClient');
@@ -13,7 +13,7 @@ describe('WeatherDisplay.js', ()=>{
   });
   describe('WHEN: The page loads, ',  ()=>{
     it('THEN: The weather title loads.', async ()=>{
-      const expectedTextContent = 'Westerville Weather';
+      const expectedTextContent = 'W\'ville Weather';
       const container = await render(
         <Root initialState={initialState}>
           <WeatherDisplay />
