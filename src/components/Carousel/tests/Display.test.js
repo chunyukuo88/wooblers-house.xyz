@@ -3,17 +3,20 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 const props = {
   photosObject: {
-    Contents: [
-      { photo: 0 },
-      { photo: 1 },
-      { photo: 2 },
-      { photo: 3 },
-    ],
+    Contents: [],
   },
 };
 
 
 describe('Display()', ()=>{
+  beforeEach(()=>{
+    props.photosObject.Contents = [
+      { photo: 0 },
+      { photo: 1 },
+      { photo: 2 },
+      { photo: 3 },
+    ];
+  });
   describe('GIVEN: The component has loaded,', ()=>{
     it('THEN: The first photograph is displayed.', ()=>{
       render(<Display {...props}/>);
@@ -83,26 +86,24 @@ describe('Display()', ()=>{
       expect(displayedImage).toHaveClass('www.mock-photo-source.com/1 (Custom).JPG');
     });
   });
-  // describe('AND: An error prevents the photos from loading,', ()=>{
-  //   it('THEN: An error message displays instead of the photos.', ()=>{
-  //     render(
-  //       <Root initialState={initialState}>
-  //         <Display />
-  //       </Root>
-  //     );
-  //     const errorMessage = screen.getByTestId('error-message');
-  //     expect(errorMessage).toBeDefined();
-  //     expect(errorMessage).toHaveTextContent(errorLoadingPhotos.english);
-  //   });
-  //   it('THEN: Localized error messages display properly.', ()=>{
-  //     initialState.language = 'chinese';
-  //     render(
-  //       <Root initialState={initialState}>
-  //         <Display />
-  //       </Root>
-  //     );
-  //     const errorMessage = screen.getByTestId('error-message');
-  //     expect(errorMessage).toHaveTextContent(errorLoadingPhotos.chinese);
-  //   });
-  // });
+  describe('WHEN: There are no photos, ', ()=>{
+    beforeEach(() => {
+      props.photosObject.Contents = [];
+    });
+    it('THEN: The default photo length is set to zero and a Come Back Later message is shown.', ()=>{
+      render(<Display {...props}/>);
+      const noPhotosMessage = screen.getByTestId('no-photos-message');
+
+      expect(noPhotosMessage).toBeDefined();
+    });
+    it('AND: The photo display and arrows disappear.', ()=>{
+      render(<Display {...props}/>);
+      const leftArrow = document.querySelector('#left-arrow');
+
+      const rightArrow = document.querySelector('#right-arrow');
+
+      expect(leftArrow).toBeNull();
+      expect(rightArrow).toBeNull();
+    });
+  });
 });
