@@ -2,25 +2,28 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Heading from './Heading';
 import Root from '../../Root';
-
+import { faqButtonHandler } from './utils';
 
 const initialState = {
   language: 'english',
 };
 
+jest.mock('./utils');
+
 describe('Heading.js', ()=>{
   describe('WHEN: The user clicks the FAQs button, ', ()=>{
-    it('THEN: The global state is updated accordingly.', ()=>{
-      const { container } = render(
+    it('THEN: The handler that updates global state is invoked.', ()=>{
+      faqButtonHandler.mockImplementation(jest.fn());
+      render(
         <Root initialState={initialState}>
           <Heading />
         </Root>
       );
-      const faqs = screen.getByTestId('faqs');
+      const faq = screen.getByTestId('faq');
 
-      fireEvent.click(faqs);
+      fireEvent.click(faq);
 
-      expect(container).toBeDefined();
+      expect(faqButtonHandler).toHaveBeenCalledTimes(1);
     });
   });
   describe('WHEN: The user clicks the localization button once, ', ()=>{

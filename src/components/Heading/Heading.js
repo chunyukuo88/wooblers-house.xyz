@@ -1,15 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { switchToRussian, switchToEnglish, switchToChinese } from '../../actionCreators/languageActionCreators';
+import { useDispatch, useSelector } from 'react-redux';
+import { switchToChinese, switchToEnglish, switchToRussian } from '../../actionCreators/languageActionCreators';
 import staticStrings from '../../StaticStrings';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import Title from '../Title/Title';
 import { Welcome } from '../Welcome/Welcome';
 import * as GA from '../../googleAnalytics/events';
-import '../../css/Heading.css';
-import { routes } from '../../routes';
 import { useHistory } from 'react-router-dom';
-import {goToPage} from "../../actionCreators/navActionCreators";
+import { faqButtonHandler } from './utils';
+import '../../css/Heading.css';
 
 export default function Heading(){
   const dispatch = useDispatch();
@@ -17,23 +16,20 @@ export default function Heading(){
   const language = useSelector((state) => state.language);
 
   return (
-    <section id='heading' data-test='heading'>
+    <section id='heading'>
       <div id='heading__title'>
         <Title/>
       </div>
       <nav id='heading__nav-items'>
-        <div id='nav-items__welcome'
-             className={`${language} welcome`}
-             onClick={GA.welcomeTextGA}>
+        <div id='nav-items__welcome' className={`${language} welcome`} onClick={GA.welcomeTextGA}>
           <Welcome/>
         </div>
-        <div className={`${language} weather`}
-             id='nav-items__weather'
-             data-test='weather-display'>
+        <div className={`${language} weather`} id='nav-items__weather'>
           <WeatherDisplay/>
         </div>
         <div className={`${language} faq`}
              id='nav-items__faq'
+             data-testid='faq'
              onClick={()=>faqButtonHandler(dispatch, history)}>
           <FAQDisplay language={language}/>
         </div>
@@ -58,7 +54,3 @@ const locButtonHandler = (language, dispatch) => {
   if (language === 'chinese') dispatch(switchToRussian());
 }
 
-const faqButtonHandler = (dispatch, history) => {
-  dispatch(goToPage(routes.faq, history));
-  console.log('faqButtonHandler()');
-}
