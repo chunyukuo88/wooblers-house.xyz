@@ -1,20 +1,5 @@
-import { fetchJsonData } from '../restClient';
-
-// import urls from '../../urls';
-
-// import * as types from '../types';
-
-// global.fetch = jest.fn(() =>
-//   setTimeout( ()=>{
-//     Promise.resolve({
-//       json: ()=> Promise.resolve({ data: { main: { temp: 50 }}}),
-//     })
-//   }, 100)
-// );
-//
-// test('and calls the correct URL.', ()=>{
-//   expect(global.fetch).toHaveBeenCalledWith(urls.openWeatherUrl);
-// });
+import { fetchJsonData, getWeatherDatum } from '../restClient';
+import urls from '../../urls';
 
 describe('restClient.js / fetchJsonData()', ()=>{
   describe('WHEN: given an endpoint, ', ()=>{
@@ -30,7 +15,7 @@ describe('restClient.js / fetchJsonData()', ()=>{
 
       await fetchJsonData(endpoint);
 
-      expect(global.fetch).toHaveBeenCalled();
+      expect(global.fetch).toHaveBeenCalledWith(endpoint);
     });
   });
   describe('WHEN: an error occurs, ', ()=>{
@@ -42,12 +27,63 @@ describe('restClient.js / fetchJsonData()', ()=>{
         headers: { get: () => [] },
       });
       const mockError = new Error('==== ERROR ====');
-      jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
       jest.spyOn(global.console, 'log').mockImplementation(console.log(mockError));
 
-      await fetchJsonData();
-
       expect(console.log).toBeCalledWith(mockError);
+    });
+  });
+});
+
+describe('restClient.js / getWeatherDatum()', ()=>{
+  describe('WHEN: Given a weather attribute of \'temp\',', ()=>{
+    it('THEN: It returns that weather attribute.', async ()=>{
+      const weatherAttribute = 'temp';
+      const mockSuccessResponse = {
+        main: {
+          temp: 280,
+          humidity: 50,
+        },
+      };
+      const mockJsonPromise = Promise.resolve(mockSuccessResponse);
+      const mockFetchPromise = Promise.resolve({
+        json: () => mockJsonPromise,
+        headers: { get: () => [] },
+      });
+      jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+
+      const temp = await getWeatherDatum(weatherAttribute);
+
+      expect(temp).toEqual(mockSuccessResponse.main[weatherAttribute]); // degrees Kelvin
+    });
+  });
+  describe('WHEN: Given a weather attribute of \'humidity\',', ()=>{
+    it('THEN: It returns that weather attribute.', async ()=>{
+      const weatherAttribute = 'humidity';
+      const mockSuccessResponse = {
+        main: {
+          temp: 280,
+          humidity: 50,
+        },
+      };
+      const mockJsonPromise = Promise.resolve(mockSuccessResponse);
+      const mockFetchPromise = Promise.resolve({
+        json: () => mockJsonPromise,
+        headers: { get: () => [] },
+      });
+      jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+
+      const temp = await getWeatherDatum(weatherAttribute);
+
+      expect(temp).toEqual(mockSuccessResponse.main[weatherAttribute]);
+    });
+  });
+  describe('WHEN: Given an invalid weather attribute,', ()=>{
+    it('THEN: It triggers an error.', async ()=>{
+      const weatherAttribute = 'garbage';
+
+      const temp = await getWeatherDatum(weatherAttribute);
+
+      expect(temp).toBeUndefined();
     });
   });
 });

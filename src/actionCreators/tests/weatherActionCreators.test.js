@@ -1,5 +1,5 @@
 import { getGlobalTemp, getGlobalHumidity } from '../weatherActionCreators';
-import { fetchWeather } from '../../common/restClient';
+import { getWeatherDatum } from '../../common/restClient';
 import * as types from '../types';
 
 jest.mock('../../common/restClient');
@@ -7,7 +7,7 @@ jest.mock('../../common/restClient');
 describe('languageActionCreators.js: ', ()=>{
   describe('The getGlobalTemp action creator', ()=>{
   beforeEach(()=>{
-    fetchWeather.mockImplementation(()=> 20);
+    getWeatherDatum.mockImplementation(()=> 20);
   });
     test('has the FETCH_TEMP type', async ()=>{
       const action = await getGlobalTemp();
@@ -23,7 +23,7 @@ describe('languageActionCreators.js: ', ()=>{
 
   describe('The getGlobalHumidity action creator ', ()=>{
     beforeEach(()=>{
-      fetchWeather.mockImplementation(()=> 40);
+      getWeatherDatum.mockImplementation(()=> 40);
     });
     test('has the "FETCH_HUMIDITY" type', ()=>{
       const action = getGlobalHumidity();
