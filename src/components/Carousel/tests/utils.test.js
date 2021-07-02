@@ -1,21 +1,16 @@
 import { getPhotos } from '../utils';
-import AWS from 'aws-sdk';
-
-jest.mock('aws-sdk');
+import AWS  from 'aws-sdk-mock';
 
 describe('utils.js', ()=>{
-  describe('getFotoCount()', ()=>{
+  describe('getPhotos()', ()=>{
     describe('WHEN: Invoked,', ()=>{
       it('THEN: The function returns photos from the S3 bucket.', ()=>{
-        // const albumBucketName = 'woobler-photos';
-        // const bucketParams = {
-        //   Bucket: albumBucketName
-        // };
-        // const mockArrayOfPhotos = [{},{},{}];
-        // const mockS3 = {
-        //   listObjectsV2: (bucketParams) => mockArrayOfPhotos,
-        // };
-        // AWS.mockImplementation(()=>{});
+        const mockResponseObject = [{}, {}, {}];
+        AWS.mock('S3', 'listObjectsV2', mockResponseObject);
+
+        const result = getPhotos();
+
+        expect(result).toEqual(mockResponseObject);
       });
     });
   });

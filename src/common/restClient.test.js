@@ -1,5 +1,5 @@
-import { fetchJsonData, getWeatherDatum } from '../restClient';
-import urls from '../../urls';
+import { fetchJsonData, getWeatherDatum } from './restClient';
+import urls from '../urls';
 
 describe('restClient.js / fetchJsonData()', ()=>{
   describe('WHEN: given an endpoint, ', ()=>{
