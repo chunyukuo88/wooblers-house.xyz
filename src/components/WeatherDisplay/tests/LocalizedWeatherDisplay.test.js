@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import Root from '../../../Root';
 
 const props = {
-  degreesKelvin: 273.15,
+  degreesK: 273.15,
   humidity: 50,
 };
 
