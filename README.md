@@ -1,4 +1,4 @@
-# This app uses React Icons
+# My photo album site.
 
-Documentation:
-https://react-icons.github.io/react-icons/
+- Made with React, Redux, and a smidge of AWS.
+- Feel free to clone this project down and marvel at that sweet, sweet test coverage.
