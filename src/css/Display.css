@@ -16,7 +16,7 @@
 }
 
 img {
-    object-fit: scale-down;
+    max-height: 80vh;
 }
 
 
