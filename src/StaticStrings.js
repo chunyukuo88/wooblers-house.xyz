@@ -20,7 +20,7 @@ const staticStrings = {
     chinese: '常見問題',
   },
   faqComingSoon: {
-    english: 'FAQ page is coming soon!',
+    english: 'The FAQ page is coming soon!',
     russian: 'Страница часто задаваемых вопросов скоро появится!',
     chinese: '常見問題页八月出爐！',
   },
