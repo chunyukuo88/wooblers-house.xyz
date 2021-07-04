@@ -13,10 +13,11 @@
 .photo-wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 img {
-    object-fit: scale-down;
+    max-height: 80vh;
 }
 
 
