@@ -1,5 +1,4 @@
 import { fetchJsonData, getWeatherDatum } from './restClient';
-import urls from '../urls';
 
 describe('restClient.js / fetchJsonData()', ()=>{
   describe('WHEN: given an endpoint, ', ()=>{
@@ -20,16 +19,18 @@ describe('restClient.js / fetchJsonData()', ()=>{
   });
   describe('WHEN: an error occurs, ', ()=>{
     it('THEN: the error is logged to the console.', async ()=>{
-      const mockSuccessResponse = {};
-      const mockJsonPromise = Promise.resolve(mockSuccessResponse);
-      const mockFetchPromise = Promise.resolve({
-        json: () => mockJsonPromise,
-        headers: { get: () => [] },
-      });
-      const mockError = new Error('==== ERROR ====');
-      jest.spyOn(global.console, 'log').mockImplementation(console.log(mockError));
+      global.fetch = jest.fn(() =>
+        Promise.resolve({
+          json: () => Promise.resolve(null),
+        })
+      );
 
-      expect(console.log).toBeCalledWith(mockError);
+      const result = await fetchJsonData();
+
+      expect(result).toEqual(null);
+      expect(fetch).toHaveBeenCalledWith(undefined);
+
+      fetch.mockClear();
     });
   });
 });
