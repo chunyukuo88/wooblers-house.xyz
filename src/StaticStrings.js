@@ -20,9 +20,14 @@ const staticStrings = {
     chinese: '常見問題',
   },
   faqComingSoon: {
-    english: 'The FAQ page is coming soon!',
+    english: 'This page is coming soon!',
     russian: 'Страница часто задаваемых вопросов скоро появится!',
     chinese: '常見問題页八月出爐！',
+  },
+  faqRouteToMain: {
+    english: 'Back to main',
+    russian: 'Вернуться на главную',
+    chinese: '主頁',
   },
   languageLabel: {
     english: 'English',
