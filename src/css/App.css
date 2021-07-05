@@ -1,16 +1,34 @@
+#app {
+    height: 100%;
+}
+
 body {
     background-color: #222222;
     background: repeating-linear-gradient(45deg, #263413 0%, #263413 10%, #1f290f 0%, #1f290f 50%) 0/15px 15px;
 }
 
 #heading-wrapper {
-    height: 10vh;
+    height: 9vh;
 }
 
 #photodisplay-wrapper {
-    height: 87vh;
+    height: 85vh;
 }
 
 #copyright-wrapper {
-    height: 2vh;
+    height: 1vh;
+}
+
+@media (max-width: 600px) {
+    #heading-wrapper {
+        height: 9vh;
+    }
+
+    #photodisplay-wrapper {
+        height: 80vh;
+    }
+
+    #copyright-wrapper {
+        height: 1vh;
+    }
 }

@@ -29,7 +29,7 @@ const nextPhoto = (currentPhoto, setCurrent, photosObject) => {
 
 const LeftArrow = ({ currentPhoto, setCurrent, photosObject }) => {
   return (numberOfPhotos(photosObject) > 0) && (
-    <div className='arrow-wrapper'>
+    <div className='arrow-wrapper' id='left-arrow-wrapper'>
       <FaArrowAltCircleLeft
         data-testid='left-arrow'
         id='left-arrow'
@@ -41,7 +41,7 @@ const LeftArrow = ({ currentPhoto, setCurrent, photosObject }) => {
 
 const RightArrow = ({ currentPhoto, setCurrent, photosObject }) => {
   return (numberOfPhotos(photosObject) > 0) && (
-    <div className='arrow-wrapper'>
+    <div className='arrow-wrapper' id='right-arrow-wrapper'>
       <FaArrowAltCircleRight
         data-testid='right-arrow'
         id='right-arrow'
