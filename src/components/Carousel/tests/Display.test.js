@@ -1,7 +1,7 @@
 import { Display } from '../Display';
 import { fireEvent, render, screen } from '@testing-library/react';
 import staticStrings from '../../../StaticStrings';
-import Root from "../../../Root";
+import Root from '../../../Root';
 
 const props = {
   photosObject: {
@@ -94,7 +94,11 @@ describe('Display()', ()=>{
       props.photosObject.Contents = [];
     });
     it('THEN: The default photo length is set to zero and a Loading message is shown.', ()=>{
-      render(<Display {...props}/>);
+      render(
+        <Root initialState={initialState}>
+          <Display {...props}/>
+        </Root>
+      );
       const noPhotosMessage = screen.getByTestId('no-photos-message');
 
       expect(noPhotosMessage).toBeDefined();
@@ -113,7 +117,11 @@ describe('Display()', ()=>{
       expect(noPhotosMessage).toHaveTextContent(expectedMessage);
     });
     it('AND: The photo display and arrows disappear.', ()=>{
-      render(<Display {...props}/>);
+      render(
+        <Root initialState={initialState}>
+          <Display {...props}/>
+        </Root>
+      );
       const leftArrow = document.querySelector('#left-arrow');
 
       const rightArrow = document.querySelector('#right-arrow');

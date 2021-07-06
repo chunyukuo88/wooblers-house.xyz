@@ -3,6 +3,7 @@ import '../../css/Display.css'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 import staticStrings from '../../StaticStrings';
 import { useSelector } from 'react-redux';
+import { ReactComponent as HandDrawnArrow } from './arrow_button.svg';
 
 export const Display = ({ photosObject }) => {
   const [currentPhoto, setCurrent] = React.useState(0);
@@ -33,7 +34,7 @@ const nextPhoto = (currentPhoto, setCurrent, photosObject) => {
 const LeftArrow = ({ currentPhoto, setCurrent, photosObject }) => {
   return (numberOfPhotos(photosObject) > 0) && (
     <div className='arrow-wrapper' id='left-arrow-wrapper'>
-      <FaArrowAltCircleLeft
+      <HandDrawnArrow
         data-testid='left-arrow'
         id='left-arrow'
         onClick={()=>prevPhoto(currentPhoto, setCurrent, photosObject)}
@@ -45,7 +46,7 @@ const LeftArrow = ({ currentPhoto, setCurrent, photosObject }) => {
 const RightArrow = ({ currentPhoto, setCurrent, photosObject }) => {
   return (numberOfPhotos(photosObject) > 0) && (
     <div className='arrow-wrapper' id='right-arrow-wrapper'>
-      <FaArrowAltCircleRight
+      <HandDrawnArrow
         data-testid='right-arrow'
         id='right-arrow'
         onClick={()=>nextPhoto(currentPhoto, setCurrent, photosObject)} />
