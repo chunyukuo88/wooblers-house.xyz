@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { backButtonHandler } from './utils';
 import '../../css/Faq.css';
 import { useHistory } from 'react-router-dom';
+import { ReactComponent as MySignature } from './alex_signature.svg';
 
 export const Faq = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export const Faq = () => {
          id='back-button'
          onClick={()=>backButtonHandler(dispatch, history)}
       >{ staticStrings.faqRouteToMain[language] }</p>
+      <p><MySignature/></p>
     </div>
   );
 };

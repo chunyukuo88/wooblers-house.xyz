@@ -22,3 +22,16 @@
     justify-content: center;
     align-items: center;
 }
+
+#my-signature {
+    stroke-dasharray: 1061;
+    stroke-dashoffset: 1061;
+    animation: sign 4s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes sign {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
