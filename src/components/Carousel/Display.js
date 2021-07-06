@@ -58,7 +58,8 @@ const NoPhotosMessage = () => {
 
   return (
     <div data-testid='no-photos-message'
-         id='no-photos-message'>
+         id='no-photos-message'
+         className={language}>
       {staticStrings.loadingMessage[language]}
     </div>
   );

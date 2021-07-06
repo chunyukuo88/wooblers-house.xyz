@@ -16,6 +16,29 @@
     align-items: center;
 }
 
+/*TODO: Research best practices for this repeated code; it is identical to
+   that for the .faq-page-container in Faq.css */
+#no-photos-message {
+    color: white;
+    font-size: 3rem;
+
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+
+    height: calc(10vw + 10vh);
+    width: calc(10vw + 10vh);
+
+    margin: auto;
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .photo-wrapper {
     display: flex;
     justify-content: center;
