@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../css/Display.css'
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 import staticStrings from '../../StaticStrings';
 import { useSelector } from 'react-redux';
 import { ReactComponent as HandDrawnArrow } from './arrow_button.svg';
