@@ -1,5 +1,7 @@
 import { Display } from '../Display';
 import { fireEvent, render, screen } from '@testing-library/react';
+import staticStrings from '../../../StaticStrings';
+import Root from "../../../Root";
 
 const props = {
   photosObject: {
@@ -7,6 +9,7 @@ const props = {
   },
 };
 
+const initialState = { language: 'english', };
 
 describe('Display()', ()=>{
   beforeEach(()=>{
@@ -90,11 +93,24 @@ describe('Display()', ()=>{
     beforeEach(() => {
       props.photosObject.Contents = [];
     });
-    it('THEN: The default photo length is set to zero and a Come Back Later message is shown.', ()=>{
+    it('THEN: The default photo length is set to zero and a Loading message is shown.', ()=>{
       render(<Display {...props}/>);
       const noPhotosMessage = screen.getByTestId('no-photos-message');
 
       expect(noPhotosMessage).toBeDefined();
+    });
+    it('AND: the Loading message is localized.', ()=>{
+      initialState.language = 'russian';
+
+      const expectedMessage = staticStrings.loadingMessage.russian;
+      render(
+        <Root initialState={initialState}>
+          <Display {...props}/>
+        </Root>
+      );
+      const noPhotosMessage = screen.getByTestId('no-photos-message');
+
+      expect(noPhotosMessage).toHaveTextContent(expectedMessage);
     });
     it('AND: The photo display and arrows disappear.', ()=>{
       render(<Display {...props}/>);

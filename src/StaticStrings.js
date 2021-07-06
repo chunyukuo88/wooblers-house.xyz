@@ -34,6 +34,11 @@ const staticStrings = {
     russian: 'русский',
     chinese: '正體中文'
   },
+  loadingMessage: {
+    english: 'Loading...',
+    russian: 'загрузка ...',
+    chinese: '加載中，請稍候'
+  },
   modalCoverage: {
     english: 'To achieve 100% test coverage, I used Enzyme at first but later switched to React Testing Library.',
     russian: '100% тестового покрытия с библиотекой Enzyme и React Testing Library.',

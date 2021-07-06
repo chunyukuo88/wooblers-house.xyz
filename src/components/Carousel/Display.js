@@ -1,13 +1,16 @@
 import React from 'react';
 import '../../css/Display.css'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+import staticStrings from '../../StaticStrings';
+import { useSelector } from 'react-redux';
 
 export const Display = ({ photosObject }) => {
   const [currentPhoto, setCurrent] = React.useState(0);
+
   return (
     <div id='display-wrapper'>
       <LeftArrow {...{ currentPhoto, setCurrent, photosObject }}/>
-      <Content {...{photosObject, currentPhoto}}/>
+      <Content {...{ photosObject, currentPhoto }}/>
       <RightArrow {...{ currentPhoto, setCurrent, photosObject }}/>
     </div>
   );
@@ -50,11 +53,16 @@ const RightArrow = ({ currentPhoto, setCurrent, photosObject }) => {
   );
 };
 
-const NoPhotosMessage = () => (
-  <div data-testid='no-photos-message'>
-    Photos are loading! Or there are no photos.
-  </div>
-);
+const NoPhotosMessage = () => {
+  const language = useSelector((state) => state.language);
+
+  return (
+    <div data-testid='no-photos-message'
+         id='no-photos-message'>
+      {staticStrings.loadingMessage[language]}
+    </div>
+  );
+}
 
 const DisplayedPhoto = (photoObject) => {
   const photoUrl = getPhotoUrl(photoObject.photo);
