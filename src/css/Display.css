@@ -1,83 +1,86 @@
 .arrow-wrapper {
-    color: green;
-    cursor: pointer;
+  color: green;
+  cursor: pointer;
 }
 
 #display-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
-    height: 100%;
-    width: auto;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  height: 100%;
+  width: auto;
 }
 
 #left-arrow-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-right: -180px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: -180px;
 }
 
 /*TODO: Research best practices for this repeated code; it is identical to
    that for the .faq-page-container in Faq.css */
 #no-photos-message {
-    color: white;
-    font-size: 3rem;
+  color: white;
+  font-size: 3rem;
 
-    left: 0;
-    bottom: 0;
-    right: 0;
-    top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
 
-    height: calc(10vw + 10vh);
-    width: calc(10vw + 10vh);
+  height: calc(10vw + 10vh);
+  width: calc(10vw + 10vh);
 
-    margin: auto;
-    position: absolute;
+  margin: auto;
+  position: absolute;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .photo-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #right-arrow-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    transform: scale(-1,1);
-    margin-left: -180px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transform: scale(-1, 1);
+  margin-left: -180px;
 }
 
 img {
-    max-height: 80vh;
+  max-height: 80vh;
 }
 
 @media (max-width: 600px) {
-    img {
-        max-height: 60vh;
-    }
+  img {
+    max-height: 60vh;
+    z-index: 0;
+  }
 
-    #left-arrow-wrapper, #right-arrow-wrapper {
-        justify-content: flex-start;
-    }
+  #left-arrow-wrapper,
+  #right-arrow-wrapper {
+    justify-content: flex-start;
+    z-index: 1110;
+  }
 }
 
-#hand-drawn-arrow {
+/* #hand-drawn-arrow {
     stroke-dasharray: 190;
     stroke-dashoffset: 190;
     animation: sign 5s ease;
     animation-fill-mode: forwards;
-}
-
+} */
+/* 
 @keyframes arrow {
     to {
         stroke-dashoffset: 0;
     }
 }
-
+ */
