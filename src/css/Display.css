@@ -1,6 +1,7 @@
 .arrow-wrapper {
   color: green;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 #display-wrapper {
@@ -54,6 +55,8 @@
   margin-left: -180px;
 }
 
+#left-arrow-wrapper,
+#right-arrow-wrapper,
 img {
   max-height: 80vh;
 }
@@ -67,20 +70,9 @@ img {
   #left-arrow-wrapper,
   #right-arrow-wrapper {
     justify-content: flex-start;
-    z-index: 1110;
+  }
+  #left-arrow,
+  #right-arrow {
+    z-index: 1;
   }
 }
-
-/* #hand-drawn-arrow {
-    stroke-dasharray: 190;
-    stroke-dashoffset: 190;
-    animation: sign 5s ease;
-    animation-fill-mode: forwards;
-} */
-/* 
-@keyframes arrow {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
- */
