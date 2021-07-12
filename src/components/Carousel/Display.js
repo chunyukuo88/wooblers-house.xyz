@@ -1,14 +1,13 @@
-import React from "react";
-import "../../css/Display.css";
-import staticStrings from "../../StaticStrings";
-import { useSelector } from "react-redux";
-import { ReactComponent as HandDrawnArrow } from "./arrow_button.svg";
+import React from 'react';
+import '../../css/Display.css';
+import staticStrings from '../../StaticStrings';
+import { useSelector } from 'react-redux';
+import { ReactComponent as HandDrawnArrow } from './arrow_button.svg';
 
 export const Display = ({ photosObject }) => {
   const [currentPhoto, setCurrent] = React.useState(0);
-
   return (
-    <div id="display-wrapper">
+    <div id='display-wrapper'>
       <LeftArrow {...{ currentPhoto, setCurrent, photosObject }} />
       <Content {...{ photosObject, currentPhoto }} />
       <RightArrow {...{ currentPhoto, setCurrent, photosObject }} />
@@ -20,7 +19,7 @@ const Content = ({ photosObject, currentPhoto }) =>
   numberOfPhotos(photosObject) === 0 ? (
     <NoPhotosMessage />
   ) : (
-    <div className="photo-wrapper">
+    <div className='displayed-photo'>
       <DisplayedPhoto photo={currentPhoto} />
     </div>
   );
@@ -35,42 +34,40 @@ const nextPhoto = (currentPhoto, setCurrent, photosObject) => {
   else setCurrent(currentPhoto + 1);
 };
 
+// TODO: Refactor to remove these two functions and create a new one that simply takes a parameter indicating direction.
 const LeftArrow = ({ currentPhoto, setCurrent, photosObject }) => {
   return (
     numberOfPhotos(photosObject) > 0 && (
-      <div className="arrow-wrapper" id="left-arrow-wrapper">
+      <div className='arrow-wrapper' id='left-arrow-wrapper'>
         <HandDrawnArrow
-          data-testid="left-arrow"
-          id="left-arrow"
+          data-testid='left-arrow'
+          id='left-arrow'
           onClick={() => prevPhoto(currentPhoto, setCurrent, photosObject)}
         />
       </div>
-    )
-  );
+  ));
 };
 
 const RightArrow = ({ currentPhoto, setCurrent, photosObject }) => {
   return (
     numberOfPhotos(photosObject) > 0 && (
-      <div className="arrow-wrapper" id="right-arrow-wrapper">
+      <div className='arrow-wrapper' id='right-arrow-wrapper'>
         <HandDrawnArrow
-          data-testid="right-arrow"
-          id="right-arrow"
+          data-testid='right-arrow'
+          id='right-arrow'
           onClick={() => nextPhoto(currentPhoto, setCurrent, photosObject)}
         />
       </div>
-    )
-  );
+  ));
 };
 
 const NoPhotosMessage = () => {
   const language = useSelector((state) => state.language);
-
   return (
     <div
-      data-testid="no-photos-message"
-      id="no-photos-message"
       className={language}
+      data-testid='no-photos-message'
+      id='no-photos-message'
     >
       {staticStrings.loadingMessage[language]}
     </div>
@@ -82,15 +79,14 @@ const DisplayedPhoto = (photoObject) => {
   return (
     <img
       className={photoUrl}
-      data-testid="photo"
+      data-testid='photo'
       key={photoObject}
       src={photoUrl}
-      alt="test"
+      alt='test'
     />
   );
 };
 
 const numberOfPhotos = (photosObject) => photosObject?.Contents.length || 0;
 
-const getPhotoUrl = (key) =>
-  `${process.env.REACT_APP_FOTO_SOURCE}/${key + 1} (Custom)-min.JPG`;
+const getPhotoUrl = (key) => `${process.env.REACT_APP_FOTO_SOURCE}/${key + 1} (Custom)-min.JPG`;
