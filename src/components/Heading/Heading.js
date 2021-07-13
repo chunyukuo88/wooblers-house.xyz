@@ -5,10 +5,12 @@ import staticStrings from '../../StaticStrings';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import Title from '../Title/Title';
 import { Welcome } from '../Welcome/Welcome';
-import * as GA from '../../googleAnalytics/events';
+import ReactGA from 'react-ga';
 import { useHistory } from 'react-router-dom';
 import { faqButtonHandler } from './utils';
 import '../../css/Heading.css';
+
+
 
 export default function Heading(){
   const dispatch = useDispatch();
@@ -21,7 +23,10 @@ export default function Heading(){
         <Title/>
       </div>
       <nav id='heading__nav-items'>
-        <div id='nav-items__welcome' className={`${language} welcome`} onClick={GA.welcomeTextGA}>
+        <div id='nav-items__welcome' className={`${language} welcome`} onClick={ReactGA.event({
+          category: 'Click',
+          action: 'Clicked to change language'
+        })}>
           <Welcome/>
         </div>
         <div className={`${language} weather`} id='nav-items__weather'>
