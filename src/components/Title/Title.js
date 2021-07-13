@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { LocalizedTitle } from './LocalizedTitle';
 import staticStrings from '../../StaticStrings';
-import { mouseOverTitle } from '../../googleAnalytics/events';
 import '../../css/Title.css';
 
 const Title = () => {
@@ -12,7 +11,6 @@ const Title = () => {
 
   return (
     <div  id='title-display-container'
-          onMouseEnter={mouseOverTitle}
           data-testid='title'>
       <TitleBasedOnLanguage id='title' {...props} />
     </div>

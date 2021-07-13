@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import ReactGA from 'react-ga';
 import Heading from '../Heading/Heading';
 import PhotoDisplay from '../Carousel/AllPhotos';
 import Copyright from '../Copyright/Copyright';
@@ -11,7 +10,6 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import ReactGa from 'react-ga';
 import '../../css/common.css';
 import '../../css/App.css';
 
@@ -19,8 +17,6 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    ReactGA.initialize(process.env.REACT_APP_GA_KEY);
-    ReactGa.pageview(window.location.pathname + window.location.search);
     dispatchTempAndHumidity(dispatch);
   }, [dispatch]);
 
