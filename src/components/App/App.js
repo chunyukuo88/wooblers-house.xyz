@@ -10,7 +10,6 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import ReactGa from 'react-ga';
 import '../../css/common.css';
 import '../../css/App.css';
 
@@ -18,8 +17,6 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    ReactGa.initialize(`${process.env.REACT_APP_GA}`);
-    ReactGa.pageview(window.location.pathname + window.location.search);
     dispatchTempAndHumidity(dispatch);
   }, [dispatch]);
 

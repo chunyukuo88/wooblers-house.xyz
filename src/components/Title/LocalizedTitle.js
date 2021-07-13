@@ -8,8 +8,7 @@ export const LocalizedTitle = (props) => {
 
   return (
     <div className='title-container'>
-      <div data-testid='title-string'
-           className={`${language}-title`}>
+      <div data-testid='title-string' className={`${language} title-string`}>
         {localizedString}
       </div>
       <RussianHedgehog {...hedgehogProps}/>
