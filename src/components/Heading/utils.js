@@ -1,6 +1,6 @@
 import {goToPage} from '../../actionCreators/navActionCreators';
-import {routes} from '../../routes';
-import {fireGoogleAnalyticsEvent} from '../../common/reactGa';
+import { routes } from '../../routes';
+import { fireGoogleAnalyticsEvent } from '../../common/reactGa';
 import { reactGaStrings } from '../../common/reactGaStrings';
 import { switchToChinese, switchToEnglish, switchToRussian } from '../../actionCreators/languageActionCreators';
 
