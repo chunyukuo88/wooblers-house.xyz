@@ -38,6 +38,20 @@ describe('LocalizedTitle.js', ()=>{
         const localizedTitleString = screen.getByTestId('title-string');
         expect(localizedTitleString).toHaveTextContent(props.localizedString);
       });
+      describe('WHEN: The language given is Russian,', ()=>{
+        it('THEN: The hedgehog is displayed.', ()=>{
+          const props = {
+            language: 'russian',
+            localizedString: 'испытание',
+          };
+
+          render(
+            <LocalizedTitle {...props}/>
+          );
+          const hedgehog = screen.getByTestId('hedgehog');
+          expect(hedgehog).toBeInTheDocument();
+        });
+      });
     });
   });
 });

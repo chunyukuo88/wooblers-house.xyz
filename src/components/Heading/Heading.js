@@ -1,15 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { switchToChinese, switchToEnglish, switchToRussian } from '../../actionCreators/languageActionCreators';
 import staticStrings from '../../StaticStrings';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import Title from '../Title/Title';
 import { Welcome } from '../Welcome/Welcome';
 import { useHistory } from 'react-router-dom';
-import { faqButtonHandler } from './utils';
+import { faqButtonHandler, locButtonHandler } from './utils';
 import '../../css/Heading.css';
-
-
 
 export default function Heading(){
   const dispatch = useDispatch();
@@ -48,10 +45,3 @@ export default function Heading(){
 const FAQDisplay = ({ language }) => staticStrings.faqButton[language];
 
 const LanguageDisplay = ({ language }) => staticStrings.languageLabel[language];
-
-const locButtonHandler = (language, dispatch) => {
-  if (language === 'russian') dispatch(switchToEnglish());
-  if (language === 'english') dispatch(switchToChinese());
-  if (language === 'chinese') dispatch(switchToRussian());
-}
-
