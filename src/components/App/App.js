@@ -5,6 +5,9 @@ import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
 import { Faq } from '../FAQ/Faq.jsx';
 import { getGlobalHumidity, getGlobalTemp } from '../../actionCreators/weatherActionCreators';
+import Amplify from 'aws-amplify';
+import awsconfig from '../../aws-exports';
+import { AmplifySignout, withAuthenticator } from '@aws-amplify/ui-react';
 import {
   BrowserRouter as Router,
   Route,
@@ -31,6 +34,10 @@ export default function App() {
           </Route>
           <Route exact path='/faq'>
             <Faq exact path='/faq' data-testid='faqs-link'/>
+          </Route>
+          <Route exact path='/admin'>
+            <AmplifySignOut />
+            <h2>Admin Page</h2>
           </Route>
         </Switch>
       </Router>

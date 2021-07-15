@@ -1,9 +1,12 @@
 import urls from '../urls';
 
 export const fetchJsonData = async (urlString) => {
-  return await fetch(urlString)
-    .then(res => res.json()
-    .catch(err => console.error(err)));
+  try {
+    const response = await fetch(urlString)
+    return response.json();
+  } catch(e) {
+    console.error(e)
+  }
 };
 
 export const getWeatherDatum = async (weatherAttribute) => {

@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "wooblershousexyza6e4fda9": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
