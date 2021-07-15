@@ -2,11 +2,16 @@ import { faqButtonHandler, locButtonHandler } from './utils';
 import { goToPage } from '../../actionCreators/navActionCreators';
 import { routes } from '../../routes';
 import { fireGoogleAnalyticsEvent } from '../../common/reactGa';
+import { switchToChinese, switchToEnglish, switchToRussian } from '../../actionCreators/languageActionCreators';
 
 jest.mock('../../actionCreators/navActionCreators');
 jest.mock('../../common/reactGa');
+jest.mock('../../actionCreators/languageActionCreators');
 
 describe('utils.js', ()=>{
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
   describe('faqButtonHandler()', ()=>{
     const dispatch = jest.fn();
     const history = [];
@@ -42,6 +47,50 @@ describe('utils.js', ()=>{
         locButtonHandler(language, dispatch);
 
         expect(fireGoogleAnalyticsEvent).toHaveBeenCalledWith(categoryStr, actionStr);
+      });
+      describe('AND: The language is set to "russian", ', ()=>{
+        it('THEN: The action to switch to English is dispatched.', ()=>{
+          const language = 'russian';
+          const dispatch = jest.fn();
+          switchToEnglish.mockImplementation(jest.fn());
+
+          locButtonHandler(language, dispatch);
+
+          expect(dispatch).toHaveBeenCalledWith(switchToEnglish());
+        });
+      });
+      describe('AND: The language is set to "english", ', ()=>{
+        it('THEN: The action to switch to Chinese is dispatched.', ()=>{
+          const language = 'english';
+          const dispatch = jest.fn();
+          switchToChinese.mockImplementation(jest.fn());
+
+          locButtonHandler(language, dispatch);
+
+          expect(dispatch).toHaveBeenCalledWith(switchToChinese());
+        });
+      });
+      describe('AND: The language is set to "chinese", ', ()=>{
+        it('THEN: The action to switch to Russian is dispatched.', ()=>{
+          const language = 'chinese';
+          const dispatch = jest.fn();
+          switchToRussian.mockImplementation(jest.fn());
+
+          locButtonHandler(language, dispatch);
+
+          expect(dispatch).toHaveBeenCalledWith(switchToRussian());
+        });
+      });
+      describe('AND: The language is invalid, ', ()=>{
+        it('THEN: The action to switch to English is dispatched.', ()=>{
+          const language = undefined;
+          const dispatch = jest.fn();
+          switchToEnglish.mockImplementation(jest.fn());
+
+          locButtonHandler(language, dispatch);
+
+          expect(dispatch).toHaveBeenCalledWith(switchToEnglish());
+        });
       });
     });
   });

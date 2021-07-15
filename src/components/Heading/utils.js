@@ -13,6 +13,7 @@ export const faqButtonHandler = (dispatch, history) => {
 };
 
 export const locButtonHandler = (language, dispatch) => {
+  if (!language) dispatch(switchToEnglish());
   const { categoryStr, actionStr } = localization;
   fireGoogleAnalyticsEvent(categoryStr, actionStr);
   if (language === 'russian') dispatch(switchToEnglish());
