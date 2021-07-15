@@ -9,8 +9,6 @@ import { useHistory } from 'react-router-dom';
 import { faqButtonHandler } from './utils';
 import '../../css/Heading.css';
 
-
-
 export default function Heading(){
   const dispatch = useDispatch();
   const history = useHistory();
