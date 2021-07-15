@@ -18,7 +18,8 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    ReactGa.initialize(process.env.REACT_APP_UA_FOR_REACTGA);
+    // ReactGa.initialize(process.env.REACT_APP_UA_FOR_REACTGA);
+    // ReactGa.pageview('/');
     dispatchTempAndHumidity(dispatch);
   }, [dispatch]);
 
@@ -27,15 +28,9 @@ export default function App() {
       <Router>
         <Switch>
           <Route exact path='/'>
-            <div id='heading-wrapper'>
-              <Heading />
-            </div>
-            <div id='photodisplay-wrapper'>
-              <PhotoDisplay/>
-            </div>
-            <div id='copyright-wrapper'>
-              <Copyright />
-            </div>
+            <div id='heading-wrapper'><Heading /></div>
+            <div id='photodisplay-wrapper'><PhotoDisplay/></div>
+            <div id='copyright-wrapper'><Copyright /></div>
           </Route>
           <Route exact path='/faq'>
             <Faq exact path='/faq' data-testid='faqs-link'/>
