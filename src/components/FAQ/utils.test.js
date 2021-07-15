@@ -1,9 +1,6 @@
 import { backButtonHandler } from './utils';
 import { goToPage } from '../../actionCreators/navActionCreators';
 import { routes } from '../../routes';
-import { fireEvent, render, screen } from '@testing-library/react';
-import Root from '../../Root';
-import { Faq } from './Faq';
 import { fireGoogleAnalyticsEvent } from '../../common/reactGa';
 
 jest.mock('../../actionCreators/navActionCreators');

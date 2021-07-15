@@ -1,6 +1,6 @@
 import React from 'react';
 import staticStrings from '../../StaticStrings.js';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { backButtonHandler } from './utils';
 import '../../css/Faq.css';
 import { useHistory } from 'react-router-dom';
