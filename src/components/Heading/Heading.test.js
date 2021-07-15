@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Heading from './Heading';
 import Root from '../../Root';
-import { faqButtonHandler } from './utils';
+import { faqButtonHandler, locButtonHandler } from './utils';
 
 const initialState = {
   language: 'english',
@@ -27,53 +27,20 @@ describe('Heading.js', ()=>{
     });
   });
   describe('WHEN: The user clicks the localization button once, ', ()=>{
-    it('THEN: The language switches to Chinese.', ()=>{
+    it('THEN: The handler responsible for changing the language is invoked.', ()=>{
+      locButtonHandler.mockImplementation(jest.fn())
+      initialState.language = 'english';
       render(
         <Root initialState={initialState}>
           <Heading />
         </Root>
       );
-      let language = screen.getByTestId('language');
-
-      expect(language).toHaveTextContent('English');
+      const language = screen.getByTestId('language');
 
       fireEvent.click(language);
-      language = screen.getByTestId('language');
 
-      expect(language).toHaveTextContent('正體中文');
-    });
-  });
-  describe('WHEN: The user clicks the localization button twice, ', ()=>{
-    it('THEN: The language switches to Russian.', ()=>{
-      render(
-        <Root initialState={initialState}>
-          <Heading />
-        </Root>
-      );
-      let language = screen.getByTestId('language');
-
-      fireEvent.click(language);
-      fireEvent.click(language);
-      language = screen.getByTestId('language');
-
-      expect(language).toHaveTextContent('русский');
-    });
-  });
-  describe('WHEN: The user clicks the localization button thrice, ', ()=>{
-    it('THEN: The language switches back to English again.', ()=>{
-      render(
-        <Root initialState={initialState}>
-          <Heading />
-        </Root>
-      );
-      let language = screen.getByTestId('language');
-
-      fireEvent.click(language);
-      fireEvent.click(language);
-      fireEvent.click(language);
-      language = screen.getByTestId('language');
-
-      expect(language).toHaveTextContent('English');
+      expect(locButtonHandler).toHaveBeenCalledTimes(1);
+      expect(locButtonHandler).toHaveBeenCalledWith('english', expect.any(Function));
     });
   });
 });

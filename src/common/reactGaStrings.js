@@ -9,4 +9,8 @@ export const reactGaStrings = {
       actionStr: 'User navigated to main page from FAQ page.',
     },
   },
+  localization: {
+    categoryStr: 'Click - Localization',
+    actionStr: 'User switched language.',
+  },
 };

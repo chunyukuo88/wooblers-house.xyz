@@ -3,7 +3,7 @@ import { routes } from '../../routes';
 import { fireGoogleAnalyticsEvent } from '../../common/reactGa';
 import { reactGaStrings } from '../../common/reactGaStrings';
 
-const { categoryStr, actionStr} = reactGaStrings.navigation.toMainPageFromFaqPage;
+const { categoryStr, actionStr } = reactGaStrings.navigation.toMainPageFromFaqPage;
 
 export const backButtonHandler = (dispatch, history) => {
   fireGoogleAnalyticsEvent(categoryStr, actionStr);
