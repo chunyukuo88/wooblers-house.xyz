@@ -1,9 +1,10 @@
 import { faqButtonHandler } from './utils';
 import { goToPage } from '../../actionCreators/navActionCreators';
 import { routes } from '../../routes';
-import ReactGa from 'react-ga';
+import { fireGoogleAnalyticsEvent } from '../../common/reactGa';
 
 jest.mock('../../actionCreators/navActionCreators');
+jest.mock('../../common/reactGa');
 
 describe('utils.js', ()=>{
   describe('faqButtonHandler()', ()=>{
@@ -20,15 +21,14 @@ describe('utils.js', ()=>{
 
         expect(goToPage).toHaveBeenCalledWith(routes.faq, history);
       });
-      it('THEN: It dispatches the event to GA via ReactGA.', ()=>{
-        const spy = jest.spyOn(ReactGa, 'event');
-        const expectedParams = {
-          category: 'Click - Navigation',
-          action: 'User navigated to FAQ page.'
-        };
+      it('THEN: It dispatches the event to GA via fireGoogleAnalyticsEvent().', ()=>{
+        fireGoogleAnalyticsEvent.mockImplementation(jest.fn());
+        const categoryStr = 'Click - Navigation';
+        const actionStr = 'User navigated to FAQ page.';
+
         faqButtonHandler(dispatch, history);
 
-        expect(spy).toHaveBeenCalledWith(expectedParams);
+        expect(fireGoogleAnalyticsEvent).toHaveBeenCalledWith(categoryStr, actionStr);
       });
     });
   });
