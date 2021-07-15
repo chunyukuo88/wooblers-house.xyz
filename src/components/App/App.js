@@ -5,9 +5,7 @@ import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
 import { Faq } from '../FAQ/Faq.jsx';
 import { getGlobalHumidity, getGlobalTemp } from '../../actionCreators/weatherActionCreators';
-import Amplify from 'aws-amplify';
-import awsconfig from '../../aws-exports';
-import { AmplifySignout, withAuthenticator } from '@aws-amplify/ui-react';
+import Admin from '../Admin/Admin.jsx';
 import {
   BrowserRouter as Router,
   Route,
@@ -16,7 +14,7 @@ import {
 import '../../css/common.css';
 import '../../css/App.css';
 
-export default function App() {
+function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,8 +34,7 @@ export default function App() {
             <Faq exact path='/faq' data-testid='faqs-link'/>
           </Route>
           <Route exact path='/admin'>
-            <AmplifySignOut />
-            <h2>Admin Page</h2>
+            <Admin/>
           </Route>
         </Switch>
       </Router>
@@ -49,3 +46,5 @@ const dispatchTempAndHumidity = (dispatcher) => {
   dispatcher(getGlobalTemp());
   dispatcher(getGlobalHumidity());
 };
+
+export default App;
