@@ -16,4 +16,7 @@ export const LocalizedTitle = (props) => {
   );
 };
 
-const RussianHedgehog = ({ language }) => (language === 'russian') ? <Hedgehog/> : null;
+const RussianHedgehog = ({ language }) => (language === 'russian')
+  && <div data-testid='hedgehog'>
+      <Hedgehog/>
+    </div>;
