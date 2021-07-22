@@ -1,10 +1,13 @@
 import Copyright from './Copyright.js';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { copyrightStringHandler } from './utils';
 import Root from '../../Root';
 
 const initialState = {
     language: 'english',
 };
+
+jest.mock('./utils');
 
 describe('Copyright.js', ()=>{
   describe('WHEN: The component loads,', ()=>{
@@ -47,5 +50,20 @@ describe('Copyright.js', ()=>{
 
        expect(年).not.toHaveTextContent('年');
      });
+  });
+  describe('WHEN: The copyrightString is clicked,', ()=>{
+    it('THEN: The handler that updates global state is invoked.', ()=>{
+      copyrightStringHandler.mockImplementation(jest.fn());
+      render(
+        <Root initialState={initialState}>
+          <Copyright />
+        </Root>
+      );
+      const copyrightString = screen.getByTestId('copyright-string');
+
+      fireEvent.click(copyrightString);
+
+      expect(copyrightStringHandler).toHaveBeenCalledTimes(1);
+    });
   });
 });

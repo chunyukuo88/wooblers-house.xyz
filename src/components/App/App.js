@@ -5,6 +5,7 @@ import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
 import { Faq } from '../FAQ/Faq.jsx';
 import { getGlobalHumidity, getGlobalTemp } from '../../actionCreators/weatherActionCreators';
+import Admin from '../Admin/Admin.jsx';
 import {
   BrowserRouter as Router,
   Route,
@@ -14,7 +15,7 @@ import '../../css/common.css';
 import '../../css/App.css';
 import ReactGa from 'react-ga';
 
-export default function App() {
+function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,6 +35,9 @@ export default function App() {
           <Route exact path='/faq'>
             <Faq exact path='/faq' data-testid='faqs-link'/>
           </Route>
+          <Route exact path='/admin'>
+            <Admin/>
+          </Route>
         </Switch>
       </Router>
     </div>
@@ -44,3 +48,5 @@ const dispatchTempAndHumidity = (dispatcher) => {
   dispatcher(getGlobalTemp());
   dispatcher(getGlobalHumidity());
 };
+
+export default App;

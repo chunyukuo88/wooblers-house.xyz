@@ -20,14 +20,5 @@ describe('App.js', ()=>{
       );
       expect(container).toBeDefined();
     });
-    it('THEN: The ReactGA methods are executed.', ()=>{
-      render(
-        <Root initialState={initialState}>
-            <App/>
-        </Root>
-      );
-      expect(ReactGa.initialize).toHaveBeenCalledTimes(1);
-      expect(ReactGa.pageview).toHaveBeenCalledTimes(1);
-    });
   });
 });
