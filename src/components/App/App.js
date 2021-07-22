@@ -12,13 +12,15 @@ import {
 } from 'react-router-dom';
 import '../../css/common.css';
 import '../../css/App.css';
+import ReactGa from 'react-ga';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    ReactGa.initialize(process.env.REACT_APP_UA_FOR_REACTGA);
     dispatchTempAndHumidity(dispatch);
-  }, [dispatch]);
+  }, []);
 
   return (
     <div id='app' data-test='component-app'>
