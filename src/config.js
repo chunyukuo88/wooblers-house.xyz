@@ -1,4 +1,4 @@
-export default {
+export const amplifyConfig = {
   MAX_ATTACHMENT_SIZE: 5_000_000,
   s3: {
     REGION: 'us-east-1',

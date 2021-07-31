@@ -18,11 +18,6 @@
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-wooblershousexyz-dev-153755-deployment/amplify-cfn-templates/auth/wooblershousexyza6e4fda9-cloudformation-template.yml",
-        "logicalId": "authwooblershousexyza6e4fda9"
-      },
-      "lastPushTimeStamp": "2021-07-15T20:52:50.412Z",
       "output": {
         "UserPoolId": "us-east-1_uEeZqOq9b",
         "AppClientIDWeb": "5fagst079p2vrhu18j0vpieedl",
@@ -32,7 +27,11 @@
         "IdentityPoolName": "wooblershousexyza6e4fda9_identitypool_a6e4fda9__dev",
         "UserPoolName": "wooblershousexyza6e4fda9_userpool_a6e4fda9"
       },
-      "lastPushDirHash": "Cl6mlrsbLjRX435jKspnL6ZqoZQ="
+      "lastPushTimeStamp": "2021-07-31T22:36:28.020Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-wooblershousexyz-dev-153755-deployment/amplify-cfn-templates/auth/wooblershousexyza6e4fda9-cloudformation-template.yml",
+        "logicalId": "authwooblershousexyza6e4fda9"
+      }
     }
   }
 }

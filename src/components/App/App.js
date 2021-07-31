@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     ReactGa.initialize(process.env.REACT_APP_UA_FOR_REACTGA);
     dispatchTempAndHumidity(dispatch);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div id='app' data-test='component-app'>
