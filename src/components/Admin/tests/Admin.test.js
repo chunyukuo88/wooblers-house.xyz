@@ -1,4 +1,4 @@
-import Admin from './Admin.jsx';
+import Admin from '../Admin.jsx';
 import { render } from '@testing-library/react';
 
 describe('Admin.jsx', ()=>{
