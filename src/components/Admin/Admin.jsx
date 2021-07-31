@@ -2,19 +2,22 @@ import React from 'react';
 import Amplify from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '../../css/Admin.css';
+import config from '../../config';
 import { ProtectedContent } from './ProtectedContent.jsx';
 
 Amplify.configure({
   Auth: {
-    identityPoolId: 'us-east-1:4fd65d6b-3898-4129-9712-de687ad9aa8b',
-    region: 'us-east-1',
-    userPoolId: 'us-east-1_uEeZqOq9b',
-    userPoolWebClientId: '5fagst079p2vrhu18j0vpieedl',
+    mandatorySignIn: true,
+    region: config.cognito.REGION,
+    userPoolId: config.cognito.USER_POOL_ID,
+    identityPoolId: config.cognito.IDENTIY_POOL_ID,
+    userPoolWebClientId: config.cognito.APP_CLIENT_ID,
   },
   Storage: {
     AWSS3: {
-      bucket: 'woobler-photos',
-      region: 'us-east-1',
+      region: config.s3.REGION,
+      bucket: config.s3.BUCKET,
+      identityPoolId: config.cognito.IDENTIY_POOL_ID,
     }
   }
 });
