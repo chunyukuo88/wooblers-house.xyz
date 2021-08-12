@@ -1,23 +1,22 @@
 import { uploadPhotoToS3 } from './utils/uploadToS3';
 import { Storage } from 'aws-amplify';
-import AWS from 'aws-sdk';
 
-jest.mock('aws-sdk', () => {
+jest.mock('aws-amplify', () => {
   return {
-    S3: jest.fn(() => ({
-      getSignedUrl: mockGetSignedUrlFn
-    }))
+    Storage: {
+      put: jest.fn(() => ({
+        key: 'some key'
+      })),
+    },
   };
 });
-
-const mockGetSignedUrlFn = jest.fn();
 
 describe('./uploadToS3', ()=>{
   describe('uploadPhotoToS3()', ()=>{
     describe('GIVEN: A valid file object,', ()=>{
       describe('WHEN: This function is invoked,', ()=>{
         it('THEN: The file is uploaded to S3,', async ()=>{
-          const spy = jest.spyOn(Storage.vault, 'put');
+          const spy = jest.spyOn(Storage, 'put');
           const file = {
             name: 'test.jpg',
           };
@@ -30,7 +29,7 @@ describe('./uploadToS3', ()=>{
 
           expect(spy).toHaveBeenCalledWith(filename, file, expectedConfig);
         });
-        it('AND: this function returns a response that includes a key.', async()=>{
+        it('AND: this function returns a response that includes a key.', async ()=>{
           const file = {
             name: 'test.jpg',
           };

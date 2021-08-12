@@ -44,7 +44,8 @@ export const submissionHandler = async (file) => {
     fileIsTooBigAlert(); return;
   }
   try {
-    await uploadPhotoToS3(file); }
+    await uploadPhotoToS3(file);
+  }
   catch (e) { alert(e); }
 }
 
