@@ -30,16 +30,16 @@ export const ProtectedContent = () => {
 }
 
 const createFormData = (selectedFile) => {
-  const fd = new FormData();
-  fd.append('image', selectedFile, selectedFile.name);
-  return fd;
+  const formData = new FormData();
+  formData.append('image/jpeg', selectedFile, selectedFile.name);
+  return formData;
 };
 
 export const submissionHandler = async (file) => {
-  if(isNotJpeg(file)) {
-    alert(invalidFileMsg);
-    return;
-  };
+  // if(file.type !== 'image/jpeg') {
+  //   alert(invalidFileMsg);
+  //   return;
+  // };
   if (fileIsTooBig(file)) {
     fileIsTooBigAlert(); return;
   }
@@ -48,7 +48,7 @@ export const submissionHandler = async (file) => {
   catch (e) { alert(e); }
 }
 
-const invalidFileMsg = 'Please select a valid JPG file.';
+
 
 const fileIsTooBigAlert = () => alert(
   `Please pick a file smaller than ${amplifyConfig.MAX_ATTACHMENT_SIZE/1_000_000} MB.`
@@ -56,4 +56,6 @@ const fileIsTooBigAlert = () => alert(
 
 const fileIsTooBig = (file) => file && file.size > amplifyConfig.MAX_ATTACHMENT_SIZE;
 
-const isNotJpeg = (file) => file.type !== 'image/jpeg';
+// const invalidFileMsg = 'Please select a valid JPG file.';
+
+// const isNotJpeg = (file) => file.type !== 'image/jpeg';
