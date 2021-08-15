@@ -2,7 +2,6 @@ import React from 'react';
 import { render, } from '@testing-library/react';
 import Root from '../../Root';
 import App from './App';
-import ReactGa from 'react-ga';
 
 const initialState = {
     language: 'english',
