@@ -5,37 +5,33 @@ import { useSelector } from 'react-redux';
 import { ReactComponent as HandDrawnArrow } from './arrow_button.svg';
 
 export const Display = ({ photosObject }) => {
-  const [currentPhoto, setCurrent] = React.useState(0);
+  const [currentPhotoNumber, setCurrent] = React.useState(0);
   const isLeft = false;
   return (
     <div id='display-wrapper'>
-      <Arrow {...{ currentPhoto, setCurrent, photosObject }} />
-      <Content {...{ photosObject, currentPhoto }} />
-      <Arrow {...{ currentPhoto, setCurrent, photosObject, isLeft }} />
+      <Arrow {...{ currentPhotoNumber, setCurrent, photosObject }} />
+      <Content {...{ photosObject, currentPhotoNumber }} />
+      <Arrow {...{ currentPhotoNumber, setCurrent, photosObject, isLeft }} />
     </div>
   );
 };
 
-const Content = ({ photosObject, currentPhoto }) =>
-  numberOfPhotos(photosObject) === 0 ? (
-    <NoPhotosMessage />
-  ) : (
-    <div className='displayed-photo'>
-      <DisplayedPhoto photo={currentPhoto} />
-    </div>
-  );
+const Content = ({ photosObject, currentPhotoNumber }) =>
+  numberOfPhotos(photosObject) === 0
+    ? (<NoPhotosMessage />)
+    : (<div className='displayed-photo'><DisplayedPhoto photo={currentPhotoNumber} /></div>);
 
-const prevPhoto = (currentPhoto, setCurrent, photosObject) => {
-  if (currentPhoto === 0) setCurrent(numberOfPhotos(photosObject) - 1);
-  else setCurrent(currentPhoto - 1);
+const prevPhoto = (currentPhotoNumber, setCurrent, photosObject) => {
+  if (currentPhotoNumber === 0) setCurrent(numberOfPhotos(photosObject) - 1);
+  else setCurrent(currentPhotoNumber - 1);
 };
 
-const nextPhoto = (currentPhoto, setCurrent, photosObject) => {
-  if (currentPhoto === numberOfPhotos(photosObject) - 1) setCurrent(0);
-  else setCurrent(currentPhoto + 1);
+const nextPhoto = (currentPhotoNumber, setCurrent, photosObject) => {
+  if (currentPhotoNumber === numberOfPhotos(photosObject) - 1) setCurrent(0);
+  else setCurrent(currentPhotoNumber + 1);
 };
 
-const Arrow = ({ currentPhoto, setCurrent, photosObject, isLeft = true }) => {
+const Arrow = ({ currentPhotoNumber, setCurrent, photosObject, isLeft = true }) => {
   const direction = (isLeft) ? 'left' : 'right';
   const clickHandler = (isLeft) ? prevPhoto : nextPhoto;
   return (
@@ -44,7 +40,7 @@ const Arrow = ({ currentPhoto, setCurrent, photosObject, isLeft = true }) => {
         <HandDrawnArrow
           data-testid={`${direction}-arrow`}
           id={`${direction}-arrow`}
-          onClick={() => clickHandler(currentPhoto, setCurrent, photosObject)}
+          onClick={() => clickHandler(currentPhotoNumber, setCurrent, photosObject)}
         />
       </div>
   ));
