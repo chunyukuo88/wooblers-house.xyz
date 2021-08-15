@@ -1,12 +1,16 @@
 import { Storage } from 'aws-amplify';
 
 export const uploadPhotoToS3 = async (file) => {
-  // const stored = await Storage.put(file.name, file, {
-  await Storage.put(file.name, file, {
+  if (!file) {
+    alert(noFileGiven);
+    return;
+  };
+  const result = await Storage.put(file.name, file, {
     contentType: file.type,
   });
-  // console.log(stored)
-  // return stored.key;
+  alert(result);
 };
+
+export const noFileGiven = 'No file has been selected.';
 
 

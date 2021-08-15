@@ -28,6 +28,4 @@ export function Admin() {
   </div>;
 }
 
-// export default Admin;
-//TODO: Figure out how to test this with/out the wrapper, which adds a shadow dom
 export default withAuthenticator(Admin);

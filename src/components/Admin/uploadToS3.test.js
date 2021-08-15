@@ -1,23 +1,13 @@
-import { uploadPhotoToS3 } from './utils/uploadToS3';
+import { uploadPhotoToS3, noFileGiven } from './utils/uploadToS3';
 import awsAmplify from 'aws-amplify';
 
 jest.mock('aws-amplify');
-//   return {
-//     Storage: {
-//       put: jest.fn(() => ({
-//         key: 'some key'
-//       })),
-//     },
-//   };
-// });
 
 describe('./uploadToS3', ()=>{
   describe('uploadPhotoToS3()', ()=>{
     describe('GIVEN: A valid file object,', ()=>{
       describe('WHEN: This function is invoked,', ()=>{
         it('THEN: The file is uploaded to S3,', async ()=>{
-          // const spy = jest.spyOn(Storage, 'put');
-          // TODO: This test now passes but manually test this as well.
           awsAmplify.Storage.put.mockImplementation(jest.fn());
           const file = {
             name: 'test.jpg',
@@ -30,16 +20,27 @@ describe('./uploadToS3', ()=>{
 
           expect(awsAmplify.Storage.put).toHaveBeenCalledWith(file.name, file, expectedConfig);
         });
-        it('AND: this function returns a response that includes a key.', async ()=>{
+        it('AND: it then triggers an alert signifying that the upload was successful.', async ()=>{
+          const spy = jest.spyOn(window, 'alert').mockImplementation(() => {});
+          awsAmplify.Storage.put.mockImplementation(jest.fn());
           const file = {
             name: 'test.jpg',
           };
-          const expectedResult = '';
 
-          const result = await uploadPhotoToS3(file);
+          await uploadPhotoToS3(file);
 
-          expect(result).toEqual(expectedResult);
+          expect(spy).toHaveBeenCalledTimes(1);
         });
+      });
+    });
+    describe('GIVEN: A file object is not given,', ()=>{
+      it('AND: it then triggers an alert notifying the user that a file was not passed in.', async ()=>{
+        const spy = jest.spyOn(window, 'alert').mockImplementation(() => {});
+        awsAmplify.Storage.put.mockImplementation(jest.fn());
+
+        await uploadPhotoToS3();
+
+        expect(spy).toHaveBeenCalledWith(noFileGiven);
       });
     });
   });

@@ -12,6 +12,7 @@ export const ProtectedContent = () => {
 
   const fileUploadHandler = async (selectedFile) => {
     const fd = createFormData(selectedFile);
+    console.log('The file: ', fd);
     await submissionHandler(fd);
   };
 
