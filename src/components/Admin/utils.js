@@ -15,24 +15,17 @@ export const fileUploadHandler = async (selectedFile) => {
 
 const submissionHandler = async (file) => {
   if (fileIsTooBig(file)) {
-    fileIsTooBigAlert(); return;
+    fileIsTooBigAlert();
+    return;
   }
-  try {
-    await uploadPhotoToS3(file);
-  }
-  catch (e) { alert(e); }
-}
+  await uploadPhotoToS3(file);
+};
 
 const uploadPhotoToS3 = async (file) => {
-  if (!file) {
-    alert(noFileGiven);
-    return;
-  };
   const result = await Storage.put(file.name, file, {
     contentType: file.type,
   });
-  alert('File has been uploaded to S3.');
-  console.log('result: ', result);
+  console.log(result);
 };
 
 const fileIsTooBigAlert = () => alert(
