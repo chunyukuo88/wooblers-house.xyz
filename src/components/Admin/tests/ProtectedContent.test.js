@@ -11,5 +11,11 @@ describe('ProtectedContent.jsx', ()=>{
 
       expect(loggedInSection).toBeInTheDocument();
     });
+    it('The content loads properly.', ()=>{
+      render(<ProtectedContent/>);
+      const loggedInSection = screen.getByTestId('logged-in-section');
+
+      expect(loggedInSection).toBeInTheDocument();
+    });
   });
 });

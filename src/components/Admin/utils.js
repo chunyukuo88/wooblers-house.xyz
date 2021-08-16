@@ -22,8 +22,13 @@ const submissionHandler = async (file) => {
 };
 
 const uploadPhotoToS3 = async (file) => {
-  await Storage.put(file.name, file);
-  alert(uploadSuccessful);
+  const result = await Storage.put(file.name, file, {
+    contentType: 'image/JPG',
+    customPrefix: {
+      public: ''
+    }
+  });
+  console.log(result);
 };
 
 const fileIsTooBigAlert = () => alert(

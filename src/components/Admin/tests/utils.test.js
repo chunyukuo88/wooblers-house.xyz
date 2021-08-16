@@ -13,9 +13,15 @@ describe('utils.js', ()=>{
         awsAmplify.Storage.put.mockImplementation(jest.fn());
 
         it('THEN: The file is uploaded to S3,', async ()=>{
+          const expectedConfig = {};
+          expectedConfig.contentType = 'image/JPG';
+          expectedConfig.customPrefix = {
+            public: ''
+          };
+
           await utils.fileUploadHandler(file);
 
-          expect(awsAmplify.Storage.put).toHaveBeenCalledWith(file.name, file);
+          expect(awsAmplify.Storage.put).toHaveBeenCalledWith(file.name, file, expectedConfig);
         });
         it('AND: it then triggers an alert signifying that the upload was successful.', async ()=>{
           const spy = jest.spyOn(window, 'alert').mockImplementation(jest.fn());
