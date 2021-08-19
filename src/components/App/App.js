@@ -5,7 +5,7 @@ import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
 import { Faq } from '../FAQ/Faq.jsx';
 import { getGlobalHumidity, getGlobalTemp } from '../../actionCreators/weatherActionCreators';
-import Admin from '../Admin/Admin.jsx';
+import Admin from '../Admin/AdminPage.jsx';
 import {
   BrowserRouter as Router,
   Route,
@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     ReactGa.initialize(process.env.REACT_APP_UA_FOR_REACTGA);
     dispatchTempAndHumidity(dispatch);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div id='app' data-test='component-app'>
