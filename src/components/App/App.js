@@ -5,7 +5,7 @@ import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
 import { Faq } from '../FAQ/Faq.jsx';
 import { getGlobalHumidity, getGlobalTemp } from '../../actionCreators/weatherActionCreators';
-import Admin from '../Admin/Admin.jsx';
+import Admin from '../Admin/AdminPage.jsx';
 import {
   BrowserRouter as Router,
   Route,

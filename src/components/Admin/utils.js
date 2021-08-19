@@ -28,7 +28,7 @@ const uploadPhotoToS3 = async (file) => {
       public: ''
     }
   });
-  console.log(result);
+  console.log(`Upload successful. Result: ${result}`);
 };
 
 const fileIsTooBigAlert = () => alert(

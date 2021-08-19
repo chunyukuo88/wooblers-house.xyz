@@ -1,13 +1,14 @@
-import Admin from '../Admin.jsx';
+import AdminPage from '../AdminPage.jsx';
 import { render } from '@testing-library/react';
 
-describe('Admin.jsx', ()=>{
+describe('AdminPage.jsx', ()=>{
   describe('GIVEN: The component loads, ', ()=>{
     it('THEN: The component loads, ', ()=>{
-      render(<Admin/>);
-      const amplifySignOut = document.querySelector('amplify-container');
+      render(<AdminPage/>);
 
-      expect(amplifySignOut).toBeInTheDocument();
+      const amplifyContainer = document.querySelector('amplify-container');
+
+      expect(amplifyContainer).toBeDefined();
     });
   });
 });

@@ -22,10 +22,12 @@ Amplify.configure({
   }
 });
 
-export function Admin() {
-  return <div data-testid='protectedContent'>
-    <ProtectedContent/>
-  </div>;
+export function AdminPage() {
+  return ( // TODO: Why does Jest not cover this?
+    <div data-testid='protectedContent'>
+      <ProtectedContent/>
+    </div>
+  );
 }
 
-export default withAuthenticator(Admin);
+export default withAuthenticator(AdminPage);
