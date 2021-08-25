@@ -1,9 +1,9 @@
-import React from 'react';
-import Amplify from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import '../../css/Admin.css';
-import { amplifyConfig } from '../../config';
-import { ProtectedContent } from './ProtectedContent.jsx';
+import React from "react";
+import Amplify from "aws-amplify";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import "../../css/Admin.css";
+import { amplifyConfig } from "../../config";
+import { ProtectedContent } from "./ProtectedContent.jsx";
 
 Amplify.configure({
   Auth: {
@@ -18,14 +18,14 @@ Amplify.configure({
       region: amplifyConfig.s3.REGION,
       bucket: amplifyConfig.s3.BUCKET,
       identityPoolId: amplifyConfig.cognito.IDENTIY_POOL_ID,
-    }
-  }
+    },
+  },
 });
 
 export function AdminPage() {
-  return ( // TODO: Why does Jest not cover this?
-    <div data-testid='protectedContent'>
-      <ProtectedContent/>
+  return (
+    <div data-testid="protectedContent">
+      <ProtectedContent />
     </div>
   );
 }
