@@ -1,16 +1,16 @@
 export const reactGaStrings = {
   navigation: {
     toFaqPageFromMainPage: {
-      categoryStr: 'Click - Navigation',
-      actionStr: 'User navigated to FAQ page.',
+      category: "Click - Navigation",
+      action: "User navigated to FAQ page.",
     },
     toMainPageFromFaqPage: {
-      categoryStr: 'Click - Navigation',
-      actionStr: 'User navigated to main page from FAQ page.',
+      category: "Click - Navigation",
+      action: "User navigated to main page from FAQ page.",
     },
   },
   localization: {
-    categoryStr: 'Click - Localization',
-    actionStr: 'User switched language.',
+    category: "Click - Localization",
+    action: "User switched language.",
   },
 };
