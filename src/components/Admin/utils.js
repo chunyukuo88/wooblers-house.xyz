@@ -1,5 +1,11 @@
 import { Storage } from 'aws-amplify';
 import { amplifyConfig } from '../../config';
+import { goToPage } from '../../actionCreators/navActionCreators';
+import { routes } from '../../routes';
+
+export const backButtonHandler = (dispatch, history) => {
+  dispatch(goToPage(routes.index, history));
+};
 
 export const noFileGiven = 'No file has been selected.';
 

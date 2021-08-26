@@ -1,8 +1,11 @@
 import * as utils from '../utils';
 import awsAmplify from 'aws-amplify';
 import { amplifyConfig } from '../../../config';
+import { goToPage } from '../../../actionCreators/navActionCreators';
+import { routes } from '../../../routes';
 
 jest.mock('aws-amplify');
+jest.mock('../../../actionCreators/navActionCreators');
 
 describe('utils.js', ()=>{
   describe('fileUploadHandler()', ()=>{
@@ -56,6 +59,19 @@ describe('utils.js', ()=>{
 
         expect(spy).toHaveBeenCalledWith(errorMsg);
         expect(result).toBeUndefined();
+      });
+    });
+  });
+  describe('backButtonHandler()', ()=>{
+    describe('WHEN: given a dispatch function and a history array,', ()=>{
+      it('THEN: The function dispatches an the goToPage action creator with the correct route and the history array.', ()=>{
+        const dispatch = jest.fn();
+        const history = [];
+        goToPage.mockImplementation(jest.fn());
+
+        utils.backButtonHandler(dispatch, history);
+
+        expect(goToPage).toHaveBeenCalledWith(routes.index, history);
       });
     });
   });

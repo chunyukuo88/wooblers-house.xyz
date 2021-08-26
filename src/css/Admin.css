@@ -1,5 +1,7 @@
-.logged-in-section {
-  color: white;
+#back-button {
+  color: var(--woob-green);
+  cursor: pointer;
+  margin: 100px;
 }
 
 .coming-soon {
@@ -18,4 +20,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.logged-in-section {
+  color: white;
 }
