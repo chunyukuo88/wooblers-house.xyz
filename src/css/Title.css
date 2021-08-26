@@ -13,7 +13,7 @@
 }
 
 .title-string {
-  color: white;
+  color: var(--woob-green);
   font-size: 3rem;
 }
 

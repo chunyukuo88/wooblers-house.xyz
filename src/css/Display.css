@@ -1,5 +1,4 @@
 .arrow-wrapper {
-  color: green;
   cursor: pointer;
   margin-top: 20px;
 }
@@ -58,6 +57,7 @@
 #left-arrow-wrapper,
 #right-arrow-wrapper,
 img {
+  border-radius: 10px;
   max-height: 80vh;
 }
 

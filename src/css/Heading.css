@@ -1,4 +1,6 @@
 #heading {
+  background-image: linear-gradient(#151515, #2d2d2d);
+  /*border-radius: 10px;*/
   display: grid;
   grid-template-rows: auto auto;
 }
@@ -15,18 +17,22 @@
 }
 
 #nav-items__language {
+  color: var(--woob-green);
   grid-column: 4 / 4;
 }
 
 #nav-items__faq {
+  color: var(--woob-green);
   grid-column: 3 / 3;
 }
 
 #nav-items__weather {
+  color: var(--woob-green);
   grid-column: 2 / 2;
 }
 
 #nav-items__welcome {
+  color: var(--woob-green);
   grid-column: 1 / 1;
 }
 
@@ -41,7 +47,6 @@
 .localization,
 .faq {
   cursor: pointer;
-  color: white;
   padding: 4px;
   transition: 1s;
   display: flex;
@@ -52,8 +57,7 @@
 .weather:hover,
 .localization:hover,
 .faq:hover {
-  color: #ccff99;
-  transform: skew(-0.01turn, -1deg);
+  transform: skew(-0.01turn, -4deg);
   transition: 1s;
 }
 
