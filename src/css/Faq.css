@@ -3,19 +3,38 @@
     cursor: pointer;
 }
 
+.expandable-panel__question {
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+    max-width: 80vw;
+    padding: 3px;
+    margin: auto;
+}
+
+.expandable-panel__question-text {
+    background-color: green;
+    color: black;
+}
+
+.expandable-panel__question-icon {
+    background-color: white;
+    color: red;
+}
+
+
 .faq-page-container {
     color: white;
 
-    left: 0;
-    bottom: 0;
-    right: 0;
-    top: 0;
+    /*left: 0;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    /*top: 0;*/
 
-    height: calc(10vw + 10vh);
-    width: calc(10vw + 10vh);
+    /*height: calc(10vw + 10vh);*/
+    /*width: calc(10vw + 10vh);*/
 
-    margin: auto;
-    position: absolute;
+    /*margin: auto;*/
+    /*position: absolute;*/
 
     display: flex;
     flex-direction: column;

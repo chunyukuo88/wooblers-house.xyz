@@ -1,11 +1,11 @@
-.expandable-panel__content {
+.expandable-panel__answer {
     height: auto;
     max-height: 9999px;
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
 }
 
-.expandable-panel__content.hidden {
+.expandable-panel__answer.hidden {
     max-height: 0;
     transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
 }

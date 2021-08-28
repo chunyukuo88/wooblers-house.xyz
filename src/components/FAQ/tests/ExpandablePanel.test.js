@@ -16,11 +16,11 @@ describe('expandablePanel.js', ()=>{
           const icon = screen.getByTestId('icon');
           const answer = screen.getByTestId('answer');
 
-          expect(answer).toHaveClass('expandable-panel__content hidden');
+          expect(answer).toHaveClass('expandable-panel__answer hidden');
 
           fireEvent.click(icon);
 
-          expect(answer).toHaveClass('expandable-panel__content ');
+          expect(answer).toHaveClass('expandable-panel__answer ');
         });
       });
       describe('AND: The user clicks on the icon twice', ()=>{
@@ -29,15 +29,15 @@ describe('expandablePanel.js', ()=>{
           const icon = screen.getByTestId('icon');
           const answer = screen.getByTestId('answer');
 
-          expect(answer).toHaveClass('expandable-panel__content hidden');
+          expect(answer).toHaveClass('expandable-panel__answer hidden');
 
           fireEvent.click(icon);
 
-          expect(answer).toHaveClass('expandable-panel__content ');
+          expect(answer).toHaveClass('expandable-panel__answer ');
 
           fireEvent.click(icon);
 
-          expect(answer).toHaveClass('expandable-panel__content hidden');
+          expect(answer).toHaveClass('expandable-panel__answer hidden');
         });
       });
     });

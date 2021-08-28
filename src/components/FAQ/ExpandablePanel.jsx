@@ -19,7 +19,9 @@ export const ExpandablePanel = (props) => {
           {icon}
         </i>
       </div>
-      <div data-testid='answer' className={`expandable-panel__content ${visible(isOpen)}`}>
+
+
+      <div data-testid='answer' className={`expandable-panel__answer ${visible(isOpen)}`}>
         {answer}
       </div>
     </section>
