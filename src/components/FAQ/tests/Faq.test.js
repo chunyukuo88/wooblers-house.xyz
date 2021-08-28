@@ -1,45 +1,24 @@
 import { Faq } from '../Faq.jsx';
 import { render, screen, fireEvent } from '@testing-library/react';
-import staticStrings from '../../../StaticStrings.js';
 import { backButtonHandler } from '../utils';
 import Root from '../../../Root';
 import faqContent from '../faqContent.json';
-const initialState = { language: 'english', };
+
 
 jest.mock('../utils');
 
+const initialState = { language: 'english', };
 const numberOfFaqs = faqContent.secure.length;
 
 describe('Faq()', ()=>{
-  it('The page displays properly.', ()=>{
-    const { container } = render(
-      <Root initialState={initialState}>
-        <Faq/>
-      </Root>
-    );
-    expect(container).toBeDefined();
-  });
-  it('The page displays properly in Chinese.', ()=>{
-    initialState.language = 'chinese';
-    render(
-      <Root initialState={initialState}>
-        <Faq/>
-      </Root>
-    );
-    const faqContainer = screen.getByTestId('faq-page-container');
-    const expectedText = staticStrings.faqComingSoon.chinese;
-
-    expect(faqContainer).toHaveTextContent(expectedText);
-  });
   it('It renders the number of Q&A pairs properly.', ()=>{
-    const { debug } = render(
+    render(
       <Root initialState={initialState}>
         <Faq/>
       </Root>
     );
     const faqContent = screen.getAllByTestId('qa-pair');
 
-    // debug();
     expect(faqContent.length).toEqual(numberOfFaqs);
   });
   describe('WHEN: The user clicks the button to go back to the main page,', ()=>{

@@ -3,11 +3,7 @@ import '../../css/ExpandablePanel.css';
 
 export const ExpandablePanel = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const {
-    question,
-    answer,
-    icon,
-  } = props;
+  const { question, answer, icon } = props;
 
   const toggleIsOpen = () => setIsOpen(!isOpen);
 
