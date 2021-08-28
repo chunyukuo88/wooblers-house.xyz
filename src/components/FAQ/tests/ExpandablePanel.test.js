@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { ExpandablePanel } from './ExpandablePanel';
+import { ExpandablePanel } from '../ExpandablePanel';
 
 const props = {};
-props.title = 'Q: Who is Woobler?';
-props.children = <div>A: A very special lad</div>;
+props.question = 'Q: Who is Woobler?';
+props.answer = <div>A: A very special lad</div>;
 props.icon = 'an icon';
 
 describe('expandablePanel.js', ()=>{
@@ -14,30 +14,30 @@ describe('expandablePanel.js', ()=>{
         it('THEN: the panel opens.', ()=>{
           render(<ExpandablePanel {...props}/>);
           const icon = screen.getByTestId('icon');
-          const children = screen.getByTestId('children');
+          const answer = screen.getByTestId('answer');
 
-          expect(children).toHaveClass('expandable-panel__content hidden');
+          expect(answer).toHaveClass('expandable-panel__content hidden');
 
           fireEvent.click(icon);
 
-          expect(children).toHaveClass('expandable-panel__content ');
+          expect(answer).toHaveClass('expandable-panel__content ');
         });
       });
       describe('AND: The user clicks on the icon twice', ()=>{
         it('THEN: the panel opens on the first click and closes on the second.', ()=>{
           render(<ExpandablePanel {...props}/>);
           const icon = screen.getByTestId('icon');
-          const children = screen.getByTestId('children');
+          const answer = screen.getByTestId('answer');
 
-          expect(children).toHaveClass('expandable-panel__content hidden');
-
-          fireEvent.click(icon);
-
-          expect(children).toHaveClass('expandable-panel__content ');
+          expect(answer).toHaveClass('expandable-panel__content hidden');
 
           fireEvent.click(icon);
 
-          expect(children).toHaveClass('expandable-panel__content hidden');
+          expect(answer).toHaveClass('expandable-panel__content ');
+
+          fireEvent.click(icon);
+
+          expect(answer).toHaveClass('expandable-panel__content hidden');
         });
       });
     });
