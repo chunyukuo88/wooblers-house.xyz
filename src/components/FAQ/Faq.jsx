@@ -5,7 +5,7 @@ import { backButtonHandler } from './utils';
 import '../../css/Faq.css';
 import { useHistory } from 'react-router-dom';
 import { ReactComponent as MySignature } from './alex_signature.svg';
-import faqContent from './faqContent.json';
+import allQaPairs from './faqContent.json';
 import { ExpandablePanel } from './ExpandablePanel.jsx';
 
 export const Faq = () => {
@@ -13,14 +13,11 @@ export const Faq = () => {
   const history = useHistory();
   const language = useSelector((state) => state.language);
 
-  const { question, answer } = faqContent.secure[0];
-  const icon = 'CLICK ME';
-
   return (
     <div  data-testid='faq-page-container'
           className={`${language} faq-page-container`}>
       <div data-testid='faq-content-container'>
-        <ExpandablePanel {...{question, answer, icon}}/>
+        <Content {...allQaPairs}/>
       </div>
       <p data-testid='back-button'
          id='back-button'
@@ -29,4 +26,16 @@ export const Faq = () => {
       <p><MySignature/></p>
     </div>
   );
+};
+
+const Content = (allQaPairs) => {
+  return allQaPairs.secure.map((qaPair, key) => {
+    const { question, answer } = qaPair;
+    const icon = '癫';
+    return (
+      <div data-testid='qa-pair' key={key}>
+        <ExpandablePanel {...{question, answer, icon}} />
+      </div>
+    );
+  });
 };

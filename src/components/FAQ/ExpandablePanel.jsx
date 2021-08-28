@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../css/ExpandablePanel.css';
 
 export const ExpandablePanel = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,7 @@ export const ExpandablePanel = (props) => {
           {icon}
         </i>
       </div>
-      <div data-testid='children' className={`expandable-panel__content ${visible(isOpen)}`}>
+      <div data-testid='answer' className={`expandable-panel__content ${visible(isOpen)}`}>
         {answer}
       </div>
     </section>

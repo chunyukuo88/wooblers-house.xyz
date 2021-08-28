@@ -37,8 +37,9 @@ describe('Faq()', ()=>{
         <Faq/>
       </Root>
     );
-    const faqContent = screen.getAllByTestId('faq-content-container');
+    const faqContent = screen.getAllByTestId('qa-pair');
 
+    // debug();
     expect(faqContent.length).toEqual(numberOfFaqs);
   });
   describe('WHEN: The user clicks the button to go back to the main page,', ()=>{
