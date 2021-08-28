@@ -1,7 +1,7 @@
-import { backButtonHandler } from './utils';
-import { goToPage } from '../../actionCreators/navActionCreators';
-import { routes } from '../../routes';
-import { fireGoogleAnalyticsEvent } from '../../common/reactGa';
+import { backButtonHandler } from '../utils';
+import { goToPage } from '../../../actionCreators/navActionCreators';
+import { routes } from '../../../routes';
+import { fireGoogleAnalyticsEvent } from '../../../common/reactGa';
 
 jest.mock('../../actionCreators/navActionCreators');
 jest.mock('../../common/reactGa');

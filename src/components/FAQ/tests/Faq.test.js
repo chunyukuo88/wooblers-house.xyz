@@ -1,8 +1,8 @@
-import { Faq } from './Faq.jsx';
+import { Faq } from '../Faq.jsx';
 import { render, screen, fireEvent } from '@testing-library/react';
-import staticStrings from '../../StaticStrings.js';
-import { backButtonHandler } from './utils';
-import Root from  '../../Root';
+import staticStrings from '../../../StaticStrings.js';
+import { backButtonHandler } from '../utils';
+import Root from '../../../Root';
 
 const initialState = { language: 'english', };
 
