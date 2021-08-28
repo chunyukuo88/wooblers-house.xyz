@@ -6,16 +6,22 @@ import '../../css/Faq.css';
 import { useHistory } from 'react-router-dom';
 import { ReactComponent as MySignature } from './alex_signature.svg';
 import faqContent from './faqContent.json';
+import { ExpandablePanel } from './ExpandablePanel.jsx';
 
 export const Faq = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const language = useSelector((state) => state.language);
 
+  const { question, answer } = faqContent.secure[0];
+  const icon = 'CLICK ME';
+
   return (
     <div  data-testid='faq-page-container'
           className={`${language} faq-page-container`}>
-      <FaqContent props={getFaqData()}/>
+      <div data-testid='faq-content-container'>
+        <ExpandablePanel {...{question, answer, icon}}/>
+      </div>
       <p data-testid='back-button'
          id='back-button'
          onClick={()=>backButtonHandler(dispatch, history)}
@@ -24,11 +30,3 @@ export const Faq = () => {
     </div>
   );
 };
-
-const FaqContent = ({ props }) => props.map((qaPair, index) => (
-  <div className='faq__topics' key={index}>
-    <ExpandablePanel {...buildQaPanelData(props, index)}>
-
-    </ExpandablePanel>
-  </div>
-));

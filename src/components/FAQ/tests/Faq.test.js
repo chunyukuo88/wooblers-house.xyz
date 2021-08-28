@@ -3,10 +3,12 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import staticStrings from '../../../StaticStrings.js';
 import { backButtonHandler } from '../utils';
 import Root from '../../../Root';
-
+import faqContent from '../faqContent.json';
 const initialState = { language: 'english', };
 
 jest.mock('../utils');
+
+const numberOfFaqs = faqContent.secure.length;
 
 describe('Faq()', ()=>{
   it('The page displays properly.', ()=>{
@@ -30,15 +32,14 @@ describe('Faq()', ()=>{
     expect(faqContainer).toHaveTextContent(expectedText);
   });
   it('It renders the number of Q&A pairs properly.', ()=>{
-    const { container } = render(
+    const { debug } = render(
       <Root initialState={initialState}>
         <Faq/>
       </Root>
     );
-    const faqContentLength = container.secure.length;
-    const renderedTopics = container.querySelectorAll('faq__topics');
+    const faqContent = screen.getAllByTestId('faq-content-container');
 
-    expect(renderedTopics.length).toEqual(faqContentLength);
+    expect(faqContent.length).toEqual(numberOfFaqs);
   });
   describe('WHEN: The user clicks the button to go back to the main page,', ()=>{
     it('THEN: The handler that updates global state is invoked.', ()=>{
