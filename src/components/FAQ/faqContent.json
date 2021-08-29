@@ -1,0 +1,22 @@
+{
+  "public": {},
+  "secure": [
+    {
+      "question": "Who is Woobler?",
+      "answer": "Woobler is an affable chap, a force of nature, a dump truck enthusiast."
+    },
+    {
+      "question": "Why did you make this site?",
+      "answer": "I made this site to learn various technologies."
+    },
+    {
+      "question": "What technologies does this site use?",
+      "answer": "I began using the Context API. I then switched to Redux. I also added a semi-secret admin page that employs AWS Amplify for Cognito authentication and the ability to upload photos directly from the site. For a while I had been limited to uploading via shell scripts that plugged into the AWS SDK."
+    },
+    {
+      "question": "Why does this site look so lame?",
+      "answer": "Pretty websites are time-consuming to make and styling is not a priority for this one. This is a \"code playground\" of sorts, but CSS is something I need to get paid to think deeply about."
+    }
+  ]
+}
+
