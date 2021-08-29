@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import Heading from '../Heading/Heading';
 import PhotoDisplay from '../Carousel/AllPhotos';
 import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
 import { Faq } from '../FAQ/Faq.jsx';
 import { getGlobalHumidity, getGlobalTemp } from '../../actionCreators/weatherActionCreators';
-import Admin from '../Admin/AdminPage.jsx';
 import {
   BrowserRouter as Router,
   Route,
@@ -14,6 +13,7 @@ import {
 import '../../css/common.css';
 import '../../css/App.css';
 import ReactGa from 'react-ga';
+const Admin = lazy(() => import('../Admin/AdminPage.jsx'));
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +36,9 @@ function App() {
             <Faq exact path='/faq' data-testid='faqs-link'/>
           </Route>
           <Route exact path='/admin'>
-            <Admin/>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Admin/>
+            </Suspense>
           </Route>
         </Switch>
       </Router>
