@@ -5,12 +5,12 @@
     max-height: 9999px;
     max-width: 50%;
     overflow: hidden;
-    transition: max-height 1s cubic-bezier(1, 0, 1, 0);
+    transition: max-height 0.8s cubic-bezier(1, 0, 1, 0);
 }
 
 .expandable-panel__answer.hidden {
     max-height: 0;
-    transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+    transition: max-height 0.8s cubic-bezier(0, 1, 0, 1);
 }
 
 .expandable-panel__question {
@@ -23,7 +23,7 @@
 }
 
 .expandable-panel__question-text {
-    background-color: green;
+    background-color: var(--woob-green);
     border-radius: 5px;
     color: black;
     font-size: 1.5em;
@@ -36,11 +36,14 @@
 .expandable-panel__question-icon {
     background-color: white;
     border-radius: 50%;
-    color: red;
     margin-bottom: auto;
     margin-top: auto;
     max-width: 20px;
     padding: 3px;
+}
+
+.expandable-panel__question-icon:hover {
+    background-color: #ac8989;
 }
 
 .expandable-panel__question-icon:hover {

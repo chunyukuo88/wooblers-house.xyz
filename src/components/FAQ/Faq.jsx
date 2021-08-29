@@ -31,7 +31,7 @@ export const Faq = () => {
 const Content = (allQaPairs) => {
   return allQaPairs.secure.map((qaPair, key) => {
     const { question, answer } = qaPair;
-    const icon = '癫';
+    const icon = '哈';
     return (
       <div data-testid='qa-pair' key={key}>
         <ExpandablePanel {...{question, answer, icon}} />
