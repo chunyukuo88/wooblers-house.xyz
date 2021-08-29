@@ -5,11 +5,7 @@ import Copyright from '../Copyright/Copyright';
 import { useDispatch } from 'react-redux';
 import { Faq } from '../FAQ/Faq.jsx';
 import { getGlobalHumidity, getGlobalTemp } from '../../actionCreators/weatherActionCreators';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../../css/common.css';
 import '../../css/App.css';
 import ReactGa from 'react-ga';
@@ -24,27 +20,31 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div id='app' data-test='component-app'>
+    <div id='app'>
       <Router>
         <Switch>
-          <Route exact path='/'>
-            <div id='heading-wrapper'><Heading /></div>
-            <div id='photodisplay-wrapper'><PhotoDisplay/></div>
-            <div id='copyright-wrapper'><Copyright /></div>
-          </Route>
-          <Route exact path='/faq'>
-            <Faq exact path='/faq' data-testid='faqs-link'/>
-          </Route>
-          <Route exact path='/admin'>
-            <Suspense fallback={<div>Loading...</div>}>
-              <Admin/>
-            </Suspense>
-          </Route>
+          <Route exact path='/' component={MainPage}/>
+          <Route exact path='/faq' component={Faq}/>
+          <Route exact path='/admin' component={AdminPage}/>
         </Switch>
       </Router>
     </div>
   );
 };
+
+const AdminPage = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Admin/>
+  </Suspense>
+);
+
+const MainPage = () => (
+  <>
+    <div id='heading-wrapper'><Heading /></div>
+    <div id='photodisplay-wrapper'><PhotoDisplay/></div>
+    <div id='copyright-wrapper'><Copyright /></div>
+  </>
+);
 
 const dispatchTempAndHumidity = (dispatcher) => {
   dispatcher(getGlobalTemp());
