@@ -1,25 +1,28 @@
 #back-button {
-    color: var(--woob-green);
-    cursor: pointer;
+  color: var(--woob-green);
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .faq-page-container {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #my-signature {
-    stroke-dasharray: 1061;
-    stroke-dashoffset: 1061;
-    animation: sign 4s ease;
-    animation-fill-mode: forwards;
+  stroke-dasharray: 1061;
+  stroke-dashoffset: 1061;
+  animation: sign 4s ease;
+  animation-fill-mode: forwards;
 }
 
 @keyframes sign {
-    to {
-        stroke-dashoffset: 0;
-    }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
