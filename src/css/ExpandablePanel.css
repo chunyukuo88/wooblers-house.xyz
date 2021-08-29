@@ -24,29 +24,48 @@
 }
 
 .expandable-panel__question-text {
-    background-color: var(--woob-green);
-    border-radius: 5px;
+    background: linear-gradient(to right, var(--woob-green), #2d2d2d);
     color: black;
+    border-radius: 5px;
     font-size: 1.5em;
     margin-bottom: auto;
     margin-top: auto;
     max-width: 60vw;
     padding: 3px;
+    transition: 0.5s;
+}
+
+.expandable-panel__question-text:hover {
+    background: linear-gradient(to right, black, #2d2d2d);
+    color: var(--woob-green);
+    transition: 0.5s;
 }
 
 .expandable-panel__question-icon {
-    background-color: white;
+    background-color: black;
     border-radius: 50%;
+    color: var(--woob-green);
     margin-bottom: auto;
     margin-top: auto;
     max-width: 20px;
     padding: 3px;
+    transition: 1s;
 }
 
 .expandable-panel__question-icon:hover {
-    background-color: #ac8989;
+    background-color: var(--woob-green);
+    color: black;
 }
 
 .expandable-panel__question-icon:hover {
     cursor: pointer;
+    transform: rotate(180deg);
+    transition: 1s;
+}
+
+h1 {
+    font-size: 72px;
+    background: -webkit-linear-gradient(var(--woob-green), #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

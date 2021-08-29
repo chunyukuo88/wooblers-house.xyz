@@ -5,18 +5,6 @@
 
 .faq-page-container {
     color: white;
-
-    /*left: 0;*/
-    /*bottom: 0;*/
-    /*right: 0;*/
-    /*top: 0;*/
-
-    /*height: calc(10vw + 10vh);*/
-    /*width: calc(10vw + 10vh);*/
-
-    /*margin: auto;*/
-    /*position: absolute;*/
-
     display: flex;
     flex-direction: column;
     justify-content: center;

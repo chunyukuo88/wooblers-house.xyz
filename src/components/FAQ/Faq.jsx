@@ -24,6 +24,7 @@ export const Faq = () => {
          id='back-button'
          onClick={()=>backButtonHandler(dispatch, history)}
       >{ staticStrings.faqRouteToMain[language] }</p>
+      <h2>Thanks for stopping by!</h2>
       <p><MySignature/></p>
     </div>
   );
