@@ -1,8 +1,8 @@
 import ReactGa from 'react-ga';
 
-export const fireGoogleAnalyticsEvent = (categoryStr, actionStr) => {
+export const fireGoogleAnalyticsEvent = (category, action) => {
   ReactGa.event({
-    category: categoryStr,
-    action: actionStr,
+    category,
+    action,
   });
 };

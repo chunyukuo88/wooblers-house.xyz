@@ -11,7 +11,7 @@ import {
 const { navigation, localization } = reactGaStrings;
 
 export const faqButtonHandler = (dispatch, history) => {
-  const { category, action } = navigation.toFaqPageFromMainPage;
+  const { category, action } = navigation.toFaqPage;
   fireGoogleAnalyticsEvent(category, action);
   dispatch(goToPage(routes.faq, history));
 };
