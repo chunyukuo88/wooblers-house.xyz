@@ -2,13 +2,12 @@ import { Faq } from '../Faq.jsx';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { backButtonHandler } from '../utils';
 import Root from '../../../Root';
-import faqContent from '../faqContent.js';
-
+import { allQaPairs } from '../faqContent.js';
 
 jest.mock('../utils');
 
 const initialState = { language: 'english', };
-const numberOfFaqs = faqContent.secure.length;
+const numberOfFaqs = allQaPairs.secure.length;
 
 describe('Faq()', ()=>{
   it('It renders the number of Q&A pairs properly.', ()=>{
@@ -17,9 +16,9 @@ describe('Faq()', ()=>{
         <Faq/>
       </Root>
     );
-    const faqContent = screen.getAllByTestId('qa-pair');
+    const allQaPairs = screen.getAllByTestId('qa-pair');
 
-    expect(faqContent.length).toEqual(numberOfFaqs);
+    expect(allQaPairs.length).toEqual(numberOfFaqs);
   });
   describe('WHEN: The user clicks the button to go back to the main page,', ()=>{
     it('THEN: The handler that updates global state is invoked.', ()=>{
