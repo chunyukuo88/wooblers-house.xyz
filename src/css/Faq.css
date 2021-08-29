@@ -3,25 +3,6 @@
     cursor: pointer;
 }
 
-.expandable-panel__question {
-    display: grid;
-    grid-template-columns: 8fr 1fr;
-    max-width: 80vw;
-    padding: 3px;
-    margin: auto;
-}
-
-.expandable-panel__question-text {
-    background-color: green;
-    color: black;
-}
-
-.expandable-panel__question-icon {
-    background-color: white;
-    color: red;
-}
-
-
 .faq-page-container {
     color: white;
 
