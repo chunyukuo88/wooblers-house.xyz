@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import TemplateComponent from 'react-mustache-template-component';
+import { templateVariables } from './templateVariables';
 import '../../css/ExpandablePanel.css';
 
 export const ExpandablePanel = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const { question, answer, icon } = props;
 
+  const newAnswer = `<div>${answer}</div>`
   const toggleIsOpen = () => setIsOpen(!isOpen);
 
   return (
@@ -19,10 +22,8 @@ export const ExpandablePanel = (props) => {
           {icon}
         </i>
       </div>
-
-
       <div data-testid='answer' className={`expandable-panel__answer ${visible(isOpen)}`}>
-        {answer}
+        <TemplateComponent template={newAnswer} data={templateVariables} />
       </div>
     </section>
   );
