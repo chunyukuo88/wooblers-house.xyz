@@ -42,11 +42,11 @@ describe('utils.js', ()=>{
       it('THEN: The action is sent to GA via ReactGa.', ()=>{
         const language = 'some language';
         const dispatch = jest.fn();
-        const categoryStr = 'Click - Localization';
-        const actionStr = 'User switched language.';
+        const category = 'Click - Localization';
+        const action = 'User switched language.';
         locButtonHandler(language, dispatch);
 
-        expect(fireGoogleAnalyticsEvent).toHaveBeenCalledWith(categoryStr, actionStr);
+        expect(fireGoogleAnalyticsEvent).toHaveBeenCalledWith(category, action);
       });
       describe('AND: The language is set to "russian", ', ()=>{
         it('THEN: The action to switch to English is dispatched.', ()=>{
