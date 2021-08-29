@@ -5,7 +5,7 @@ import { backButtonHandler } from './utils';
 import '../../css/Faq.css';
 import { useHistory } from 'react-router-dom';
 import { ReactComponent as MySignature } from './alex_signature.svg';
-import allQaPairs from './faqContent.json';
+import { allQaPairs } from './faqContent.js';
 import { ExpandablePanel } from './ExpandablePanel.jsx';
 
 export const Faq = () => {

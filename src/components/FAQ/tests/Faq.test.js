@@ -2,7 +2,7 @@ import { Faq } from '../Faq.jsx';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { backButtonHandler } from '../utils';
 import Root from '../../../Root';
-import faqContent from '../faqContent.json';
+import faqContent from '../faqContent.js';
 
 
 jest.mock('../utils');
