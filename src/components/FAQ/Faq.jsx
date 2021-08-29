@@ -16,6 +16,7 @@ export const Faq = () => {
   return (
     <div  data-testid='faq-page-container'
           className={`${language} faq-page-container`}>
+      <h1>FAQ</h1>
       <div data-testid='faq-content-container'>
         <Content {...allQaPairs}/>
       </div>
