@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import { useSelector } from 'react-redux';
 import { getDegreesC, getDegreesF } from './utils';
 import staticStrings from '../../StaticStrings';
@@ -11,7 +11,7 @@ export const LocalizedWeatherDisplay = (props) => {
 };
 
 const addLanguageToProps = (props, language) => {
-  const updatedProps = _.cloneDeep(props);
+  const updatedProps = cloneDeep(props);
   updatedProps.language = language;
   return updatedProps;
 };
