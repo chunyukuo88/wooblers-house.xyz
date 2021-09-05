@@ -4,24 +4,32 @@
   margin: 100px;
 }
 
-.coming-soon {
-  left: 0;
-  bottom: 0;
-  right: 0;
-  top: 0;
-
-  height: calc(10vw + 10vh);
-  width: calc(10vw + 10vh);
-
-  margin: auto;
-  position: absolute;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#img-input {
+  border: 4mm ridge rgba(170, 50, 220, .6);
+  border-radius: 5px;
+  font-size: 3em;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
 .logged-in-section {
+  color: gray;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 300px;
+}
+
+#upload-button {
+  background-color: var(--woob-green);
+  color: yellow;
+  border-radius: 5px;
+  font-size: 3em;
+  padding: 50px;
+  transition: 1s;
+}
+
+#upload-button:hover {
+  background-color: black;
   color: white;
+  transition: 1s;
 }

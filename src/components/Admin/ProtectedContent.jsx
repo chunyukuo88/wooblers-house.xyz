@@ -16,12 +16,16 @@ export const ProtectedContent = () => {
   return (
     <>
       <AmplifySignOut/>
-      <section data-testid='logged-in-section' className='logged-in-section english'>
-        <h1 >You are logged in</h1>
-        <input type='file' onChange={(e) => fileSelectionHandler(e)}/>
-        <button onClick={() => fileUploadHandler(selectedFile)}>
-          Upload image
-        </button>
+      <section data-testid='logged-in-section' className='logged-in-section'>
+        <input id='img-input'
+               className='english'
+               type='file'
+               onChange={(e) => fileSelectionHandler(e)}/>
+        <div className='english'
+             id='upload-button'
+             onClick={() => fileUploadHandler(selectedFile)}>
+          send it
+        </div>
       </section>
       <div id='back-button'
            className='english'
