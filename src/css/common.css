@@ -1,8 +1,10 @@
 :root {
-  --woob-green: #84e347;
-  --link-color: fuchsia;
+  --amplify-primary-color: var(--woob-green);
   --hover-transition: 0.5s;
+  --link-color: fuchsia;
+  --woob-green: #84e347;
 }
+
 
 * {
   user-select: none;
