@@ -14,10 +14,10 @@ const initialState = { language: 'english' };
 describe('Display()', () => {
   beforeEach(() => {
     props.photosObject.Contents = [
-      { photo: 0 },
-      { photo: 1 },
-      { photo: 2 },
-      { photo: 3 },
+      { Key: '0' },
+      { Key: '1' },
+      { Key: '2' },
+      { Key: '3' },
     ];
   });
   describe('GIVEN: The component has loaded,', () => {
@@ -25,9 +25,7 @@ describe('Display()', () => {
       render(<Display {...props} />);
       const displayedImage = screen.getByTestId('photo');
 
-      expect(displayedImage).toHaveClass(
-        'www.mock-photo-source.com/1 (Custom)-min.JPG'
-      );
+      expect(displayedImage).toHaveClass('www.mock-photo-source.com/0');
     });
   });
   describe('WHEN: The user clicks the right arrow', () => {
@@ -38,9 +36,7 @@ describe('Display()', () => {
       fireEvent.click(rightArrow);
       const displayedImage = screen.getByTestId('photo');
 
-      expect(displayedImage).toHaveClass(
-        'www.mock-photo-source.com/2 (Custom)-min.JPG'
-      );
+      expect(displayedImage).toHaveClass('www.mock-photo-source.com/1');
     });
   });
   describe('WHEN: The user clicks the left arrow after viewing the second photo,', () => {
@@ -51,23 +47,17 @@ describe('Display()', () => {
 
       let displayedImage = screen.getByTestId('photo');
 
-      expect(displayedImage).toHaveClass(
-        'www.mock-photo-source.com/1 (Custom)-min.JPG'
-      );
+      expect(displayedImage).toHaveClass('www.mock-photo-source.com/0');
 
       fireEvent.click(rightArrow);
       displayedImage = screen.getByTestId('photo');
 
-      expect(displayedImage).toHaveClass(
-        'www.mock-photo-source.com/2 (Custom)-min.JPG'
-      );
+      expect(displayedImage).toHaveClass('www.mock-photo-source.com/1');
 
       fireEvent.click(leftArrow);
       displayedImage = screen.getByTestId('photo');
 
-      expect(displayedImage).toHaveClass(
-        'www.mock-photo-source.com/1 (Custom)-min.JPG'
-      );
+      expect(displayedImage).toHaveClass('www.mock-photo-source.com/0');
     });
   });
   describe('WHEN: The user clicks the left arrow while viewing the first photo', () => {
@@ -78,9 +68,7 @@ describe('Display()', () => {
       fireEvent.click(leftArrow);
       const displayedImage = screen.getByTestId('photo');
 
-      expect(displayedImage).toHaveClass(
-        'www.mock-photo-source.com/4 (Custom)-min.JPG'
-      );
+      expect(displayedImage).toHaveClass('www.mock-photo-source.com/3');
     });
   });
   describe('WHEN: The user clicks the right arrow and there are no more photos', () => {
@@ -93,16 +81,12 @@ describe('Display()', () => {
       fireEvent.click(rightArrow);
       let displayedImage = screen.getByTestId('photo');
 
-      expect(displayedImage).toHaveClass(
-        'www.mock-photo-source.com/4 (Custom)-min.JPG'
-      );
+      expect(displayedImage).toHaveClass('www.mock-photo-source.com/3');
 
       fireEvent.click(rightArrow);
       displayedImage = screen.getByTestId('photo');
 
-      expect(displayedImage).toHaveClass(
-        'www.mock-photo-source.com/1 (Custom)-min.JPG'
-      );
+      expect(displayedImage).toHaveClass('www.mock-photo-source.com/0');
     });
   });
   describe('WHEN: There are no photos, ', () => {

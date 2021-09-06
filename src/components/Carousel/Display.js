@@ -22,12 +22,16 @@ const Content = ({ photosObject, currentPhotoNumber }) =>
     : (<div className='displayed-photo'><DisplayedPhoto {...{photosObject, currentPhotoNumber}} /></div>);
 
 const prevPhoto = (currentPhotoNumber, setCurrent, photosObject) => {
-  if (currentPhotoNumber === 0) setCurrent(numberOfPhotos(photosObject) - 1);
+  if (currentPhotoNumber === 0) {
+    setCurrent(numberOfPhotos(photosObject) - 1);
+  }
   else setCurrent(currentPhotoNumber - 1);
 };
 
 const nextPhoto = (currentPhotoNumber, setCurrent, photosObject) => {
-  if (currentPhotoNumber === numberOfPhotos(photosObject) - 1) setCurrent(0);
+  if (currentPhotoNumber === numberOfPhotos(photosObject) - 1) {
+    setCurrent(0);
+  }
   else setCurrent(currentPhotoNumber + 1);
 };
 
@@ -47,7 +51,7 @@ const Arrow = ({ currentPhotoNumber, setCurrent, photosObject, isLeft = true }) 
 };
 
 const NoPhotosMessage = () => {
-  const language = useSelector((state) => state.language);
+  const language = useSelector(({language}) => language);
   return (
     <div
       className={language}
@@ -75,7 +79,6 @@ const DisplayedPhoto = ({photosObject, currentPhotoNumber}) => {
 const numberOfPhotos = (photosObject) => photosObject?.Contents.length || 0;
 
 const getPhotoUrl = (photosObject, currentPhotoNumber) => {
-  const key = photosObject.Contents[currentPhotoNumber + 1]['Key'];
-  console.log(key)
+  const key = photosObject.Contents[currentPhotoNumber]?.['Key'];
   return `${process.env.REACT_APP_FOTO_SOURCE}/${key}`;
 }
