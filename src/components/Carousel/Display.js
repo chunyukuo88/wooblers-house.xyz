@@ -7,7 +7,6 @@ import { ReactComponent as HandDrawnArrow } from './arrow_button.svg';
 export const Display = ({ photosObject }) => {
   const [currentPhotoNumber, setCurrent] = React.useState(0);
   const isLeft = false;
-  console.log('object: ', photosObject);
   return (
     <div id='display-wrapper'>
       <Arrow {...{ currentPhotoNumber, setCurrent, photosObject }} />
@@ -20,7 +19,7 @@ export const Display = ({ photosObject }) => {
 const Content = ({ photosObject, currentPhotoNumber }) =>
   numberOfPhotos(photosObject) === 0
     ? (<NoPhotosMessage />)
-    : (<div className='displayed-photo'><DisplayedPhoto photo={currentPhotoNumber} /></div>);
+    : (<div className='displayed-photo'><DisplayedPhoto {...{photosObject, currentPhotoNumber}} /></div>);
 
 const prevPhoto = (currentPhotoNumber, setCurrent, photosObject) => {
   if (currentPhotoNumber === 0) setCurrent(numberOfPhotos(photosObject) - 1);
@@ -60,13 +59,13 @@ const NoPhotosMessage = () => {
   );
 };
 
-const DisplayedPhoto = (photoObject) => {
-  const photoUrl = getPhotoUrl(photoObject.photo);
+const DisplayedPhoto = ({photosObject, currentPhotoNumber}) => {
+  const photoUrl = getPhotoUrl(photosObject, currentPhotoNumber);
   return (
     <img
       className={photoUrl}
       data-testid='photo'
-      key={photoObject}
+      key={currentPhotoNumber}
       src={photoUrl}
       alt='test'
     />
@@ -75,4 +74,8 @@ const DisplayedPhoto = (photoObject) => {
 
 const numberOfPhotos = (photosObject) => photosObject?.Contents.length || 0;
 
-const getPhotoUrl = (key) => `${process.env.REACT_APP_FOTO_SOURCE}/${key + 1} (Custom)-min.JPG`;
+const getPhotoUrl = (photosObject, currentPhotoNumber) => {
+  const key = photosObject.Contents[currentPhotoNumber + 1]['Key'];
+  console.log(key)
+  return `${process.env.REACT_APP_FOTO_SOURCE}/${key}`;
+}
