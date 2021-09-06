@@ -87,7 +87,7 @@
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "build": "node scripts/build.js",
-    "coverage": "jest --coverage --colors --silent",
+    "c": "jest --coverage --colors --silent",
     "start": "node scripts/start.js",
     "test": "node scripts/test.js"
   },

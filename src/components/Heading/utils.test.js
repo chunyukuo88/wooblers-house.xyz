@@ -28,7 +28,7 @@ describe('utils.js', ()=>{
       });
       it('THEN: It dispatches the event to GA via fireGoogleAnalyticsEvent().', ()=>{
         fireGoogleAnalyticsEvent.mockImplementation(jest.fn());
-        const categoryStr = 'Click - Navigation';
+        const categoryStr = 'Navigation';
         const actionStr = 'User navigated to FAQ page.';
 
         faqButtonHandler(dispatch, history);
@@ -42,7 +42,7 @@ describe('utils.js', ()=>{
       it('THEN: The action is sent to GA via ReactGa.', ()=>{
         const language = 'some language';
         const dispatch = jest.fn();
-        const category = 'Click - Localization';
+        const category = 'Localization';
         const action = 'User switched language.';
         locButtonHandler(language, dispatch);
 

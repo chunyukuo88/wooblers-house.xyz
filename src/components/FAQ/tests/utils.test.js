@@ -23,7 +23,7 @@ describe('utils.js', ()=>{
       });
       it('THEN: The event is dispatched to Google Analytics via fireGoogleAnalyticsEvent().', ()=>{
         fireGoogleAnalyticsEvent.mockImplementation(jest.fn());
-        const categoryStr = 'Click - Navigation';
+        const categoryStr = 'Navigation';
         const actionStr = 'User navigated to main page from FAQ page.';
 
         backButtonHandler(dispatch, history);
