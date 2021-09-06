@@ -1,8 +1,8 @@
 :root {
-  --amplify-primary-color: var(--woob-green);
   --hover-transition: 0.5s;
   --link-color: fuchsia;
-  --woob-green: #3b691e;
+  --woob-green: #7cdd41;
+  --amplify-primary-color: var(--woob-green);
 }
 
 

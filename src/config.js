@@ -4,10 +4,6 @@ export const amplifyConfig = {
     REGION: 'us-east-1',
     BUCKET: 'woobler-photos',
   },
-  // apiGateway: {
-  //   REGION: '',
-  //   URL: '',
-  // },
   cognito: {
     REGION: 'us-east-1',
     USER_POOL_ID: 'us-east-1_uEeZqOq9b',

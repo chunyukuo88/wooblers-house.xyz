@@ -7,19 +7,24 @@ import { routes } from '../../../routes';
 jest.mock('aws-amplify');
 jest.mock('../../../actionCreators/navActionCreators');
 
+const { messages } = utils;
+
 describe('utils.js', ()=>{
+  beforeEach(()=>{
+    jest.clearAllMocks();
+  });
   describe('fileUploadHandler()', ()=>{
     describe('GIVEN: A valid file object,', ()=>{
       describe('WHEN: This function is invoked,', ()=>{
         const file = {};
         file.name = 'test.jpg';
-        awsAmplify.Storage.put.mockImplementation(jest.fn());
 
         it('THEN: The file is uploaded to S3,', async ()=>{
+          awsAmplify.Storage.put.mockImplementation(() => ({key: 'fubar'}));
           const expectedConfig = {};
           expectedConfig.contentType = 'image/JPG';
           expectedConfig.customPrefix = {
-            public: ''
+            public: '',
           };
 
           await utils.fileUploadHandler(file);
@@ -27,13 +32,14 @@ describe('utils.js', ()=>{
           expect(awsAmplify.Storage.put).toHaveBeenCalledWith(file.name, file, expectedConfig);
         });
         it('AND: it then triggers an alert signifying that the upload was successful.', async ()=>{
+          awsAmplify.Storage.put.mockImplementation(() => ({key: 'fubar'}));
           const spy = jest.spyOn(window, 'alert').mockImplementation(jest.fn());
           const file = {};
           file.name = 'test.jpg';
 
           await utils.fileUploadHandler(file);
 
-          expect(spy).toHaveBeenCalledWith(utils.uploadSuccessful);
+          expect(spy).toHaveBeenCalledWith(expect.any(String));
         });
       });
     });
@@ -44,7 +50,7 @@ describe('utils.js', ()=>{
 
           await utils.fileUploadHandler();
 
-          expect(spy).toHaveBeenCalledWith(utils.noFileGiven);
+          expect(spy).toHaveBeenCalledWith(messages.noFileGiven);
         });
       });
     describe('WHEN: the file passed in is too big', ()=>{
