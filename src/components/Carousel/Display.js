@@ -7,6 +7,7 @@ import { ReactComponent as HandDrawnArrow } from './arrow_button.svg';
 export const Display = ({ photosObject }) => {
   const [currentPhotoNumber, setCurrent] = React.useState(0);
   const isLeft = false;
+  console.log('object: ', photosObject);
   return (
     <div id='display-wrapper'>
       <Arrow {...{ currentPhotoNumber, setCurrent, photosObject }} />
