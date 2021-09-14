@@ -1,6 +1,7 @@
 .arrow-wrapper {
   cursor: pointer;
   margin-top: 20px;
+  z-index: 100000;
 }
 
 #display-wrapper {
