@@ -1,9 +1,9 @@
-import React from 'react';
-import Amplify from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import '../../css/Admin.css';
-import { amplifyConfig } from '../../config';
-import { ProtectedContent } from './ProtectedContent.jsx';
+import React from "react";
+import "../../css/Admin.css";
+import Amplify from "aws-amplify";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import { amplifyConfig } from "../../config";
+import { ProtectedContent } from "./ProtectedContent.jsx";
 
 Amplify.configure({
   Auth: {
@@ -24,7 +24,7 @@ Amplify.configure({
 
 export function AdminPage() {
   return (
-    <div data-testid='protectedContent'>
+    <div data-testid="protectedContent">
       <ProtectedContent />
     </div>
   );

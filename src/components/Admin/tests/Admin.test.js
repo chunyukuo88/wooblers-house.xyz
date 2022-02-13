@@ -1,14 +1,17 @@
-import AdminPage from '../AdminPage.jsx';
-import { render } from '@testing-library/react';
+import { AdminPage } from "../AdminPage.jsx";
+import { render, screen } from "@testing-library/react";
+import Root from "../../../Root";
 
-describe('AdminPage.jsx', ()=>{
-  describe('GIVEN: The component loads, ', ()=>{
-    it('THEN: The component loads, ', ()=>{
-      render(<AdminPage/>);
+describe("Layout", () => {
+  test("The component loads without problems. ", () => {
+    render(
+      <Root>
+        <AdminPage />
+      </Root>
+    );
 
-      const amplifyContainer = document.querySelector('amplify-container');
+    const amplifyContainer = screen.getByTestId("protectedContent");
 
-      expect(amplifyContainer).toBeDefined();
-    });
+    expect(amplifyContainer).toBeDefined();
   });
 });
