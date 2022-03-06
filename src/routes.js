@@ -1,5 +1,4 @@
 export const routes = {
-  index: '/',
-  faq: 'faq',
-  admin: 'admin'
-}
+  index: "/",
+  faq: "faq",
+};
