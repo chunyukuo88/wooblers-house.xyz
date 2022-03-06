@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from "react";
+import React, { useEffect } from "react";
 import Heading from "../Heading/Heading";
 import PhotoDisplay from "../Carousel/AllPhotos";
 import Copyright from "../Copyright/Copyright";
