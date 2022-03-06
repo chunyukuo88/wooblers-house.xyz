@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from "react";
+import React, { useEffect } from "react";
 import Heading from "../Heading/Heading";
 import PhotoDisplay from "../Carousel/AllPhotos";
 import Copyright from "../Copyright/Copyright";
@@ -12,7 +12,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "../../css/common.css";
 import "../../css/App.css";
 import ReactGa from "react-ga";
-const Admin = lazy(() => import("../Admin/AdminPage.jsx"));
 
 function App() {
   const dispatch = useDispatch();
@@ -28,18 +27,11 @@ function App() {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/faq" component={Faq} />
-          <Route exact path="/admin" component={AdminPage} />
         </Switch>
       </Router>
     </div>
   );
 }
-
-const AdminPage = () => (
-  <Suspense fallback={<div>Loading...</div>}>
-    <Admin />
-  </Suspense>
-);
 
 const MainPage = () => (
   <>
