@@ -9,6 +9,7 @@ export const s3 = new AWS.S3({
   apiVersion: "2006-03-01",
 });
 const albumBucketName = "woobler-photos";
+
 export const bucketParams = {
   Bucket: albumBucketName,
 };
