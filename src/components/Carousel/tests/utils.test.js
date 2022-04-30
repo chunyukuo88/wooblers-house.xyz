@@ -1,10 +1,6 @@
 import { getPhotos } from "../utils";
-// import AWS from "aws-sdk-mock";
 
 describe("utils.js", () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
   describe("getPhotos()", () => {
     describe("WHEN: Invoked,", () => {
       test("THEN: The function returns photos from the S3 bucket.", () => {
