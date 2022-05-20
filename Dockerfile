@@ -2,9 +2,9 @@ FROM node:14.15.4-alpine
 
 WORKDIR /app
 
-RUN npm i
-
 COPY . ./
+
+RUN npm i
 
 EXPOSE 1234
 
