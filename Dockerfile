@@ -1,8 +1,10 @@
 FROM node:14.15.4-alpine
 
-WORKDIR /app
+ENV APP_HOME /app
 
-COPY . ./
+WORKDIR $APP_HOME 
+
+COPY . $APP_HOME 
 
 RUN npm i
 
