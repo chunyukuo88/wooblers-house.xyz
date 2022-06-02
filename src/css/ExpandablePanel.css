@@ -3,7 +3,7 @@
   font-size: 1.5em;
   height: auto;
   margin: auto;
-  max-height: 9999px;
+  max-height: 624.9375rem;
   max-width: 50%;
   overflow: hidden;
   transition: max-height 0.8s cubic-bezier(1, 0, 1, 0);
@@ -20,18 +20,18 @@
   margin: auto;
   max-width: 60vw;
   outline: none;
-  padding: 3px;
+  padding: 0.1875rem;
 }
 
 .expandable-panel__question-text {
   background: linear-gradient(to right, var(--woob-green), #2d2d2d);
   color: black;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   font-size: 1.5em;
   margin-bottom: auto;
   margin-top: auto;
   max-width: 60vw;
-  padding: 3px;
+  padding: 0.1875rem;
   transition: 0.5s;
 }
 
@@ -47,8 +47,8 @@
   color: var(--woob-green);
   margin-bottom: auto;
   margin-top: auto;
-  max-width: 20px;
-  padding: 3px;
+  max-width: 1.25rem;
+  padding: 0.1875rem;
   transition: 1s;
 }
 
@@ -64,14 +64,13 @@
 }
 
 h1 {
-  font-size: 72px;
+  font-size: 4.5rem;
   background: -webkit-linear-gradient(var(--woob-green), #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 h2 {
-  /* font-size: 72px; */
   background: -webkit-linear-gradient(#333, var(--woob-green));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

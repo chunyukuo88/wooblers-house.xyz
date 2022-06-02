@@ -17,7 +17,7 @@ a {
 }
 
 a:hover {
-  text-shadow: 1px 1px 8px var(--woob-green);
+  text-shadow: 0.0625rem 0.0625rem 0.5rem var(--woob-green);
   transition: var(--hover-transition);
 }
 

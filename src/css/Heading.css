@@ -1,19 +1,18 @@
 #heading {
   background-image: linear-gradient(#151515, #2d2d2d);
-  /*border-radius: 10px;*/
   display: grid;
   grid-template-rows: auto auto;
 }
 
 #heading__title {
-  height: 70px;
+  height: 4.375rem;
 }
 
 #heading__nav-items {
   display: grid;
   grid-row: 2 / 2;
   grid-template-columns: repeat(4, 1fr);
-  height: 30px;
+  height: 1.875rem;
 }
 
 #nav-items__language {
@@ -37,9 +36,9 @@
 }
 
 .title-array {
-  border: 8px;
-  margin: 8px;
-  padding: 8px;
+  border: 0.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
 }
 
 .welcome,
@@ -47,7 +46,7 @@
 .localization,
 .faq {
   cursor: pointer;
-  padding: 4px;
+  padding: 0.25rem;
   transition: 1s;
   display: flex;
   justify-content: center;
@@ -63,14 +62,14 @@
 
 @media (max-width: 600px) {
   #heading__title {
-    height: 50px;
+    height: 3.125rem;
   }
 
   #heading__nav-items {
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    height: 30px;
+    height: 1.875rem;
   }
 
   #nav-items__language {
