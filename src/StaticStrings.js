@@ -21,11 +21,6 @@ const staticStrings = {
     russian: "ЧАВО",
     chinese: "常見問題",
   },
-  faqComingSoon: {
-    english: "This page is coming soon!",
-    russian: "Страница часто задаваемых вопросов скоро появится!",
-    chinese: "常見問題页八月出爐！",
-  },
   faqRouteToMain: {
     english: "Home",
     russian: "Вернуться на главную",

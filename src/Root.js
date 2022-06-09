@@ -11,7 +11,6 @@ import reducer from '../src/reducers'
  * */
 
 const theInitialState = {
-  language: 'english',
   globalTemp: 45,
   globalHumidity: 50,
   globalNavLocation: '/',

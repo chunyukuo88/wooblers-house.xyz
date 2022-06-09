@@ -1,17 +1,18 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import staticStrings from '../../StaticStrings';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import Title from '../Title/Title';
 import { Welcome } from '../Welcome/Welcome';
 import { useHistory } from 'react-router-dom';
 import { faqButtonHandler, locButtonHandler } from './utils';
+import { useTranslation } from "react-i18next";
 import '../../css/Heading.css';
 
 export default function Heading(){
   const dispatch = useDispatch();
   const history = useHistory();
-  const language = useSelector((state) => state.language);
+  const { t } = useTranslation();
 
   return (
     <section id='heading'>

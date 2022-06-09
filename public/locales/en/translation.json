@@ -1,0 +1,47 @@
+{
+  "code": {
+    "1": "Github"
+  },
+  "copyright": {
+    "1": "Copyright Alex Gochenour "
+  },
+  "errorLoadingPhotos": {
+    "1": "There was an error loading the photos. Please contact the webmaster."
+  },
+  "faqButton": {
+    "1": "FAQ"
+  },
+  "faqRouteToMain": {
+    "1": "Home"
+  },
+  "languageLabel": {
+    "1": "English"
+  },
+  "loadingMessage": {
+    "1": "Loading..."
+  },
+  "modalCoverage": {
+    "1": "To achieve 100% test coverage, I used Enzyme at first but later switched to React Testing Library."
+  },
+  "modalHeading": {
+    "1": "...to my trilingual photo album."
+  },
+  "modalSummary": {
+    "1": "This is a test-driven React/Redux project. Try it out and let me know what you think!"
+  },
+  "titleStrings": {
+    "1": "Woobler's House"
+  },
+  "weatherHumidity": {
+    "1": "Humidity: "
+  },
+  "weatherLabels": {
+    "1": "W'ville Weather"
+  },
+  "weatherTemp": {
+    "1": "Temperature: "
+  },
+  "welcome": {
+    "1": "Welcome"
+  }
+}

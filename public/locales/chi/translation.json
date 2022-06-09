@@ -1,0 +1,47 @@
+{
+  "code": {
+    "1": "代碼"
+  },
+  "copyright": {
+    "1": "©Alex Gochenour集团 "
+  },
+  "errorLoadingPhotos": {
+    "1": "下載圖片失敗，請聯繫郭磊"
+  },
+  "faqButton": {
+    "1": "常見問題"
+  },
+  "faqRouteToMain": {
+    "1": "主頁"
+  },
+  "languageLabel": {
+    "1": "正體中文"
+  },
+  "loadingMessage": {
+    "1": "加載中，請稍候"
+  },
+  "modalCoverage": {
+    "1": "為了達成百分百測試覆蓋率，我用了Enzyme 與 React Testing Library。"
+  },
+  "modalHeading": {
+    "1": "歡迎訪問小巫之屋！"
+  },
+  "modalSummary": {
+    "1": "製作本站，我用了REACT與REDUX。"
+  },
+  "titleStrings": {
+    "1": "小巫之屋"
+  },
+  "weatherHumidity": {
+    "1": "濕度："
+  },
+  "weatherLabels": {
+    "1": "韋斯特維爾天氣"
+  },
+  "weatherTemp": {
+    "1": "溫度："
+  },
+  "welcome": {
+    "1": "簡介"
+  }
+}
