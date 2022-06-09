@@ -1,21 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { LocalizedTitle } from './LocalizedTitle';
 import staticStrings from '../../StaticStrings';
 import '../../css/Title.css';
 
-const Title = () => {
-  const selectedLang = useSelector((state) => state.language);
-  const props = { language: selectedLang };
-  document.title = staticStrings.titleStrings[selectedLang];
-
-  return (
-    <div  id='title-display-container'
-          data-testid='title'>
-      <TitleBasedOnLanguage id='title' {...props} />
-    </div>
-  );
-};
+const Title = () => (
+  <div  id='title-display-container' data-testid='title'>
+    <TitleBasedOnLanguage id='title'/>
+  </div>
+);
 
 const _buildPropsForLocalizedTitle = (language) => {
   return {
