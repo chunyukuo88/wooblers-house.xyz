@@ -4,9 +4,11 @@ ENV APP_HOME /app
 
 WORKDIR $APP_HOME 
 
-COPY . $APP_HOME 
+COPY package.json $APP_HOME
 
 RUN npm i
+
+COPY . $APP_HOME
 
 EXPOSE 1234
 
