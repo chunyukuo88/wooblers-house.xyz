@@ -1,33 +1,27 @@
 import { Faq } from '../Faq.jsx';
-import { render, screen, fireEvent } from '@testing-library/react';
+import {render, screen, fireEvent, cleanup} from '@testing-library/react';
 import { backButtonHandler } from '../utils';
 import Root from '../../../Root';
 import { allQaPairs } from '../faqContent.js';
+import userEvent from "@testing-library/user-event";
 
 jest.mock('../utils');
 
 const initialState = { language: 'english', };
-const numberOfFaqs = allQaPairs.secure.length;
+// const numberOfFaqs = allQaPairs.secure.length;
 
+beforeEach(()=>{
+  cleanup();
+  backButtonHandler.mockImplementation(jest.fn());
+  render(
+    <Root initialState={initialState}>
+      <Faq/>
+    </Root>
+  );
+});
 describe('Faq()', ()=>{
-  it('It renders the number of Q&A pairs properly.', ()=>{
-    render(
-      <Root initialState={initialState}>
-        <Faq/>
-      </Root>
-    );
-    const allQaPairs = screen.getAllByTestId('qa-pair');
-
-    expect(allQaPairs.length).toEqual(numberOfFaqs);
-  });
   describe('WHEN: The user clicks the button to go back to the main page,', ()=>{
     it('THEN: The handler that updates global state is invoked.', ()=>{
-      backButtonHandler.mockImplementation(jest.fn());
-      render(
-        <Root initialState={initialState}>
-          <Faq/>
-        </Root>
-      );
       const back = screen.getByTestId('back-button');
 
       fireEvent.click(back);
@@ -36,8 +30,25 @@ describe('Faq()', ()=>{
     });
   });
   describe('WHEN: The user clicks on one icon, then immediately clicks on a second icon,', ()=>{
-    it('THEN: the second dropdown opens,', ()=>{
+    it('THEN: the second dropdown opens,', async ()=>{
+      const qaPairs = screen.getAllByTestId('qa-pair');
+
+      const icons = screen.getAllByTestId('icon');
+      const answers = screen.getAllByTestId('answer');
+
+      answers.forEach((answer) => {
+        expect(answer).toHaveClass('expandable-panel__answer hidden');
+      });
+
+      await userEvent.click(icons[0]);
+
+      expect(await answers[0]).not.toHaveClass('expandable-panel__answer hidden');
       //
+      // expect(answer).toHaveClass('expandable-panel__answer ');
+      //
+      // fireEvent.click(icon);
+      //
+      // expect(answer).toHaveClass('expandable-panel__answer hidden');
     });
     it('AND: the first dropdown closes.', ()=>{
       //

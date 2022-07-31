@@ -9,11 +9,11 @@ export const allQaPairs = {
     },
     {
       question: "Who is Woobler",
-      answer: `<p>The little guy who breaks stuff.</p>`,
+      answer: '<p>The little guy who breaks stuff.</p>',
     },
     {
       question: "I want captions",
-      answer: `<p>Here, have an emoji instead: &nbsp 🤷</p>`,
+      answer: '<p>Here, have an emoji instead: &nbsp 🤷</p>',
     },
     {
       question: "Why did you do this",
