@@ -14,19 +14,19 @@ export const Faq = () => {
   const language = useSelector((state) => state.language);
 
   return (
-    <div  data-testid='faq-page-container'
-          className={`${language} faq-page-container`}>
+    <section  data-testid='faq-page-container' className={`${language} faq-page-container`}>
       <h1>FAQ</h1>
       <div data-testid='faq-content-container'>
         <Content {...allQaPairs}/>
       </div>
       <p data-testid='back-button'
          id='back-button'
+         role='button'
          onClick={()=>backButtonHandler(dispatch, history)}
       >{ staticStrings.faqRouteToMain[language] }</p>
       <h2>Thanks for stopping by!</h2>
-      <p><MySignature/></p>
-    </div>
+      <MySignature/>
+    </section>
   );
 };
 

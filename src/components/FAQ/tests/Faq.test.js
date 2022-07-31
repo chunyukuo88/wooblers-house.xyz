@@ -2,7 +2,6 @@ import { Faq } from '../Faq.jsx';
 import {render, screen, fireEvent, cleanup} from '@testing-library/react';
 import { backButtonHandler } from '../utils';
 import Root from '../../../Root';
-import { allQaPairs } from '../faqContent.js';
 import userEvent from "@testing-library/user-event";
 
 jest.mock('../utils');
@@ -13,7 +12,7 @@ const initialState = { language: 'english', };
 beforeEach(()=>{
   cleanup();
   backButtonHandler.mockImplementation(jest.fn());
-  render(
+  const { debug } = render(
     <Root initialState={initialState}>
       <Faq/>
     </Root>
@@ -31,14 +30,10 @@ describe('Faq()', ()=>{
   });
   describe('WHEN: The user clicks on one icon, then immediately clicks on a second icon,', ()=>{
     it('THEN: the second dropdown opens,', async ()=>{
-      const qaPairs = screen.getAllByTestId('qa-pair');
-
       const icons = screen.getAllByTestId('icon');
       const answers = screen.getAllByTestId('answer');
 
-      answers.forEach((answer) => {
-        expect(answer).toHaveClass('expandable-panel__answer hidden');
-      });
+      assertAllDropdownsAreClosed(answers);
 
       await userEvent.click(icons[0]);
 
@@ -55,3 +50,9 @@ describe('Faq()', ()=>{
     });
   });
 });
+
+const assertAllDropdownsAreClosed = (arrayOfAnswers) => {
+  arrayOfAnswers.forEach((answer) => {
+    expect(answer).toHaveClass('expandable-panel__answer hidden');
+  });
+}
