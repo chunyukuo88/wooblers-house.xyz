@@ -35,4 +35,12 @@ describe('Faq()', ()=>{
       expect(backButtonHandler).toHaveBeenCalledTimes(1);
     });
   });
+  describe('WHEN: The user clicks on one icon, then immediately clicks on a second icon,', ()=>{
+    it('THEN: the second dropdown opens,', ()=>{
+      //
+    });
+    it('AND: the first dropdown closes.', ()=>{
+      //
+    });
+  });
 });
