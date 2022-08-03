@@ -30,7 +30,12 @@ export const ExpandablePanel = (props) => {
 
   return (
     <section className='expandable-panel'>
-      <div className='expandable-panel__question' onClick={toggleIsOpen} tabIndex='0'>
+      <div
+        className='expandable-panel__question'
+        onClick={toggleIsOpen}
+        role='button'
+        tabIndex='0'
+      >
         <Question />
         <Icon />
       </div>
@@ -38,6 +43,5 @@ export const ExpandablePanel = (props) => {
     </section>
   );
 };
-
 
 const visible = (isOpen) => (isOpen ? '' : 'hidden');

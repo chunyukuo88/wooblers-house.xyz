@@ -1,13 +1,12 @@
 import { Faq } from '../Faq.jsx';
-import {render, screen, fireEvent, cleanup} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { backButtonHandler } from '../utils';
 import Root from '../../../Root';
-import userEvent from "@testing-library/user-event";
 
 jest.mock('../utils');
 
 const initialState = { language: 'english', };
-// const numberOfFaqs = allQaPairs.secure.length;
 
 beforeEach(()=>{
   cleanup();
@@ -18,6 +17,9 @@ beforeEach(()=>{
     </Root>
   );
 });
+
+const { log } = console;
+
 describe('Faq()', ()=>{
   describe('WHEN: The user clicks the button to go back to the main page,', ()=>{
     it('THEN: The handler that updates global state is invoked.', ()=>{
@@ -30,14 +32,16 @@ describe('Faq()', ()=>{
   });
   describe('WHEN: The user clicks on one icon, then immediately clicks on a second icon,', ()=>{
     it('THEN: the second dropdown opens,', async ()=>{
-      const icons = screen.getAllByTestId('icon');
-      const answers = screen.getAllByTestId('answer');
+      const clickableQuestions = document.querySelectorAll('.expandable-panel__question');
+      let answers = screen.getAllByTestId('answer');
 
-      assertAllDropdownsAreClosed(answers);
+      await assertAllDropdownsAreClosed(answers);
 
-      await userEvent.click(icons[0]);
+      await userEvent.click(clickableQuestions[0]);
+      answers = screen.getAllByTestId('answer');
 
       expect(await answers[0]).not.toHaveClass('expandable-panel__answer hidden');
+
       //
       // expect(answer).toHaveClass('expandable-panel__answer ');
       //
