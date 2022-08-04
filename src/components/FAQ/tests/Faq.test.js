@@ -53,7 +53,7 @@ describe('Faq()', ()=>{
       expect(secondAnswer).toHaveClass('expandable-panel__answer hidden');
 
       fireEvent.click(firstRow);
-      fireEvent.click(secondAnswer);
+      fireEvent.click(secondRow);
       firstAnswer = screen.getAllByTestId('answer')[0];
       secondAnswer = screen.getAllByTestId('answer')[1];
 

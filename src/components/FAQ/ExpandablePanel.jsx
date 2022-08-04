@@ -4,11 +4,17 @@ import { templateVariables } from './templateVariables';
 import '../../css/ExpandablePanel.css';
 
 export const ExpandablePanel = (props) => {
-  const { question, answer } = props;
-  const [isOpen, setIsOpen] = useState(false);
+  const {
+    answer,
+    idNumber,
+    openDropdownNumber,
+    question,
+    setOpenDropdownNumber,
+  } = props;
 
+  const isOpen = openDropdownNumber === idNumber;
   const newAnswer = `<div>${answer}</div>`;
-  const toggleIsOpen = () => setIsOpen(!isOpen);
+  const toggleIsOpen = () => setOpenDropdownNumber(idNumber);
 
   const Question = () => (
     <div className='expandable-panel__question-text'>
