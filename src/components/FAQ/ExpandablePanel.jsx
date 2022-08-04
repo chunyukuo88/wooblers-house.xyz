@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TemplateComponent from 'react-mustache-template-component';
 import { templateVariables } from './templateVariables';
 import '../../css/ExpandablePanel.css';
@@ -9,12 +9,12 @@ export const ExpandablePanel = (props) => {
     idNumber,
     openDropdownNumber,
     question,
-    setOpenDropdownNumber,
+    setOpenFn,
   } = props;
 
   const isOpen = openDropdownNumber === idNumber;
   const newAnswer = `<div>${answer}</div>`;
-  const toggleIsOpen = () => setOpenDropdownNumber(idNumber);
+  const toggleIsOpen = () => setOpenFn(idNumber);
 
   const Question = () => (
     <div className='expandable-panel__question-text'>

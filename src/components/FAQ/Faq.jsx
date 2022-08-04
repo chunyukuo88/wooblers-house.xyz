@@ -33,10 +33,6 @@ export const Faq = () => {
 };
 
 const Content = () => {
-  const initialState = {
-    qaPairIndex: null,
-    isOpen: false,
-  };
   const [openDropdownNumber, setOpenDropdownNumber] = React.useState(null);
 
   return allQaPairs.map((qaPair, key) => {
@@ -48,7 +44,7 @@ const Content = () => {
           answer={answer}
           idNumber={key}
           openDropdownNumber={openDropdownNumber}
-          setOpenDropdownNumber={setOpenDropdownNumber}
+          setOpenFn={setOpenDropdownNumber}
         />
       </div>
     );
