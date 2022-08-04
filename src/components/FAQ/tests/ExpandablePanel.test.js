@@ -2,10 +2,13 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { ExpandablePanel } from '../ExpandablePanel';
 
-const props = {};
-props.question = 'Q: Who is Woobler?';
-props.answer = <div>A: A very special lad</div>;
-props.icon = 'an icon';
+const props = {
+  answer: <div>A: A very special lad</div>,
+  idNumber: null,
+  openDropdownNumber: 0,
+  question: 'Q: Who is Woobler?',
+  setOpenFn: jest.fn(),
+};
 
 describe('ExpandablePanel.js', ()=>{
   describe('GIVEN: The page loads', ()=>{
