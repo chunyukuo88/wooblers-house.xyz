@@ -1,33 +1,28 @@
 import { Faq } from '../Faq.jsx';
-import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { backButtonHandler } from '../utils';
 import Root from '../../../Root';
-import { allQaPairs } from '../faqContent.js';
 
 jest.mock('../utils');
 
 const initialState = { language: 'english', };
-const numberOfFaqs = allQaPairs.secure.length;
+
+beforeEach(()=>{
+  cleanup();
+  backButtonHandler.mockImplementation(jest.fn());
+  render(
+    <Root initialState={initialState}>
+      <Faq/>
+    </Root>
+  );
+});
+
+const { log } = console;
 
 describe('Faq()', ()=>{
-  it('It renders the number of Q&A pairs properly.', ()=>{
-    render(
-      <Root initialState={initialState}>
-        <Faq/>
-      </Root>
-    );
-    const allQaPairs = screen.getAllByTestId('qa-pair');
-
-    expect(allQaPairs.length).toEqual(numberOfFaqs);
-  });
   describe('WHEN: The user clicks the button to go back to the main page,', ()=>{
     it('THEN: The handler that updates global state is invoked.', ()=>{
-      backButtonHandler.mockImplementation(jest.fn());
-      render(
-        <Root initialState={initialState}>
-          <Faq/>
-        </Root>
-      );
       const back = screen.getByTestId('back-button');
 
       fireEvent.click(back);
@@ -35,4 +30,41 @@ describe('Faq()', ()=>{
       expect(backButtonHandler).toHaveBeenCalledTimes(1);
     });
   });
+  describe('WHEN: The user clicks on a row,', ()=>{
+    it('THEN: its dropdown opens, revealing the answer to that row\'s question.', async ()=>{
+      const firstRow = document.querySelectorAll('.expandable-panel__question')[0];
+      let allAnswers = screen.getAllByTestId('answer');
+      assertAllDropdownsAreClosed(allAnswers);
+
+      fireEvent.click(firstRow);
+      const firstAnswer = allAnswers[0];
+
+      expect(firstAnswer).toHaveClass('expandable-panel__answer ');
+    });
+  });
+  describe('WHEN: The user clicks on one row, then immediately clicks another row', ()=>{
+    it('THEN: the answer to that row\'s question becomes hidden again.', async ()=>{
+      const firstRow = document.querySelectorAll('.expandable-panel__question')[0];
+      const secondRow = document.querySelectorAll('.expandable-panel__question')[1];
+      let firstAnswer = screen.getAllByTestId('answer')[0];
+      let secondAnswer = screen.getAllByTestId('answer')[1];
+
+      expect(firstAnswer).toHaveClass('expandable-panel__answer hidden');
+      expect(secondAnswer).toHaveClass('expandable-panel__answer hidden');
+
+      fireEvent.click(firstRow);
+      fireEvent.click(secondRow);
+      firstAnswer = screen.getAllByTestId('answer')[0];
+      secondAnswer = screen.getAllByTestId('answer')[1];
+
+      expect(firstAnswer).toHaveClass('expandable-panel__answer hidden');
+      expect(secondAnswer).toHaveClass('expandable-panel__answer ');
+    });
+  });
 });
+
+const assertAllDropdownsAreClosed = (arrayOfAnswers) => {
+  arrayOfAnswers.forEach((answer) => {
+    expect(answer).toHaveClass('expandable-panel__answer hidden');
+  });
+}
