@@ -17,7 +17,7 @@ export const Faq = () => {
     <section  data-testid='faq-page-container' className={`${language} faq-page-container`}>
       <h1>FAQ</h1>
       <div data-testid='faq-content-container'>
-        <Content {...allQaPairs}/>
+        <Content />
       </div>
       <p data-testid='back-button'
          id='back-button'
@@ -30,13 +30,13 @@ export const Faq = () => {
   );
 };
 
-const Content = (allQaPairs) => {
+const Content = () => {
   return allQaPairs.secure.map((qaPair, key) => {
     const { question, answer } = qaPair;
-    const icon = '哈';
+
     return (
       <div data-testid='qa-pair' key={key}>
-        <ExpandablePanel {...{question, answer, icon}} />
+        <ExpandablePanel {...{question, answer}} />
       </div>
     );
   });

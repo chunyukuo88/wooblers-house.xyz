@@ -4,8 +4,8 @@ import { templateVariables } from './templateVariables';
 import '../../css/ExpandablePanel.css';
 
 export const ExpandablePanel = (props) => {
+  const { question, answer } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const { question, answer, icon } = props;
 
   const newAnswer = `<div>${answer}</div>`;
   const toggleIsOpen = () => setIsOpen(!isOpen);
@@ -15,15 +15,13 @@ export const ExpandablePanel = (props) => {
       {question}
     </div>
   );
-  const Icon = () => (
-    <i className='expandable-panel__question-icon'
-       data-testid='icon'
-       aria-hidden='true'>
-      {icon}
-    </i>
-  );
+  const Icon = () => <i className='expandable-panel__question-icon' data-testid='icon'>哈</i>;
   const Answer = () => (
-    <div data-testid='answer' className={`expandable-panel__answer ${visible(isOpen)}`}>
+    <div
+      data-testid='answer'
+      className={`expandable-panel__answer ${visible(isOpen)}`}
+      aria-hidden={!isOpen}
+    >
       <TemplateComponent template={newAnswer} data={templateVariables} />
     </div>
   );

@@ -11,7 +11,7 @@ const initialState = { language: 'english', };
 beforeEach(()=>{
   cleanup();
   backButtonHandler.mockImplementation(jest.fn());
-  const { debug } = render(
+  render(
     <Root initialState={initialState}>
       <Faq/>
     </Root>
@@ -30,27 +30,35 @@ describe('Faq()', ()=>{
       expect(backButtonHandler).toHaveBeenCalledTimes(1);
     });
   });
-  describe('WHEN: The user clicks on one icon, then immediately clicks on a second icon,', ()=>{
-    it('THEN: the second dropdown opens,', async ()=>{
-      const clickableQuestions = document.querySelectorAll('.expandable-panel__question');
-      let answers = screen.getAllByTestId('answer');
+  describe('WHEN: The user clicks on a row,', ()=>{
+    it('THEN: its dropdown opens, revealing the answer to that row\'s question.', async ()=>{
+      const firstRow = document.querySelectorAll('.expandable-panel__question')[0];
+      let allAnswers = screen.getAllByTestId('answer');
+      assertAllDropdownsAreClosed(allAnswers);
 
-      await assertAllDropdownsAreClosed(answers);
+      fireEvent.click(firstRow);
+      const firstAnswer = allAnswers[0];
 
-      await userEvent.click(clickableQuestions[0]);
-      answers = screen.getAllByTestId('answer');
-
-      expect(await answers[0]).not.toHaveClass('expandable-panel__answer hidden');
-
-      //
-      // expect(answer).toHaveClass('expandable-panel__answer ');
-      //
-      // fireEvent.click(icon);
-      //
-      // expect(answer).toHaveClass('expandable-panel__answer hidden');
+      expect(firstAnswer).toHaveClass('expandable-panel__answer ');
     });
-    it('AND: the first dropdown closes.', ()=>{
-      //
+  });
+  describe('WHEN: The user clicks on one row, then immediately clicks another row', ()=>{
+    it('THEN: the answer to that row\'s question becomes hidden again.', async ()=>{
+      const firstRow = document.querySelectorAll('.expandable-panel__question')[0];
+      const secondRow = document.querySelectorAll('.expandable-panel__question')[1];
+      let firstAnswer = screen.getAllByTestId('answer')[0];
+      let secondAnswer = screen.getAllByTestId('answer')[1];
+
+      expect(firstAnswer).toHaveClass('expandable-panel__answer hidden');
+      expect(secondAnswer).toHaveClass('expandable-panel__answer hidden');
+
+      fireEvent.click(firstRow);
+      fireEvent.click(secondAnswer);
+      firstAnswer = screen.getAllByTestId('answer')[0];
+      secondAnswer = screen.getAllByTestId('answer')[1];
+
+      expect(firstAnswer).toHaveClass('expandable-panel__answer hidden');
+      expect(secondAnswer).toHaveClass('expandable-panel__answer ');
     });
   });
 });
