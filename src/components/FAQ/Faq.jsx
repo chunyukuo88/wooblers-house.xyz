@@ -23,7 +23,9 @@ export const Faq = () => {
          id='back-button'
          role='button'
          onClick={()=>backButtonHandler(dispatch, history)}
-      >{ staticStrings.faqRouteToMain[language] }</p>
+      >
+        {staticStrings.faqRouteToMain[language]}
+      </p>
       <h2>Thanks for stopping by!</h2>
       <MySignature/>
     </section>
@@ -31,9 +33,8 @@ export const Faq = () => {
 };
 
 const Content = () => {
-  return allQaPairs.secure.map((qaPair, key) => {
+  return allQaPairs.map((qaPair, key) => {
     const { question, answer } = qaPair;
-
     return (
       <div data-testid='qa-pair' key={key}>
         <ExpandablePanel {...{question, answer}} />
