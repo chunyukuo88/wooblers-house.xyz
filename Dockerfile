@@ -1,16 +1,14 @@
 FROM node:14.15.4-alpine
 
-WORKDIR /app
+ENV APP_HOME /app
 
-COPY . ./
+WORKDIR $APP_HOME 
 
-COPY package-lock.json ./
+COPY package.json $APP_HOME
 
-RUN npm install --silent
+RUN npm i
 
-RUN npm install react-scripts@3.4.1 -g
-
-COPY . ./
+COPY . $APP_HOME
 
 EXPOSE 1234
 

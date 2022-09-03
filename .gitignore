@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/amplify
 /.pnp
 .pnp.js
 .idea
@@ -25,23 +24,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#amplify
-amplify/\#current-cloud-backend
-amplify/.config/local-*
-amplify/logs
-amplify/mock-data
-amplify/backend/amplify-meta.json
-amplify/backend/awscloudformation
-amplify/backend/.temp
 build/
 dist/
 ./src/config.js
 node_modules/
 aws-exports.js
 awsconfiguration.json
-amplifyconfiguration.json
-amplifyconfiguration.dart
-amplify-build-config.json
-amplify-gradle-config.json
-amplifytools.xcconfig
 .secret-*

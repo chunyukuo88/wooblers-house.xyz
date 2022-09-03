@@ -1,23 +1,38 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import Root from "../../Root";
-import App from "./App";
+import React from 'react';
+import { render } from '@testing-library/react';
+import * as weather from '../../actionCreators/weatherActionCreators';
+import { getPhotos } from '../Carousel/utils';
+import Root from '../../Root';
+import App from './App';
+
+jest.mock('react-ga');
+jest.mock('../Carousel/utils');
 
 const initialState = {
-  language: "english",
+  language: 'english',
+};
+const mockPhotosObject = {
+  Contents: [
+    { Key: '1 (Custom).JPG' },
+    { Key: '2 (Custom).JPG' },
+    { Key: '3 (Custom).JPG' },
+  ],
 };
 
-jest.mock("react-ga");
-
-describe("App.js", () => {
-  describe("WHEN: The app has loaded", () => {
-    it("THEN: It renders the App component without crashing, ", async () => {
-      const { container } = await render(
+describe('App.js', () => {
+  describe('WHEN: The app loads,', () => {
+    it('THEN: It makes API calls to get global weather condition data.', async () => {
+      getPhotos.mockResolvedValueOnce(() => mockPhotosObject);
+      const humidityFn = jest.spyOn(weather, 'getGlobalHumidity');
+      const tempFn = jest.spyOn(weather, 'getGlobalTemp');
+      render(
         <Root initialState={initialState}>
-          <App />
-        </Root>
+           <App />
+         </Root>
       );
-      expect(container).toBeDefined();
+
+      expect(humidityFn).toBeCalledTimes(1);
+      expect(tempFn).toBeCalledTimes(1);
     });
   });
 });

@@ -1,13 +1,11 @@
 :root {
-  --paboma: 10px;
+  --paboma: 0.625rem; /* As pixels: --paboma: 10px; */
 }
-
-
 
 .modal {
   background-color: white;
   border: var(--paboma) solid var(--woob-green);
-  border-radius: 5px;
+  border-radius: 0.3125rem; /* As pixels: border-radius: 5px; */
   margin: var(--paboma);
   max-width: 60vw;
   padding: calc(var(--paboma) * 2);
@@ -21,6 +19,6 @@
 
 @media only screen and (min-width: 840px) {
   .modal {
-    font-size: 20px;
+    font-size: 1.25rem; /* As pixels: font-size: 20px; */
   }
 }

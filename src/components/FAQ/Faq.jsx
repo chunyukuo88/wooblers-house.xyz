@@ -14,29 +14,38 @@ export const Faq = () => {
   const language = useSelector((state) => state.language);
 
   return (
-    <div  data-testid='faq-page-container'
-          className={`${language} faq-page-container`}>
+    <section  data-testid='faq-page-container' className={`${language} faq-page-container`}>
       <h1>FAQ</h1>
       <div data-testid='faq-content-container'>
-        <Content {...allQaPairs}/>
+        <Content />
       </div>
       <p data-testid='back-button'
          id='back-button'
+         role='button'
          onClick={()=>backButtonHandler(dispatch, history)}
-      >{ staticStrings.faqRouteToMain[language] }</p>
+      >
+        {staticStrings.faqRouteToMain[language]}
+      </p>
       <h2>Thanks for stopping by!</h2>
-      <p><MySignature/></p>
-    </div>
+      <MySignature/>
+    </section>
   );
 };
 
-const Content = (allQaPairs) => {
-  return allQaPairs.secure.map((qaPair, key) => {
+const Content = () => {
+  const [openDropdownNumber, setOpenDropdownNumber] = React.useState(null);
+
+  return allQaPairs.map((qaPair, key) => {
     const { question, answer } = qaPair;
-    const icon = '哈';
     return (
       <div data-testid='qa-pair' key={key}>
-        <ExpandablePanel {...{question, answer, icon}} />
+        <ExpandablePanel
+          question={question}
+          answer={answer}
+          idNumber={key}
+          openDropdownNumber={openDropdownNumber}
+          setOpenFn={setOpenDropdownNumber}
+        />
       </div>
     );
   });
