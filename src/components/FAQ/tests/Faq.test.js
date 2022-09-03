@@ -1,5 +1,4 @@
 import { Faq } from '../Faq.jsx';
-import userEvent from '@testing-library/user-event';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { backButtonHandler } from '../utils';
 import Root from '../../../Root';
@@ -18,8 +17,6 @@ beforeEach(()=>{
   );
 });
 
-const { log } = console;
-
 describe('Faq()', ()=>{
   describe('WHEN: The user clicks the button to go back to the main page,', ()=>{
     it('THEN: The handler that updates global state is invoked.', ()=>{
@@ -30,16 +27,21 @@ describe('Faq()', ()=>{
       expect(backButtonHandler).toHaveBeenCalledTimes(1);
     });
   });
-  describe('WHEN: The user clicks on a row,', ()=>{
-    it('THEN: its dropdown opens, revealing the answer to that row\'s question.', async ()=>{
+  describe('WHEN: The user clicks on one row, then immediately clicks that same row again', ()=>{
+    it('THEN: After the first click, the answer is visible. After the second, it is hidden again.', ()=>{
       const firstRow = document.querySelectorAll('.expandable-panel__question')[0];
       let allAnswers = screen.getAllByTestId('answer');
       assertAllDropdownsAreClosed(allAnswers);
 
       fireEvent.click(firstRow);
-      const firstAnswer = allAnswers[0];
+      let firstAnswer = allAnswers[0];
 
       expect(firstAnswer).toHaveClass('expandable-panel__answer ');
+
+      fireEvent.click(firstRow);
+      firstAnswer = allAnswers[0];
+
+      expect(firstAnswer).toHaveClass('expandable-panel__answer hidden');
     });
   });
   describe('WHEN: The user clicks on one row, then immediately clicks another row', ()=>{

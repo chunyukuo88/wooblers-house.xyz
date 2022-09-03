@@ -14,7 +14,11 @@ export const ExpandablePanel = (props) => {
 
   const isOpen = openDropdownNumber === idNumber;
   const newAnswer = `<div>${answer}</div>`;
-  const toggleIsOpen = () => setOpenFn(idNumber);
+  const toggleIsOpen = () => {
+    isOpen
+      ? setOpenFn(null)
+      : setOpenFn(idNumber);
+  }
 
   const Question = () => (
     <div className='expandable-panel__question-text'>
