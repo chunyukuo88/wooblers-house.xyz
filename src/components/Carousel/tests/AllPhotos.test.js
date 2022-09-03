@@ -1,6 +1,5 @@
 import AllPhotos from '../AllPhotos';
-import {cleanup, render, screen} from '@testing-library/react';
-import ReactDOM, { unmountComponentAtNode } from 'react-dom';
+import { render, screen} from '@testing-library/react';
 import { getPhotos } from '../utils';
 import Root from '../../../Root';
 
@@ -16,7 +15,7 @@ const mockPhotosObject = {
 const initialState = { language: 'english', };
 
 describe('WHEN: The component loads,', ()=>{
-  it('', async ()=>{
+  it('THEN: Photos are displayed.', async ()=>{
     getPhotos.mockResolvedValueOnce(() => mockPhotosObject);
 
     render(
