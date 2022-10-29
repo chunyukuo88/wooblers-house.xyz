@@ -1,8 +1,8 @@
-FROM node:14.15.4-alpine
+FROM node:16-alpine
 
 ENV APP_HOME /app
 
-WORKDIR $APP_HOME 
+WORKDIR $APP_HOME
 
 COPY package.json $APP_HOME
 
