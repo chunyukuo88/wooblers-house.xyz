@@ -43,4 +43,20 @@ describe('Heading.js', ()=>{
       expect(locButtonHandler).toHaveBeenCalledWith('english', expect.any(Function));
     });
   });
+  describe('WHEN: The user clicks the "Welcome" text,', () => {
+    it('THEN: The modal pops up.', () => {
+      initialState.language = 'english';
+      render(
+        <Root initialState={initialState}>
+          <Heading />
+        </Root>
+      );
+      const welcomeString = document.querySelector('#nav-items__welcome');
+
+      fireEvent.click(welcomeString);
+      const modal = document.querySelector('.modal');
+
+      expect(modal).toBeInTheDocument();
+    });
+  });
 });

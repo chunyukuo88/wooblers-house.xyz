@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import Heading from '../Heading/Heading';
 import PhotoDisplay from '../Carousel/AllPhotos';
 import Copyright from '../Copyright/Copyright';
@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../../css/common.css';
 import '../../css/App.css';
 import ReactGa from 'react-ga';
+import AboutModal from "../AboutModal/AboutModal";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -28,19 +29,26 @@ export default function App() {
   );
 }
 
-const MainPage = () => (
-  <>
-    <div id='heading-wrapper'>
-      <Heading />
-    </div>
-    <div id='photodisplay-wrapper'>
-      <PhotoDisplay />
-    </div>
-    <div id='copyright-wrapper'>
-      <Copyright />
-    </div>
-  </>
-);
+const MainPage = () => {
+  const [ modalIsVisible, setModalIsVisible ] = useState(false);
+
+  return (
+    <>
+      <div id='heading-wrapper'>
+        <Heading toggleModalFn={setModalIsVisible}/>
+      </div>
+      <div id='photodisplay-wrapper'>
+        <PhotoDisplay />
+      </div>
+      <div id='welcome-modal-wrapper'>
+        {modalIsVisible && <AboutModal/>}
+      </div>
+      <div id='copyright-wrapper'>
+        <Copyright />
+      </div>
+    </>
+  );
+}
 
 const dispatchTempAndHumidity = (dispatchFn) => {
   dispatchFn(getGlobalTemp());

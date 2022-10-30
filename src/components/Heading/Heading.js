@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import staticStrings from '../../StaticStrings';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
@@ -7,8 +7,9 @@ import { Welcome } from '../Welcome/Welcome';
 import { useHistory } from 'react-router-dom';
 import { faqButtonHandler, locButtonHandler } from './utils';
 import '../../css/Heading.css';
+import AboutModal from "../AboutModal/AboutModal";
 
-export default function Heading(){
+export default function Heading({ toggleModalFn }){
   const dispatch = useDispatch();
   const history = useHistory();
   const language = useSelector((state) => state.language);
@@ -19,8 +20,12 @@ export default function Heading(){
         <Title/>
       </div>
       <nav id='heading__nav-items'>
-        <div id='nav-items__welcome' className={`${language} welcome`}>
-          <Welcome/>
+        <div
+          id='nav-items__welcome'
+          className={`${language} welcome`}
+          onClick={() => toggleModalFn(true)}
+        >
+          {staticStrings.welcome[language]}
         </div>
         <div className={`${language} weather`} id='nav-items__weather'>
           <WeatherDisplay/>
