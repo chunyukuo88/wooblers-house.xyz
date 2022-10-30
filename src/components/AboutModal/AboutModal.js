@@ -10,18 +10,21 @@ const AboutModal = () => {
   const contentProps = {
     language,
     stringArray: ['modalSummary', 'modalCoverage'],
-  }
+  };
   return (
-    <div className='modal'>
-      <div className='modal-header'>
-        <StaticString {...headerProps}/>
-      </div>
+    <>
+      <div className='modal'>
+        <div className='modal-header'>
+          <StaticString {...headerProps}/>
+        </div>
 
-      <div className='content'>
-        <Content {...contentProps}/>
-        <Code/>
+        <div className='content'>
+          <Content {...contentProps}/>
+          <Code/>
+        </div>
       </div>
-    </div>
+      <div className='translucent-overlay' ></div>
+    </>
   );
 };
 

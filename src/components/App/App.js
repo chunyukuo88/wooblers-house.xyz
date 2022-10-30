@@ -9,8 +9,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../../css/common.css';
 import '../../css/App.css';
 import '../../css/AboutModal.css';
+import AboutModal from '../AboutModal/AboutModal';
 import ReactGa from 'react-ga';
-import AboutModal from "../AboutModal/AboutModal";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const MainPage = () => {
       <div id='photodisplay-wrapper'>
         <PhotoDisplay />
       </div>
-      <div id='copyright-wrapper'>
+      <div className='copyright-wrapper'>
         <Copyright />
       </div>
     </>
