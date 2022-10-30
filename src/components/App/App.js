@@ -36,10 +36,10 @@ const MainPage = () => {
   return (
     <>
       <div id='heading-wrapper'>
-        <Heading toggleModalFn={setModalIsVisible}/>
+        <Heading setModalIsVisible={setModalIsVisible}/>
       </div>
       <div id='welcome-modal-wrapper'>
-        {modalIsVisible && <AboutModal/>}
+        {modalIsVisible && <AboutModal setModalIsVisible={setModalIsVisible}/>}
       </div>
       <div id='photodisplay-wrapper'>
         <PhotoDisplay />

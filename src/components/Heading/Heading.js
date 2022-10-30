@@ -9,7 +9,7 @@ import { faqButtonHandler, locButtonHandler } from './utils';
 import '../../css/Heading.css';
 import AboutModal from "../AboutModal/AboutModal";
 
-export default function Heading({ toggleModalFn }){
+export default function Heading({ setModalIsVisible }){
   const dispatch = useDispatch();
   const history = useHistory();
   const language = useSelector((state) => state.language);
@@ -23,7 +23,7 @@ export default function Heading({ toggleModalFn }){
         <div
           id='nav-items__welcome'
           className={`${language} welcome`}
-          onClick={() => toggleModalFn(true)}
+          onClick={() => setModalIsVisible(true)}
         >
           {staticStrings.welcome[language]}
         </div>
