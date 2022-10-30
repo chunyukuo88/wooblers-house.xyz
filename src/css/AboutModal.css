@@ -1,14 +1,17 @@
 :root {
-  --paboma: 0.625rem; /* As pixels: --paboma: 10px; */
+  --paboma: 0.5rem;
 }
 
 .modal {
   background-color: white;
   border: var(--paboma) solid var(--woob-green);
-  border-radius: 0.3125rem; /* As pixels: border-radius: 5px; */
-  margin: var(--paboma);
+  border-radius: 0.25rem;
+  left: 20%;
   max-width: 60vw;
   padding: calc(var(--paboma) * 2);
+  position: absolute;
+  top: 35%;
+  z-index: 1000;
 }
 
 .modal-header {

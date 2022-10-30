@@ -8,6 +8,7 @@ import { getGlobalHumidity, getGlobalTemp } from '../../actionCreators/weatherAc
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../../css/common.css';
 import '../../css/App.css';
+import '../../css/AboutModal.css';
 import ReactGa from 'react-ga';
 import AboutModal from "../AboutModal/AboutModal";
 
@@ -37,11 +38,11 @@ const MainPage = () => {
       <div id='heading-wrapper'>
         <Heading toggleModalFn={setModalIsVisible}/>
       </div>
-      <div id='photodisplay-wrapper'>
-        <PhotoDisplay />
-      </div>
       <div id='welcome-modal-wrapper'>
         {modalIsVisible && <AboutModal/>}
+      </div>
+      <div id='photodisplay-wrapper'>
+        <PhotoDisplay />
       </div>
       <div id='copyright-wrapper'>
         <Copyright />
