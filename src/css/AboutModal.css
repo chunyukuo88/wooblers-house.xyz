@@ -1,14 +1,17 @@
 :root {
-  --paboma: 0.625rem; /* As pixels: --paboma: 10px; */
+  --paboma: 0.5rem;
 }
 
 .modal {
   background-color: white;
   border: var(--paboma) solid var(--woob-green);
-  border-radius: 0.3125rem; /* As pixels: border-radius: 5px; */
-  margin: var(--paboma);
+  border-radius: 0.25rem;
+  left: 20%;
   max-width: 60vw;
   padding: calc(var(--paboma) * 2);
+  position: absolute;
+  top: 35%;
+  z-index: 1000;
 }
 
 .modal-header {
@@ -17,8 +20,21 @@
   text-align: center;
 }
 
+.translucent-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 123;
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 840px) {
   .modal {
-    font-size: 1.25rem; /* As pixels: font-size: 20px; */
+    font-size: 1.25rem;
   }
 }

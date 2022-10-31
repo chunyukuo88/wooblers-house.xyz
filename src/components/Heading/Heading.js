@@ -3,24 +3,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import staticStrings from '../../StaticStrings';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import Title from '../Title/Title';
-import { Welcome } from '../Welcome/Welcome';
 import { useHistory } from 'react-router-dom';
 import { faqButtonHandler, locButtonHandler } from './utils';
 import '../../css/Heading.css';
 
-export default function Heading(){
+export default function Heading({ setModalIsVisible }){
   const dispatch = useDispatch();
   const history = useHistory();
   const language = useSelector((state) => state.language);
-
+  function handleKeyboardEvent(event) {
+    if (event.key === 'Escape') {
+      setModalIsVisible(false);
+    }
+  }
   return (
-    <section id='heading'>
+    <section id='heading' tabIndex={0} onKeyDown={handleKeyboardEvent}>
       <div id='heading__title'>
         <Title/>
       </div>
       <nav id='heading__nav-items'>
-        <div id='nav-items__welcome' className={`${language} welcome`}>
-          <Welcome/>
+        <div
+          id='nav-items__welcome'
+          className={`${language} welcome`}
+          onClick={() => setModalIsVisible(true)}
+        >
+          {staticStrings.welcome[language]}
         </div>
         <div className={`${language} weather`} id='nav-items__weather'>
           <WeatherDisplay/>

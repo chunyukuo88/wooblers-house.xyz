@@ -43,4 +43,58 @@ describe('Heading.js', ()=>{
       expect(locButtonHandler).toHaveBeenCalledWith('english', expect.any(Function));
     });
   });
+  describe('WHEN: The user clicks the "Welcome" text,', () => {
+    it('THEN: The modal pops up.', () => {
+      initialState.language = 'english';
+      const props = {
+        setModalIsVisible: jest.fn()
+      };
+      render(
+        <Root initialState={initialState}>
+          <Heading {...props}/>
+        </Root>
+      );
+      const welcomeString = document.querySelector('#nav-items__welcome');
+
+      fireEvent.click(welcomeString);
+
+      expect(props.setModalIsVisible).toBeCalledTimes(1);
+    });
+  });
+  describe('WHEN: The user presses Escape,', () => {
+    it('THEN: The callback to close the modal is invoked.', () => {
+      initialState.language = 'english';
+      const props = {
+        setModalIsVisible: jest.fn()
+      };
+      render(
+        <Root initialState={initialState}>
+          <Heading {...props}/>
+        </Root>
+      );
+      const heading = document.querySelector('#heading');
+
+      fireEvent.keyDown(heading, { key: 'Escape', code: 'Escape'});
+
+      expect(props.setModalIsVisible).toBeCalledTimes(1);
+    });
+  });
+  describe('WHEN: The user presses a key that is NOT the Escape key,', () => {
+    it('THEN: The callback to close the modal is NOT invoked.', () => {
+      initialState.language = 'english';
+      const props = {
+        setModalIsVisible: jest.fn()
+      };
+      render(
+        <Root initialState={initialState}>
+          <Heading {...props}/>
+        </Root>
+      );
+      const heading = document.querySelector('#heading');
+
+      fireEvent.keyDown(heading, { key: 'f', code: 'KeyF'});
+
+      expect(props.setModalIsVisible).not.toBeCalled();
+    });
+  });
 });
