@@ -21,11 +21,6 @@ const staticStrings = {
     russian: "ЧАВО",
     chinese: "常見問題",
   },
-  faqComingSoon: {
-    english: "This page is coming soon!",
-    russian: "Страница часто задаваемых вопросов скоро появится!",
-    chinese: "常見問題页八月出爐！",
-  },
   faqRouteToMain: {
     english: "Home",
     russian: "Вернуться на главную",
@@ -43,11 +38,11 @@ const staticStrings = {
   },
   modalCoverage: {
     english:
-      "To achieve 100% test coverage, I used Enzyme at first but later switched to React Testing Library.",
+      "Check out my repo and slaver at that sweet, sweet code coverage.",
     russian:
       "100% тестового покрытия с библиотекой Enzyme и React Testing Library.",
     chinese:
-      "為了達成百分百測試覆蓋率，我用了Enzyme 與 React Testing Library。",
+      "百分百測試覆蓋率，太爽了。",
   },
   modalHeading: {
     english: "...to my trilingual photo album.",
@@ -56,7 +51,7 @@ const staticStrings = {
   },
   modalSummary: {
     english:
-      "This is a test-driven React/Redux project. Try it out and let me know what you think!",
+      "This is a test-driven React SPA. Try it out and let me know what you think!",
     russian: "Это проект React/Redux. Попробуйте!",
     chinese: "製作本站，我用了REACT與REDUX。",
   },
