@@ -61,4 +61,40 @@ describe('Heading.js', ()=>{
       expect(props.setModalIsVisible).toBeCalledTimes(1);
     });
   });
+  describe('WHEN: The user presses Escape,', () => {
+    it('THEN: The callback to close the modal is invoked.', () => {
+      initialState.language = 'english';
+      const props = {
+        setModalIsVisible: jest.fn()
+      };
+      render(
+        <Root initialState={initialState}>
+          <Heading {...props}/>
+        </Root>
+      );
+      const heading = document.querySelector('#heading');
+
+      fireEvent.keyDown(heading, { key: 'Escape', code: 'Escape'});
+
+      expect(props.setModalIsVisible).toBeCalledTimes(1);
+    });
+  });
+  describe('WHEN: The user presses a key that is NOT the Escape key,', () => {
+    it('THEN: The callback to close the modal is NOT invoked.', () => {
+      initialState.language = 'english';
+      const props = {
+        setModalIsVisible: jest.fn()
+      };
+      render(
+        <Root initialState={initialState}>
+          <Heading {...props}/>
+        </Root>
+      );
+      const heading = document.querySelector('#heading');
+
+      fireEvent.keyDown(heading, { key: 'f', code: 'KeyF'});
+
+      expect(props.setModalIsVisible).not.toBeCalled();
+    });
+  });
 });

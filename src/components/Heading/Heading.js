@@ -11,9 +11,13 @@ export default function Heading({ setModalIsVisible }){
   const dispatch = useDispatch();
   const history = useHistory();
   const language = useSelector((state) => state.language);
-
+  function handleKeyboardEvent(event) {
+    if (event.key === 'Escape') {
+      setModalIsVisible(false);
+    }
+  }
   return (
-    <section id='heading'>
+    <section id='heading' tabIndex={0} onKeyDown={handleKeyboardEvent}>
       <div id='heading__title'>
         <Title/>
       </div>

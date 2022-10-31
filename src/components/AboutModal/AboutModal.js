@@ -11,16 +11,10 @@ const AboutModal = ({ setModalIsVisible }) => {
     language,
     stringArray: ['modalSummary', 'modalCoverage'],
   };
-  function handleKeyboardEvent(event) {
-    if (event.key === 'a') {
-      console.log('w00t');
-      setModalIsVisible(false);
-    }
-  }
 
   return (
     <>
-      <div className='modal' onKeyPress={handleKeyboardEvent}>
+      <div className='modal'>
         <div className='modal-header'>
           <StaticString {...headerProps}/>
         </div>
