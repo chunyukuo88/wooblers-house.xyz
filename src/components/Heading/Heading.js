@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import staticStrings from '../../StaticStrings';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import Title from '../Title/Title';
-import { Welcome } from '../Welcome/Welcome';
 import { useHistory } from 'react-router-dom';
 import { faqButtonHandler, locButtonHandler } from './utils';
 import '../../css/Heading.css';
-import AboutModal from "../AboutModal/AboutModal";
 
 export default function Heading({ setModalIsVisible }){
   const dispatch = useDispatch();
