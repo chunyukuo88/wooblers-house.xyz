@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import {fireEvent, render, screen} from '@testing-library/react';
 import AboutModal from '../AboutModal.js';
 import Root from '../../../Root';
 
@@ -16,5 +16,22 @@ describe('AboutModal.js', ()=>{
     );
 
     expect(container).toBeDefined();
+  });
+  describe('WHEN: the user clicks on the translucent overlay,', () => {
+    it('THEN: the callback to close the modal is invoked.', () => {
+      const props = {
+        setModalIsVisible: jest.fn(),
+      }
+      render(
+        <Root initialState={initialState}>
+          <AboutModal {...props}/>
+        </Root>
+      );
+      const translucentOverlay = document.querySelector('.translucent-overlay');
+
+      fireEvent.click(translucentOverlay);
+
+      expect(props.setModalIsVisible).toBeCalledTimes(1);
+    });
   });
 });

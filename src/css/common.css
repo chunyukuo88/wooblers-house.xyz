@@ -2,9 +2,7 @@
   --hover-transition: 0.5s;
   --link-color: fuchsia;
   --woob-green: #7cdd41;
-  --amplify-primary-color: var(--woob-green);
 }
-
 
 * {
   user-select: none;
@@ -20,7 +18,6 @@ a:hover {
   text-shadow: 0.0625rem 0.0625rem 0.5rem var(--woob-green);
   transition: var(--hover-transition);
 }
-
 
 .chinese {
   font-family: "ZCool Kuaile";
