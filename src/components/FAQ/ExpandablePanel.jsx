@@ -18,7 +18,7 @@ export const ExpandablePanel = (props) => {
     isOpen
       ? setOpenFn(null)
       : setOpenFn(idNumber);
-  }
+  };
 
   const Question = () => (
     <div className='expandable-panel__question-text'>
