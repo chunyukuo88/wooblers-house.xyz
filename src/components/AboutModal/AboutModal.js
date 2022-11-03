@@ -27,7 +27,7 @@ const AboutModal = ({ setModalIsVisible }) => {
       <div
         className='translucent-overlay'
         onClick={() => setModalIsVisible(false)}
-      ></div>
+      />
     </>
   );
 };

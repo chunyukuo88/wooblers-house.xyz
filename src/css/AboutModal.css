@@ -2,8 +2,12 @@
   --paboma: 0.5rem;
 }
 
+.content {
+  color: var(--woob-green);
+}
+
 .modal {
-  background-color: white;
+  background-color: #3d3c3c;
   border: var(--paboma) solid var(--woob-green);
   border-radius: 0.25rem;
   left: 20%;
@@ -28,7 +32,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(46, 72, 39, 0.5);
   z-index: 123;
   cursor: pointer;
 }
