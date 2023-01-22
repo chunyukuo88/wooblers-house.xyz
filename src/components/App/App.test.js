@@ -1,5 +1,6 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { screen, fireEvent, render } from '@testing-library/react';
+import { getPhotos } from '../Carousel/utils';
 import Root from '../../Root';
 import App from './App';
 
@@ -17,9 +18,14 @@ const mockPhotosObject = {
   ],
 };
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('App.js', () => {
   describe('WHEN: The user clicks the Welcome option, then clicks outside of it,', () => {
     it('THEN: The modal becomes visible then disappears again.', async () => {
+      getPhotos.mockResolvedValueOnce(() => mockPhotosObject);
       render(
         <Root initialState={initialState}>
           <App />
