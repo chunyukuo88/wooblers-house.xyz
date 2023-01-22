@@ -1,6 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import * as weather from '../../actionCreators/weatherActionCreators';
+import { screen, fireEvent, render } from '@testing-library/react';
 import { getPhotos } from '../Carousel/utils';
 import Root from '../../Root';
 import App from './App';
@@ -19,20 +18,31 @@ const mockPhotosObject = {
   ],
 };
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('App.js', () => {
-  describe('WHEN: The app loads,', () => {
-    it('THEN: It makes API calls to get global weather condition data.', async () => {
+  describe('WHEN: The user clicks the Welcome option, then clicks outside of it,', () => {
+    it('THEN: The modal becomes visible then disappears again.', async () => {
       getPhotos.mockResolvedValueOnce(() => mockPhotosObject);
-      const humidityFn = jest.spyOn(weather, 'getGlobalHumidity');
-      const tempFn = jest.spyOn(weather, 'getGlobalTemp');
       render(
         <Root initialState={initialState}>
-           <App />
-         </Root>
+          <App />
+        </Root>
       );
+      const welcomeButton = document.getElementById('nav-items__welcome');
+      fireEvent.click(welcomeButton);
+      let modal = screen.getByText('...to my trilingual photo album.');
 
-      expect(humidityFn).toBeCalledTimes(1);
-      expect(tempFn).toBeCalledTimes(1);
+      expect(modal).toBeVisible();
+
+      const overlay = document.querySelector('.translucent-overlay');
+
+      fireEvent.click(overlay);
+      modal = screen.queryByText('...to my trilingual photo album.');
+
+      expect(modal).not.toBeInTheDocument();
     });
   });
 });

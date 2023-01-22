@@ -34,7 +34,9 @@ const AboutModal = ({ setModalIsVisible }) => {
 
 const Content = ({ language, stringArray }) => {
   return stringArray.map(string => {
-    return <StaticString {...buildStringProps(language, string)}/>
+    return (
+      <StaticString {...buildStringProps(language, string)}/>
+    );
   });
 };
 
